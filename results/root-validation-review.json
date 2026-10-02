@@ -1,0 +1,144 @@
+{
+  "schema": "root-input-validation-review-v1",
+  "scope": "Checker construction on the single-object safe heap [[1,0,-1]]; no predicate, object-domain, or Java-observation expansion",
+  "pre_repair_observation": {
+    "source": "unmodified checker.py from the supplied complete package",
+    "code_summary": {
+      "sha256": "43b3ec1d04d67bc99b200161886b7ec3ac0bb0074a70c596ba1e2c3dbc377b3d",
+      "file_count": 12,
+      "bytes": 53208,
+      "files": [
+        "export_paper_data.py",
+        "java/BenignGraphs.java",
+        "reproduce.py",
+        "src/checker.py",
+        "src/exhaustive.py",
+        "src/model.py",
+        "src/oracle.py",
+        "src/producer.py",
+        "src/redundant_control.py",
+        "src/witness.py",
+        "tests/test_certificates.py",
+        "tests/test_witness.py"
+      ]
+    },
+    "cases": [
+      {
+        "container": "list",
+        "roots": [
+          0,
+          false
+        ],
+        "actual": "ACCEPT"
+      },
+      {
+        "container": "list",
+        "roots": [
+          false,
+          0
+        ],
+        "actual": "REJECT"
+      },
+      {
+        "container": "list",
+        "roots": [
+          0,
+          0.0
+        ],
+        "actual": "ACCEPT"
+      },
+      {
+        "container": "list",
+        "roots": [
+          0.0,
+          0
+        ],
+        "actual": "REJECT"
+      },
+      {
+        "container": "tuple",
+        "roots": [
+          0,
+          false
+        ],
+        "actual": "ACCEPT"
+      },
+      {
+        "container": "tuple",
+        "roots": [
+          false,
+          0
+        ],
+        "actual": "REJECT"
+      },
+      {
+        "container": "tuple",
+        "roots": [
+          0,
+          0.0
+        ],
+        "actual": "ACCEPT"
+      },
+      {
+        "container": "tuple",
+        "roots": [
+          0.0,
+          0
+        ],
+        "actual": "REJECT"
+      },
+      {
+        "container": "list",
+        "roots": [
+          0,
+          0
+        ],
+        "actual": "ACCEPT",
+        "normalized_roots": [
+          0
+        ]
+      },
+      {
+        "container": "tuple",
+        "roots": [
+          0,
+          0
+        ],
+        "actual": "ACCEPT",
+        "normalized_roots": [
+          0
+        ]
+      }
+    ],
+    "interpretation": "frozenset conversion occurred before strict root type validation, so the first equal representative could hide a later bool or float"
+  },
+  "repaired_behavior": {
+    "code_summary": {
+      "sha256": "79442f9026c6cb86c9f36ec12a94195b51618be19bf9963f14c3bd8210081c66",
+      "file_count": 12,
+      "bytes": 60317,
+      "files": [
+        "export_paper_data.py",
+        "java/BenignGraphs.java",
+        "reproduce.py",
+        "src/checker.py",
+        "src/exhaustive.py",
+        "src/model.py",
+        "src/oracle.py",
+        "src/producer.py",
+        "src/redundant_control.py",
+        "src/witness.py",
+        "tests/test_certificates.py",
+        "tests/test_witness.py"
+      ]
+    },
+    "evidence": "results/final-replay/root-validation.json",
+    "outcome": "all eight list/tuple mixed-type permutations reject; duplicate integer roots and a 128-element duplicate container accept; a 129-element container rejects"
+  },
+  "finite_domain_replay": {
+    "evidence": "results/final-replay/replay-verification.json",
+    "scientific_json": "7/7 MATCH",
+    "deterministic_files": "5/5 MATCH",
+    "canonical_files_modified": false
+  }
+}

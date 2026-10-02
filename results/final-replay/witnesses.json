@@ -1,0 +1,134 @@
+{
+  "cases": [
+    {
+      "case": "W00",
+      "bfs": {
+        "status": "VIOLATION",
+        "trace": [
+          0
+        ],
+        "visited": 1,
+        "transitions": 1
+      },
+      "path_oracle": {
+        "status": "VIOLATION",
+        "trace": [
+          0
+        ],
+        "transitions": 1
+      }
+    },
+    {
+      "case": "W01",
+      "bfs": {
+        "status": "VIOLATION",
+        "trace": [
+          0
+        ],
+        "visited": 1,
+        "transitions": 1
+      },
+      "path_oracle": {
+        "status": "VIOLATION",
+        "trace": [
+          0
+        ],
+        "transitions": 1
+      }
+    },
+    {
+      "case": "W02",
+      "bfs": {
+        "status": "VIOLATION",
+        "trace": [
+          0,
+          0
+        ],
+        "visited": 2,
+        "transitions": 2
+      },
+      "path_oracle": {
+        "status": "VIOLATION",
+        "trace": [
+          0,
+          0
+        ],
+        "transitions": 2
+      }
+    },
+    {
+      "case": "W03",
+      "bfs": {
+        "status": "VIOLATION",
+        "trace": [
+          0,
+          1
+        ],
+        "visited": 3,
+        "transitions": 4
+      },
+      "path_oracle": {
+        "status": "VIOLATION",
+        "trace": [
+          0,
+          1
+        ],
+        "transitions": 4
+      }
+    },
+    {
+      "case": "W04",
+      "bfs": {
+        "status": "SAFE",
+        "trace": null,
+        "visited": 2,
+        "transitions": 2
+      },
+      "path_oracle": {
+        "status": "NO_WITNESS_TO_DEPTH",
+        "trace": null,
+        "transitions": 16
+      }
+    },
+    {
+      "case": "W05",
+      "bfs": {
+        "status": "VIOLATION",
+        "trace": [
+          0,
+          0
+        ],
+        "visited": 2,
+        "transitions": 2
+      },
+      "path_oracle": {
+        "status": "VIOLATION",
+        "trace": [
+          0,
+          0
+        ],
+        "transitions": 2
+      }
+    }
+  ],
+  "negative_controls": {
+    "phase_erasure": {
+      "status": "SAFE",
+      "trace": null,
+      "visited": 2,
+      "transitions": 2
+    },
+    "ghost_epoch_retention": {
+      "status": "UNKNOWN",
+      "trace": null,
+      "visited": 64,
+      "transitions": 64
+    },
+    "capacity_cutoff": {
+      "status": "UNKNOWN",
+      "trace": null,
+      "visited": 1,
+      "transitions": 1
+    }
+  }
+}

@@ -1,0 +1,139 @@
+[
+  {
+    "bridge": {
+      "heap": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "ready_meaning": "owned readObject callback exit only; not constructor or JVM initialization history",
+      "reason": "owned final snapshot satisfies the narrow bridge discipline",
+      "roots": [
+        0
+      ],
+      "status": "MAPPED"
+    },
+    "case": "plain-safe",
+    "checker_initial_admission": "ACCEPT",
+    "dense_oracle_safe": true,
+    "reachable": [
+      0,
+      1
+    ]
+  },
+  {
+    "bridge": {
+      "heap": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          -1
+        ]
+      ],
+      "ready_meaning": "owned readObject callback exit only; not constructor or JVM initialization history",
+      "reason": "owned final snapshot satisfies the narrow bridge discipline",
+      "roots": [
+        0
+      ],
+      "status": "MAPPED"
+    },
+    "case": "plain-unsafe",
+    "checker_initial_admission": "REJECT",
+    "dense_oracle_safe": false,
+    "reachable": [
+      0,
+      1
+    ]
+  },
+  {
+    "bridge": {
+      "heap": [
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "ready_meaning": "owned readObject callback exit only; not constructor or JVM initialization history",
+      "reason": "owned final snapshot satisfies the narrow bridge discipline",
+      "roots": [
+        0
+      ],
+      "status": "MAPPED"
+    },
+    "case": "shared-alias",
+    "checker_initial_admission": "ACCEPT",
+    "dense_oracle_safe": true,
+    "reachable": [
+      0
+    ]
+  },
+  {
+    "bridge": {
+      "reason": "unsupported concrete feature: callback_observed_unready",
+      "status": "UNKNOWN"
+    },
+    "case": "cycle-callback-order"
+  },
+  {
+    "bridge": {
+      "reason": "unsupported concrete feature: early_external_escape",
+      "status": "UNKNOWN"
+    },
+    "case": "early-external-escape"
+  },
+  {
+    "bridge": {
+      "reason": "unsupported concrete feature: read_resolve_substitution",
+      "status": "UNKNOWN"
+    },
+    "case": "read-resolve-external-alias"
+  },
+  {
+    "bridge": {
+      "reason": "unsupported concrete feature: type_shape_mismatch",
+      "status": "UNKNOWN"
+    },
+    "case": "type-shape-mismatch"
+  },
+  {
+    "bridge": {
+      "reason": "unsupported concrete feature: observer_coverage_gap",
+      "status": "UNKNOWN"
+    },
+    "case": "resolve-object-field-write-gap"
+  },
+  {
+    "bridge": {
+      "reason": "ObjectInputStream did not return a root",
+      "status": "UNKNOWN"
+    },
+    "case": "failure-closed"
+  },
+  {
+    "bridge": {
+      "reason": "ObjectInputStream did not return a root",
+      "status": "UNKNOWN"
+    },
+    "case": "failure-after-external-escape"
+  },
+  {
+    "bridge": {
+      "reason": "unsupported concrete feature: missing_field",
+      "status": "UNKNOWN"
+    },
+    "case": "missing-field"
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "object_counts": [
+    2,
+    3
+  ],
+  "ready_domain": [
+    0,
+    1
+  ],
+  "value_domain": [
+    0,
+    1
+  ],
+  "reference_domain": "-1 through n-1, inclusive",
+  "roots": "every subset of allocated object identifiers",
+  "precondition": "all objects reachable from roots satisfy the policy",
+  "candidate_event": "one value-changing field write followed atomically by zero or one root addition",
+  "enumeration_order": "heap records lexicographic; root mask ascending; object ascending; field ready/value/next; value ascending; addition -1 then object ascending",
+  "policy": "ready and (next == -1 or value <= heap[next].value)",
+  "exhaustive_transition_cap": 2000000,
+  "checker_sampling_stride": 1,
+  "seed": null,
+  "exclusions": "allocation, reclamation, callbacks, threads, exceptions, native mutation, bytecode, constructor histories",
+  "purpose": "research-lock repair pilot; not the proposed 304-program benchmark",
+  "audit_design": "After the discriminating pilot, replay every candidate in the separately implemented checker; no outcome-dependent selection. Frozen before complete-checker execution."
+}

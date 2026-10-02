@@ -1,0 +1,46 @@
+{
+  "cpu_seconds": 29.198003055999997,
+  "wall_seconds": 28.604620221000005,
+  "parent_peak_rss_kib": 95280,
+  "child_peak_rss_kib": 95280,
+  "aggregate_rss_upper_kib": 190560,
+  "stages": [
+    {
+      "stage": "unit-tests",
+      "cpu_seconds": 0.009246175999999995,
+      "wall_seconds": 0.00926079100008792
+    },
+    {
+      "stage": "exhaustive-2",
+      "cpu_seconds": 0.24529254899999997,
+      "wall_seconds": 0.24533604799989917,
+      "peak_rss_kib": 95024
+    },
+    {
+      "stage": "exhaustive-3",
+      "cpu_seconds": 27.687696535,
+      "wall_seconds": 27.690136811999764,
+      "peak_rss_kib": 95152
+    },
+    {
+      "stage": "java-compile",
+      "cpu_seconds": 1.0535820000000002,
+      "wall_seconds": 0.5245990199996413,
+      "child_peak_rss_kib": 95152
+    },
+    {
+      "stage": "java-observe",
+      "cpu_seconds": 0.17876600000000017,
+      "wall_seconds": 0.11337111600005301,
+      "child_peak_rss_kib": 95280
+    }
+  ],
+  "workers": 1,
+  "scientific_status": "FINITE_CHECKED_NOT_RESEARCH_LOCKED",
+  "semantic_transitions": 621057,
+  "checker_steps_exhaustive": 4458364,
+  "checker_steps_unit": 411,
+  "checker_steps_capacity": 265,
+  "unit_inspect_calls": 37,
+  "limitations": "RSS is a Linux parent/child maximum sum, not a simultaneous profiler. No performance comparison with a production JVM monitor. Unit work is included in CPU, unit inspect calls are reported separately from exhaustive candidate transitions."
+}

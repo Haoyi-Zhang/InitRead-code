@@ -1,0 +1,62 @@
+{
+  "scope": "known retained scientific runs with machine-readable measurements; not an exact total of all interactive work",
+  "experiments": [
+    {
+      "experiment": "frontier census n=2, checker stride=127",
+      "source": "results/pilot-stride127/exhaustive-2.json",
+      "cpu_seconds": 0.05402619399999997,
+      "counted_transitions": 6864,
+      "checker_steps": 337
+    },
+    {
+      "experiment": "frontier census n=3, checker stride=127",
+      "source": "results/pilot-stride127/exhaustive-3.json",
+      "cpu_seconds": 5.815718932999999,
+      "counted_transitions": 609120,
+      "checker_steps": 34678
+    },
+    {
+      "experiment": "logically redundant predicate pilot",
+      "source": "results/redundant-predicate-pilot.json",
+      "cpu_seconds": 0.017070183000000017,
+      "counted_transitions": 4968,
+      "checker_steps": 0
+    },
+    {
+      "experiment": "preserved canonical complete campaign",
+      "source": "results/campaign/measurements.json",
+      "cpu_seconds": 29.198003055999997,
+      "counted_transitions": 621057,
+      "checker_steps": 4459040
+    },
+    {
+      "experiment": "current recorded-environment complete replay",
+      "source": "results/final-replay/measurements.json",
+      "cpu_seconds": 29.116190510000003,
+      "counted_transitions": 621057,
+      "checker_steps": 4459040,
+      "comparison": "results/final-replay/replay-verification.json: 7/7 scientific JSON MATCH; 5/5 deterministic files MATCH",
+      "workload_breadth": "repeated verification, not additional scientific breadth"
+    }
+  ],
+  "known_cpu_seconds": 64.201008876,
+  "known_counted_transitions": 1863066,
+  "known_checker_steps": 8953095,
+  "ceilings": {
+    "cpu_seconds": 25200,
+    "transitions": 4000000,
+    "checker_steps": 16000000,
+    "peak_rss_bytes": 3221225472,
+    "workers": 4
+  },
+  "unmetered_work": "The Java trace-bridge runner records commands, results, and environment but not an aggregate CPU/RSS measurement. Early smoke tests and document builds are also not included.",
+  "downloads": "No scientific input or dependency was downloaded by either experiment runner. Browser literature-transfer bytes are outside this accounting and were not measured.",
+  "original_environment": "The canonical campaign architecture and exact Python/JDK versions remain unknown; current machine values are not backfilled.",
+  "current_replay_environment": "results/final-replay/environment.json",
+  "bridge_environment": "results/bridge-campaign/environment.json",
+  "remaining_known_budget": {
+    "cpu_seconds": 25135.798991124,
+    "transitions": 2136934,
+    "checker_steps": 7046905
+  }
+}

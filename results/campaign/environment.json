@@ -1,0 +1,88 @@
+{
+  "schema": "archived-campaign-environment-recovery-v1",
+  "record_scope": "archived canonical campaign in results/campaign",
+  "recovery_status": "PARTIAL",
+  "recovered": {
+    "operating_system": {
+      "value": "Linux",
+      "status": "RECORDED",
+      "evidence": [
+        "results/campaign/measurements.json limitations field",
+        "archived reproduce.py module description and Linux ru_maxrss interpretation"
+      ]
+    },
+    "architecture": {
+      "value": null,
+      "status": "NOT_RECORDED"
+    },
+    "python": {
+      "exact_version": null,
+      "implementation": null,
+      "status": "NOT_RECORDED",
+      "minimum_compatible_version": "3.9",
+      "minimum_basis": "src/model.py evaluates tuple[...] and set[...] built-in generic aliases at import time; this is a source compatibility constraint, not recovery of the interpreter actually used"
+    },
+    "java_runtime": {
+      "vendor": null,
+      "version": null,
+      "vm": null,
+      "status": "NOT_RECORDED"
+    },
+    "javac": {
+      "vendor": null,
+      "version": null,
+      "status": "NOT_RECORDED"
+    },
+    "execution_options": {
+      "status": "RECOVERED_FROM_ARCHIVED_RUNNER_SOURCE",
+      "jvm_options": [
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m"
+      ],
+      "javac_options": [
+        "-proc:none"
+      ],
+      "environment_overrides": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "JAVA_TOOL_OPTIONS": ""
+      },
+      "workers": 1,
+      "java_children_sequential": true
+    }
+  },
+  "code_input_summary": {
+    "scope": "delivered code/input snapshot before the root-validation repair; this summary associates the archived packet with its files but does not prove which executable binaries ran",
+    "code": {
+      "sha256": "43b3ec1d04d67bc99b200161886b7ec3ac0bb0074a70c596ba1e2c3dbc377b3d",
+      "file_count": 12,
+      "bytes": 53208,
+      "files": [
+        "export_paper_data.py",
+        "java/BenignGraphs.java",
+        "reproduce.py",
+        "src/checker.py",
+        "src/exhaustive.py",
+        "src/model.py",
+        "src/oracle.py",
+        "src/producer.py",
+        "src/redundant_control.py",
+        "src/witness.py",
+        "tests/test_certificates.py",
+        "tests/test_witness.py"
+      ]
+    },
+    "inputs": {
+      "sha256": "284b8a7acca862bdf24548644933096fb22853a9347ca3e645f2a8cc2dd9476b",
+      "file_count": 2,
+      "bytes": 4182,
+      "files": [
+        "inputs/domain.json",
+        "inputs/witness-programs.json"
+      ]
+    }
+  },
+  "limitations": "No archived command output, metadata file, or result field records the original architecture, exact Python version, or JDK/javac vendor and version. Those fields are intentionally left unknown; values from the later replay environment are not substituted."
+}

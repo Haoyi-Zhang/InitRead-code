@@ -1,0 +1,128 @@
+{
+  "heap": [
+    [
+      1,
+      0,
+      -1
+    ]
+  ],
+  "strict_type_check_precedes_deduplication": true,
+  "cases": [
+    {
+      "container": "list",
+      "roots": [
+        0,
+        false
+      ],
+      "expected": "REJECT",
+      "actual": "REJECT"
+    },
+    {
+      "container": "list",
+      "roots": [
+        false,
+        0
+      ],
+      "expected": "REJECT",
+      "actual": "REJECT"
+    },
+    {
+      "container": "list",
+      "roots": [
+        0,
+        0.0
+      ],
+      "expected": "REJECT",
+      "actual": "REJECT"
+    },
+    {
+      "container": "list",
+      "roots": [
+        0.0,
+        0
+      ],
+      "expected": "REJECT",
+      "actual": "REJECT"
+    },
+    {
+      "container": "tuple",
+      "roots": [
+        0,
+        false
+      ],
+      "expected": "REJECT",
+      "actual": "REJECT"
+    },
+    {
+      "container": "tuple",
+      "roots": [
+        false,
+        0
+      ],
+      "expected": "REJECT",
+      "actual": "REJECT"
+    },
+    {
+      "container": "tuple",
+      "roots": [
+        0,
+        0.0
+      ],
+      "expected": "REJECT",
+      "actual": "REJECT"
+    },
+    {
+      "container": "tuple",
+      "roots": [
+        0.0,
+        0
+      ],
+      "expected": "REJECT",
+      "actual": "REJECT"
+    },
+    {
+      "container": "list",
+      "root_count": 2,
+      "roots": [
+        0,
+        0
+      ],
+      "expected": "ACCEPT",
+      "actual": "ACCEPT",
+      "normalized_roots": [
+        0
+      ]
+    },
+    {
+      "container": "tuple",
+      "root_count": 2,
+      "roots": [
+        0,
+        0
+      ],
+      "expected": "ACCEPT",
+      "actual": "ACCEPT",
+      "normalized_roots": [
+        0
+      ]
+    },
+    {
+      "container": "list",
+      "root_count": 128,
+      "roots": "[0 repeated 128 times]",
+      "expected": "ACCEPT",
+      "actual": "ACCEPT",
+      "normalized_roots": [
+        0
+      ]
+    },
+    {
+      "container": "list",
+      "root_count": 129,
+      "roots": "[0 repeated 129 times]",
+      "expected": "REJECT",
+      "actual": "REJECT"
+    }
+  ],
+  "status": "PASS"
+}

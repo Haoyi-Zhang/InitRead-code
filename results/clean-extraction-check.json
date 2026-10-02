@@ -1,0 +1,334 @@
+{
+  "archive_integrity_test": {
+    "command": [
+      "unzip",
+      "-t",
+      "<current-project-archive>"
+    ],
+    "returncode": 0
+  },
+  "bridge_summary": {
+    "all_expected_statuses_matched": true,
+    "cases": 11,
+    "constructor_calls_during_read": 0,
+    "interpretation": "MAPPED is a partial data translation for owned final snapshots. UNKNOWN marks traces for which passive ObjectInputStream observations do not establish the complete root/write premise. No JVM enforcement or constructor attestation is claimed.",
+    "mapped": 3,
+    "mapped_safe": 2,
+    "mapped_unsafe": 1,
+    "negative_controls": {
+      "cycle-callback-order": true,
+      "early-external-escape": true,
+      "failure-after-external-escape": true,
+      "failure-closed": true,
+      "missing-field": true,
+      "read-resolve-external-alias": true,
+      "resolve-object-field-write-gap": true,
+      "shared-alias": true,
+      "type-shape-mismatch": true
+    },
+    "route": "negative-result technical report",
+    "schema": "java-trace-bridge-summary-v1",
+    "unknown": 8
+  },
+  "bridge_unit_summary": {
+    "log": "bridge-unit-tests.txt",
+    "result": "PASS",
+    "returncode": 0,
+    "schema": "java-trace-bridge-unit-summary-v1",
+    "tests_run": 5
+  },
+  "commands": [
+    {
+      "command": [
+        "python3",
+        "reproduce.py",
+        "--out",
+        "<fresh-empty-directory>/legacy-output",
+        "--verify-against",
+        "results/campaign"
+      ],
+      "cwd": "artifact/",
+      "name": "legacy-reproduction",
+      "returncode": 0,
+      "wall_seconds_observed": 28.683
+    },
+    {
+      "command": [
+        "python3",
+        "reproduce_trace_bridge.py",
+        "--out",
+        "<fresh-empty-directory>/bridge-output"
+      ],
+      "cwd": "artifact/",
+      "name": "java-trace-bridge",
+      "returncode": 0,
+      "wall_seconds_observed": 2.65
+    },
+    {
+      "command": [
+        "pdflatex",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "main.tex"
+      ],
+      "cwd": "paper/",
+      "name": "paper-pass-1",
+      "returncode": 0,
+      "wall_seconds_observed": 0.625
+    },
+    {
+      "command": [
+        "pdflatex",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "main.tex"
+      ],
+      "cwd": "paper/",
+      "name": "paper-pass-2",
+      "returncode": 0,
+      "wall_seconds_observed": 0.512
+    }
+  ],
+  "independent_review": false,
+  "legacy_verification": {
+    "deterministic_data": [
+      {
+        "actual_bytes": 10731,
+        "comparison": "exact bytes",
+        "expected_bytes": 10731,
+        "file": "exhaustive-2-states.csv",
+        "status": "MATCH"
+      },
+      {
+        "actual_bytes": 402950,
+        "comparison": "exact bytes",
+        "expected_bytes": 402950,
+        "file": "exhaustive-3-states.csv",
+        "status": "MATCH"
+      },
+      {
+        "actual_bytes": 9811,
+        "comparison": "exact bytes",
+        "expected_bytes": 9811,
+        "file": "java-observations.jsonl",
+        "status": "MATCH"
+      },
+      {
+        "actual_bytes": 613,
+        "comparison": "exact bytes",
+        "expected_bytes": 613,
+        "file": "certificate-128.json",
+        "status": "MATCH"
+      },
+      {
+        "actual_bytes": 355,
+        "comparison": "exact bytes",
+        "expected_bytes": 355,
+        "file": "summary.csv",
+        "status": "MATCH"
+      }
+    ],
+    "deterministic_matches": 5,
+    "deterministic_total": 5,
+    "excluded_fields": [
+      "aggregate_rss_upper_kib",
+      "child_peak_rss_kib",
+      "cpu_seconds",
+      "parent_peak_rss_kib",
+      "peak_rss_kib",
+      "wall_seconds"
+    ],
+    "independent_review": false,
+    "scientific_json": [
+      {
+        "comparison": "semantic JSON excluding measurement fields",
+        "file": "exhaustive-2.json",
+        "status": "MATCH"
+      },
+      {
+        "comparison": "semantic JSON excluding measurement fields",
+        "file": "exhaustive-3.json",
+        "status": "MATCH"
+      },
+      {
+        "comparison": "semantic JSON excluding measurement fields",
+        "file": "witnesses.json",
+        "status": "MATCH"
+      },
+      {
+        "comparison": "semantic JSON excluding measurement fields",
+        "file": "java-summary.json",
+        "status": "MATCH"
+      },
+      {
+        "comparison": "semantic JSON excluding measurement fields",
+        "file": "capacity.json",
+        "status": "MATCH"
+      },
+      {
+        "comparison": "semantic JSON excluding measurement fields",
+        "file": "redundant-predicate.json",
+        "status": "MATCH"
+      },
+      {
+        "comparison": "semantic JSON excluding measurement fields",
+        "file": "unit-summary.json",
+        "status": "MATCH"
+      }
+    ],
+    "scientific_matches": 7,
+    "scientific_total": 7,
+    "status": "MATCH"
+  },
+  "paper": {
+    "all_fonts_embedded": true,
+    "build_returncodes": [
+      0,
+      0
+    ],
+    "overfull_count": 0,
+    "pages": 5,
+    "rendered_pages_visually_inspected": 5,
+    "undefined_citation": false,
+    "undefined_reference": false,
+    "underfull_count": 22
+  },
+  "path_normalization": "Only environment-specific temporary output paths are replaced by explicit placeholders; executable names, scientific arguments, comparisons, and return codes are retained.",
+  "root_entries": [
+    "CURRENT-STATE.md",
+    "artifact",
+    "paper",
+    "research-plan.md"
+  ],
+  "root_validation": {
+    "cases": [
+      {
+        "actual": "REJECT",
+        "container": "list",
+        "expected": "REJECT",
+        "roots": [
+          0,
+          false
+        ]
+      },
+      {
+        "actual": "REJECT",
+        "container": "list",
+        "expected": "REJECT",
+        "roots": [
+          false,
+          0
+        ]
+      },
+      {
+        "actual": "REJECT",
+        "container": "list",
+        "expected": "REJECT",
+        "roots": [
+          0,
+          0.0
+        ]
+      },
+      {
+        "actual": "REJECT",
+        "container": "list",
+        "expected": "REJECT",
+        "roots": [
+          0.0,
+          0
+        ]
+      },
+      {
+        "actual": "REJECT",
+        "container": "tuple",
+        "expected": "REJECT",
+        "roots": [
+          0,
+          false
+        ]
+      },
+      {
+        "actual": "REJECT",
+        "container": "tuple",
+        "expected": "REJECT",
+        "roots": [
+          false,
+          0
+        ]
+      },
+      {
+        "actual": "REJECT",
+        "container": "tuple",
+        "expected": "REJECT",
+        "roots": [
+          0,
+          0.0
+        ]
+      },
+      {
+        "actual": "REJECT",
+        "container": "tuple",
+        "expected": "REJECT",
+        "roots": [
+          0.0,
+          0
+        ]
+      },
+      {
+        "actual": "ACCEPT",
+        "container": "list",
+        "expected": "ACCEPT",
+        "normalized_roots": [
+          0
+        ],
+        "root_count": 2,
+        "roots": [
+          0,
+          0
+        ]
+      },
+      {
+        "actual": "ACCEPT",
+        "container": "tuple",
+        "expected": "ACCEPT",
+        "normalized_roots": [
+          0
+        ],
+        "root_count": 2,
+        "roots": [
+          0,
+          0
+        ]
+      },
+      {
+        "actual": "ACCEPT",
+        "container": "list",
+        "expected": "ACCEPT",
+        "normalized_roots": [
+          0
+        ],
+        "root_count": 128,
+        "roots": "[0 repeated 128 times]"
+      },
+      {
+        "actual": "REJECT",
+        "container": "list",
+        "expected": "REJECT",
+        "root_count": 129,
+        "roots": "[0 repeated 129 times]"
+      }
+    ],
+    "heap": [
+      [
+        1,
+        0,
+        -1
+      ]
+    ],
+    "status": "PASS",
+    "strict_type_check_precedes_deduplication": true
+  },
+  "schema": "clean-extraction-check",
+  "scope": "current single-root project archive extracted into an empty directory and executed offline",
+  "status": "PASS"
+}
