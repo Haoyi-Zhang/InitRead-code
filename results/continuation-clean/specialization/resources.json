@@ -1,0 +1,7 @@
+{
+  "aggregate_cpu_seconds": 11.849704000000001,
+  "benchmark_skipped": true,
+  "child_peak_rss_kib": 1422980,
+  "self_peak_rss_kib": 118864,
+  "tested_shadow_steps": 87941
+}

@@ -1,0 +1,32 @@
+{
+  "summary": {
+    "java_cases": 5248,
+    "groups": {
+      "retained": 4552,
+      "seed": 5,
+      "certificate-cell": 328,
+      "certificate-prefix": 328,
+      "certificate-tail": 5,
+      "sharp-bound": 30
+    },
+    "outcomes": {
+      "ALLOW": 3432,
+      "DENY_UNSAFE": 1046,
+      "INVALID_CERT": 758,
+      "INVALID_DATA": 12
+    },
+    "generic_observation_disagreements": 0,
+    "independent_certificate_reference_disagreements": 0,
+    "corrupt_certificates_accepted": 0,
+    "sharp_bound_equalities": 30,
+    "errors": [],
+    "pass": true
+  },
+  "resources": {
+    "aggregate_cpu_seconds": 11.849704000000001,
+    "self_peak_rss_kib": 118864,
+    "child_peak_rss_kib": 1422980,
+    "benchmark_skipped": true,
+    "tested_shadow_steps": 87941
+  }
+}

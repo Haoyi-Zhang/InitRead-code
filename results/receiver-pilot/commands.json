@@ -1,0 +1,193 @@
+[
+  {
+    "argv": [
+      "/opt/pyvenv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "receiver_tests",
+      "-v"
+    ],
+    "returncode": 0,
+    "stderr": "unit-tests.txt.stderr",
+    "stdout": "unit-tests.txt",
+    "wall_seconds": 0.5110201090000146
+  },
+  {
+    "argv": [
+      "javac",
+      "-J-XX:ActiveProcessorCount=1",
+      "-J-XX:+UseSerialGC",
+      "-J-Xmx256m",
+      "-proc:none",
+      "-d",
+      "<build>",
+      "<artifact>/java/CertifiedReceiver.java",
+      "<artifact>/java/ReceiverHarness.java",
+      "<artifact>/java/ObservationPair.java"
+    ],
+    "returncode": 0,
+    "stderr": "compile.txt.stderr",
+    "stdout": "compile.txt",
+    "wall_seconds": 0.6056844300000535
+  },
+  {
+    "argv": [
+      "java",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "<build>",
+      "ReceiverHarness",
+      "<artifact>/results/receiver-campaign/cases.tsv",
+      "<artifact>/results/receiver-campaign/streams"
+    ],
+    "returncode": 0,
+    "stderr": "java-results.jsonl.stderr",
+    "stdout": "java-results.jsonl",
+    "wall_seconds": 0.7282040360000224
+  },
+  {
+    "argv": [
+      "java",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "<build>",
+      "ObservationPair"
+    ],
+    "returncode": 0,
+    "stderr": "observation-pair.jsonl.stderr",
+    "stdout": "observation-pair.jsonl",
+    "wall_seconds": 0.0781220629999666
+  },
+  {
+    "argv": [
+      "java",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "<build>",
+      "ReceiverHarness",
+      "--benchmark",
+      "<artifact>/results/receiver-campaign/benchmark.tsv",
+      "0"
+    ],
+    "returncode": 0,
+    "stderr": "benchmark-0.jsonl.stderr",
+    "stdout": "benchmark-0.jsonl",
+    "wall_seconds": 0.30614580700000715
+  },
+  {
+    "argv": [
+      "java",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "<build>",
+      "ReceiverHarness",
+      "--benchmark",
+      "<artifact>/results/receiver-campaign/benchmark.tsv",
+      "1"
+    ],
+    "returncode": 0,
+    "stderr": "benchmark-1.jsonl.stderr",
+    "stdout": "benchmark-1.jsonl",
+    "wall_seconds": 0.24226211499995998
+  },
+  {
+    "argv": [
+      "java",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "<build>",
+      "ReceiverHarness",
+      "--benchmark",
+      "<artifact>/results/receiver-campaign/benchmark.tsv",
+      "2"
+    ],
+    "returncode": 0,
+    "stderr": "benchmark-2.jsonl.stderr",
+    "stdout": "benchmark-2.jsonl",
+    "wall_seconds": 0.25911608300003763
+  },
+  {
+    "argv": [
+      "java",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "<build>",
+      "ReceiverHarness",
+      "--benchmark",
+      "<artifact>/results/receiver-campaign/benchmark.tsv",
+      "3"
+    ],
+    "returncode": 0,
+    "stderr": "benchmark-3.jsonl.stderr",
+    "stdout": "benchmark-3.jsonl",
+    "wall_seconds": 0.26416502699999
+  },
+  {
+    "argv": [
+      "java",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "<build>",
+      "ReceiverHarness",
+      "--benchmark",
+      "<artifact>/results/receiver-campaign/benchmark.tsv",
+      "4"
+    ],
+    "returncode": 0,
+    "stderr": "benchmark-4.jsonl.stderr",
+    "stdout": "benchmark-4.jsonl",
+    "wall_seconds": 0.2547615829999472
+  },
+  {
+    "argv": [
+      "java",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "<build>",
+      "ReceiverHarness",
+      "--benchmark",
+      "<artifact>/results/receiver-campaign/benchmark.tsv",
+      "5"
+    ],
+    "returncode": 0,
+    "stderr": "benchmark-5.jsonl.stderr",
+    "stdout": "benchmark-5.jsonl",
+    "wall_seconds": 0.2424853190000249
+  },
+  {
+    "argv": [
+      "java",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "<build>",
+      "ReceiverHarness",
+      "--benchmark",
+      "<artifact>/results/receiver-campaign/benchmark.tsv",
+      "6"
+    ],
+    "returncode": 0,
+    "stderr": "benchmark-6.jsonl.stderr",
+    "stdout": "benchmark-6.jsonl",
+    "wall_seconds": 0.2815124850000075
+  }
+]

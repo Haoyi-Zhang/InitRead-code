@@ -1,0 +1,247 @@
+{
+  "maximum_bytes": 88563,
+  "maximum_words": 22134,
+  "rows": [
+    {
+      "bound": 16,
+      "equality": true,
+      "java_bytes": 91,
+      "m": 0,
+      "n": 1,
+      "words": 16
+    },
+    {
+      "bound": 36,
+      "equality": true,
+      "java_bytes": 171,
+      "m": 1,
+      "n": 1,
+      "words": 36
+    },
+    {
+      "bound": 56,
+      "equality": true,
+      "java_bytes": 251,
+      "m": 2,
+      "n": 1,
+      "words": 56
+    },
+    {
+      "bound": 156,
+      "equality": true,
+      "java_bytes": 651,
+      "m": 7,
+      "n": 1,
+      "words": 156
+    },
+    {
+      "bound": 2576,
+      "equality": true,
+      "java_bytes": 10331,
+      "m": 128,
+      "n": 1,
+      "words": 2576
+    },
+    {
+      "bound": 27,
+      "equality": true,
+      "java_bytes": 135,
+      "m": 0,
+      "n": 2,
+      "words": 27
+    },
+    {
+      "bound": 63,
+      "equality": true,
+      "java_bytes": 279,
+      "m": 1,
+      "n": 2,
+      "words": 63
+    },
+    {
+      "bound": 84,
+      "equality": true,
+      "java_bytes": 363,
+      "m": 2,
+      "n": 2,
+      "words": 84
+    },
+    {
+      "bound": 189,
+      "equality": true,
+      "java_bytes": 783,
+      "m": 7,
+      "n": 2,
+      "words": 189
+    },
+    {
+      "bound": 2730,
+      "equality": true,
+      "java_bytes": 10947,
+      "m": 128,
+      "n": 2,
+      "words": 2730
+    },
+    {
+      "bound": 38,
+      "equality": true,
+      "java_bytes": 179,
+      "m": 0,
+      "n": 3,
+      "words": 38
+    },
+    {
+      "bound": 90,
+      "equality": true,
+      "java_bytes": 387,
+      "m": 1,
+      "n": 3,
+      "words": 90
+    },
+    {
+      "bound": 112,
+      "equality": true,
+      "java_bytes": 475,
+      "m": 2,
+      "n": 3,
+      "words": 112
+    },
+    {
+      "bound": 222,
+      "equality": true,
+      "java_bytes": 915,
+      "m": 7,
+      "n": 3,
+      "words": 222
+    },
+    {
+      "bound": 2884,
+      "equality": true,
+      "java_bytes": 11563,
+      "m": 128,
+      "n": 3,
+      "words": 2884
+    },
+    {
+      "bound": 82,
+      "equality": true,
+      "java_bytes": 355,
+      "m": 0,
+      "n": 7,
+      "words": 82
+    },
+    {
+      "bound": 198,
+      "equality": true,
+      "java_bytes": 819,
+      "m": 1,
+      "n": 7,
+      "words": 198
+    },
+    {
+      "bound": 224,
+      "equality": true,
+      "java_bytes": 923,
+      "m": 2,
+      "n": 7,
+      "words": 224
+    },
+    {
+      "bound": 354,
+      "equality": true,
+      "java_bytes": 1443,
+      "m": 7,
+      "n": 7,
+      "words": 354
+    },
+    {
+      "bound": 3500,
+      "equality": true,
+      "java_bytes": 14027,
+      "m": 128,
+      "n": 7,
+      "words": 3500
+    },
+    {
+      "bound": 357,
+      "equality": true,
+      "java_bytes": 1455,
+      "m": 0,
+      "n": 32,
+      "words": 357
+    },
+    {
+      "bound": 873,
+      "equality": true,
+      "java_bytes": 3519,
+      "m": 1,
+      "n": 32,
+      "words": 873
+    },
+    {
+      "bound": 924,
+      "equality": true,
+      "java_bytes": 3723,
+      "m": 2,
+      "n": 32,
+      "words": 924
+    },
+    {
+      "bound": 1179,
+      "equality": true,
+      "java_bytes": 4743,
+      "m": 7,
+      "n": 32,
+      "words": 1179
+    },
+    {
+      "bound": 7350,
+      "equality": true,
+      "java_bytes": 29427,
+      "m": 128,
+      "n": 32,
+      "words": 7350
+    },
+    {
+      "bound": 1413,
+      "equality": true,
+      "java_bytes": 5679,
+      "m": 0,
+      "n": 128,
+      "words": 1413
+    },
+    {
+      "bound": 3465,
+      "equality": true,
+      "java_bytes": 13887,
+      "m": 1,
+      "n": 128,
+      "words": 3465
+    },
+    {
+      "bound": 3612,
+      "equality": true,
+      "java_bytes": 14475,
+      "m": 2,
+      "n": 128,
+      "words": 3612
+    },
+    {
+      "bound": 4347,
+      "equality": true,
+      "java_bytes": 17415,
+      "m": 7,
+      "n": 128,
+      "words": 4347
+    },
+    {
+      "bound": 22134,
+      "equality": true,
+      "java_bytes": 88563,
+      "m": 128,
+      "n": 128,
+      "words": 22134
+    }
+  ],
+  "scope": "sharp maximum for honest safe packets in the fixed canonical schema"
+}

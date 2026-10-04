@@ -1,0 +1,32 @@
+{
+  "bibliography_mechanism": "manual thebibliography/bibitem; no BibTeX/bbl claims",
+  "reference_count": 19,
+  "distinct_cited_keys": 19,
+  "all_cited": true,
+  "first_citation_order": true,
+  "duplicate_keys": [],
+  "unresolved_keys": [],
+  "unused_keys": [],
+  "rendered_reference_numbers": {
+    "serialization": "1",
+    "invcop": "2",
+    "certifying": "3",
+    "masked": "4",
+    "musti": "5",
+    "seccode": "6",
+    "enforceable": "7",
+    "verified": "8",
+    "partial": "9",
+    "filtering": "10",
+    "protocol": "11",
+    "benchmarking": "12",
+    "secureinit": "13",
+    "seneca": "14",
+    "sayar": "15",
+    "oddfuzz": "16",
+    "gcminer": "17",
+    "android": "18",
+    "sleeping": "19"
+  },
+  "scope": "mechanical citation closure/order; reading and semantic use are documented separately in reference-audit.csv"
+}

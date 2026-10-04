@@ -1,0 +1,26 @@
+{
+  "files": [
+    {
+      "byte_equal": true,
+      "file": "cases.tsv"
+    },
+    {
+      "byte_equal": true,
+      "file": "inputs.jsonl"
+    },
+    {
+      "byte_equal": true,
+      "file": "comparison.jsonl"
+    },
+    {
+      "byte_equal": true,
+      "file": "summary.json"
+    },
+    {
+      "byte_equal": true,
+      "file": "size-bound.json"
+    }
+  ],
+  "match": true,
+  "timings_compared": false
+}

@@ -1,0 +1,265 @@
+{
+  "extraction_crc_ok": true,
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "reproduce.py",
+        "--out",
+        "results/clean-legacy",
+        "--verify-against",
+        "results/campaign"
+      ],
+      "working_directory": "<extracted>/artifact",
+      "returncode": 0,
+      "wall_seconds": 28.79665754100006,
+      "child_cpu_seconds": 29.469478,
+      "stdout": "legacy.stdout",
+      "stderr": "legacy.stderr"
+    },
+    {
+      "argv": [
+        "python3",
+        "reproduce_trace_bridge.py",
+        "--out",
+        "results/clean-bridge"
+      ],
+      "working_directory": "<extracted>/artifact",
+      "returncode": 0,
+      "wall_seconds": 2.8237753819998943,
+      "child_cpu_seconds": 4.189342000000005,
+      "stdout": "bridge.stdout",
+      "stderr": "bridge.stderr"
+    },
+    {
+      "argv": [
+        "python3",
+        "reproduce_receiver.py",
+        "--out",
+        "results/clean-receiver-verified",
+        "--verify-against",
+        "results/receiver-campaign",
+        "--skip-benchmark"
+      ],
+      "working_directory": "<extracted>/artifact",
+      "returncode": 0,
+      "wall_seconds": 6.130268415999808,
+      "child_cpu_seconds": 7.817841,
+      "stdout": "receiver-verified.stdout",
+      "stderr": "receiver-verified.stderr"
+    },
+    {
+      "argv": [
+        "python3",
+        "export_receiver_data.py",
+        "--results",
+        "results/receiver-campaign",
+        "--out",
+        "tables-check"
+      ],
+      "working_directory": "<extracted>/artifact",
+      "returncode": 0,
+      "wall_seconds": 0.5655145939999784,
+      "child_cpu_seconds": 0.5215170000000013,
+      "stdout": "tables.stdout",
+      "stderr": "tables.stderr"
+    },
+    {
+      "argv": [
+        "pdflatex",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "main.tex"
+      ],
+      "working_directory": "<extracted>/paper",
+      "returncode": 0,
+      "wall_seconds": 0.5656027949999043,
+      "child_cpu_seconds": 0.5309750000000005,
+      "stdout": "paper-first.stdout",
+      "stderr": "paper-first.stderr"
+    },
+    {
+      "argv": [
+        "pdflatex",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "main.tex"
+      ],
+      "working_directory": "<extracted>/paper",
+      "returncode": 0,
+      "wall_seconds": 0.565754022999954,
+      "child_cpu_seconds": 0.5621540000000004,
+      "stdout": "paper-second.stdout",
+      "stderr": "paper-second.stderr"
+    }
+  ],
+  "all_completed_commands_exit_zero": true,
+  "interrupted_attempt": "interruption.json; not counted as a completed command",
+  "legacy_comparison": {
+    "status": "MATCH",
+    "scientific_json": [
+      {
+        "file": "exhaustive-2.json",
+        "comparison": "semantic JSON excluding measurement fields",
+        "status": "MATCH"
+      },
+      {
+        "file": "exhaustive-3.json",
+        "comparison": "semantic JSON excluding measurement fields",
+        "status": "MATCH"
+      },
+      {
+        "file": "witnesses.json",
+        "comparison": "semantic JSON excluding measurement fields",
+        "status": "MATCH"
+      },
+      {
+        "file": "java-summary.json",
+        "comparison": "semantic JSON excluding measurement fields",
+        "status": "MATCH"
+      },
+      {
+        "file": "capacity.json",
+        "comparison": "semantic JSON excluding measurement fields",
+        "status": "MATCH"
+      },
+      {
+        "file": "redundant-predicate.json",
+        "comparison": "semantic JSON excluding measurement fields",
+        "status": "MATCH"
+      },
+      {
+        "file": "unit-summary.json",
+        "comparison": "semantic JSON excluding measurement fields",
+        "status": "MATCH"
+      }
+    ],
+    "deterministic_data": [
+      {
+        "file": "exhaustive-2-states.csv",
+        "comparison": "exact bytes",
+        "expected_bytes": 10731,
+        "actual_bytes": 10731,
+        "status": "MATCH"
+      },
+      {
+        "file": "exhaustive-3-states.csv",
+        "comparison": "exact bytes",
+        "expected_bytes": 402950,
+        "actual_bytes": 402950,
+        "status": "MATCH"
+      },
+      {
+        "file": "java-observations.jsonl",
+        "comparison": "exact bytes",
+        "expected_bytes": 9811,
+        "actual_bytes": 9811,
+        "status": "MATCH"
+      },
+      {
+        "file": "certificate-128.json",
+        "comparison": "exact bytes",
+        "expected_bytes": 613,
+        "actual_bytes": 613,
+        "status": "MATCH"
+      },
+      {
+        "file": "summary.csv",
+        "comparison": "exact bytes",
+        "expected_bytes": 355,
+        "actual_bytes": 355,
+        "status": "MATCH"
+      }
+    ],
+    "scientific_matches": 7,
+    "scientific_total": 7,
+    "deterministic_matches": 5,
+    "deterministic_total": 5,
+    "excluded_fields": [
+      "aggregate_rss_upper_kib",
+      "child_peak_rss_kib",
+      "cpu_seconds",
+      "parent_peak_rss_kib",
+      "peak_rss_kib",
+      "wall_seconds"
+    ],
+    "independent_review": false
+  },
+  "receiver_comparison": {
+    "files": [
+      {
+        "byte_equal": true,
+        "file": "summary.json"
+      },
+      {
+        "byte_equal": true,
+        "file": "cases.tsv"
+      },
+      {
+        "byte_equal": true,
+        "file": "inputs.jsonl"
+      },
+      {
+        "byte_equal": true,
+        "file": "java-results.jsonl"
+      },
+      {
+        "byte_equal": true,
+        "file": "observation-pair.jsonl"
+      },
+      {
+        "byte_equal": true,
+        "file": "streams/*.ser",
+        "files": 4563
+      }
+    ],
+    "match": true,
+    "performance_compared": false
+  },
+  "receiver_summary": {
+    "actual_java_cases": 4563,
+    "alias_or_freeze_errors": 0,
+    "callbacks_executed": 0,
+    "corrupt_certificates_accepted": 0,
+    "counts": {
+      "capacity": 3,
+      "certificate-control": 97,
+      "data-control": 12,
+      "exact": 4248,
+      "fault-control": 1,
+      "heldout": 96,
+      "renamed": 96,
+      "wire-control": 10
+    },
+    "eager_disagreements": 0,
+    "errors": [],
+    "failure_publications": 0,
+    "input_cases": 4552,
+    "mapped_heap_errors": 0,
+    "max_accepted_bytes": 88539,
+    "max_serialized_bytes_including_negative_controls": 131073,
+    "max_shadow_steps": 512,
+    "metamorphic_errors": 0,
+    "observation_pair": {
+      "same_public_projection": true,
+      "same_wire": true,
+      "unready_read_outcomes": [
+        false,
+        true
+      ]
+    },
+    "oracle_disagreements": 0,
+    "outcomes": {
+      "ALLOW": 3397,
+      "DENY_UNSAFE": 1046,
+      "INJECTED_FAILURE": 1,
+      "INVALID_CERT": 97,
+      "INVALID_DATA": 12,
+      "INVALID_FRAME": 10
+    },
+    "pass": true,
+    "shape_unsafe_accepts": 1046
+  },
+  "table_bytes_equal": true,
+  "scope": "fresh extracted code; original finite replay; passive bridge; new receiver deterministic replay; performance timings not compared"
+}

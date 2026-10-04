@@ -1,0 +1,3 @@
+{"id":"isolated-repeat","fork":2,"mode":2,"warmups":1000,"iterations":500,"ns_total":27461081,"bytes":12847}
+{"id":"isolated-repeat","fork":2,"mode":0,"warmups":1000,"iterations":500,"ns_total":386293916,"bytes":12847}
+{"id":"isolated-repeat","fork":2,"mode":1,"warmups":1000,"iterations":500,"ns_total":23358069,"bytes":12847}

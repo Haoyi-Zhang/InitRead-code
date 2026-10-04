@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "python3",
+    "check_receiver_evidence.py",
+    "--results",
+    "results/receiver-campaign",
+    "--out",
+    "results/paper-check/packet-size-recheck.json"
+  ],
+  "working_directory": "artifact",
+  "returncode": 0,
+  "wall_seconds": 0.6938118550001491,
+  "scope": "rereads saved files only; not new scientific case coverage"
+}

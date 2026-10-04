@@ -1,0 +1,91 @@
+{
+  "captured_utc": "2026-10-03T09:03:01.337115+00:00",
+  "code_input_summary": {
+    "bytes": 90425,
+    "file_count": 17,
+    "files": [
+      "java/CertifiedReceiver.java",
+      "java/ObservationPair.java",
+      "java/ReceiverHarness.java",
+      "receiver/__init__.py",
+      "receiver/producer.py",
+      "receiver/reference.py",
+      "receiver_tests/test_receiver.py",
+      "reproduce_receiver.py",
+      "reproduce_trace_bridge.py",
+      "src/checker.py",
+      "src/exhaustive.py",
+      "src/java_trace_bridge.py",
+      "src/model.py",
+      "src/oracle.py",
+      "src/producer.py",
+      "src/redundant_control.py",
+      "src/witness.py"
+    ],
+    "sha256": "43a36651af00d6b2a8dbe8045e04bd939da6f8c468bee98c94f9544cd9749ad9"
+  },
+  "exact_case_input_sha256": "d1b45083ac8c4c69cfeb344fcc20ddee300312f8224155563d81631707b9bc16",
+  "execution": {
+    "environment_overrides": {
+      "JAVA_TOOL_OPTIONS": "",
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "external_serialized_input": false,
+    "java_children_sequential": true,
+    "javac_options": [
+      "-proc:none"
+    ],
+    "jvm_options": [
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m"
+    ],
+    "network_used": false,
+    "workers": 1
+  },
+  "java": {
+    "javac_probe": {
+      "available": true,
+      "returncode": 0,
+      "version_output": "javac 21.0.11"
+    },
+    "selected_properties": {
+      "java.runtime.version": "21.0.11+10-1-deb13u2-Debian",
+      "java.specification.version": "21",
+      "java.vendor": "Debian",
+      "java.version": "21.0.11",
+      "java.vm.name": "OpenJDK 64-Bit Server VM",
+      "java.vm.vendor": "Debian",
+      "java.vm.version": "21.0.11+10-1-deb13u2-Debian",
+      "os.arch": "amd64"
+    },
+    "version_probe": {
+      "available": true,
+      "returncode": 0,
+      "version_output": "openjdk version \"21.0.11\" 2026-04-21\nOpenJDK Runtime Environment (build 21.0.11+10-1-deb13u2-Debian)\nOpenJDK 64-Bit Server VM (build 21.0.11+10-1-deb13u2-Debian, mixed mode, sharing)"
+    }
+  },
+  "platform": {
+    "machine": "x86_64",
+    "os_release": {
+      "ID": "debian",
+      "NAME": "Debian GNU/Linux",
+      "VERSION": "13 (trixie)",
+      "VERSION_ID": "13"
+    },
+    "pointer_bits": 64,
+    "release": "6.18.44",
+    "sys_platform": "linux",
+    "system": "Linux"
+  },
+  "python": {
+    "implementation": "CPython",
+    "minimum_required": "3.9",
+    "version": "3.13.5",
+    "version_string": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]"
+  },
+  "record_scope": "only this data-only receiver run; historical environments unchanged",
+  "schema": "bounded-receiver-environment-v1"
+}

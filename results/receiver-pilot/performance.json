@@ -1,0 +1,149 @@
+{
+  "measurement": "traced implementation, per-call batch means across seven JVMs",
+  "rows": [
+    {
+      "certificate_over_eager": 1.5838989258077028,
+      "modes": {
+        "certificate": {
+          "forks": 7,
+          "max_us": 82.41105,
+          "median_us": 73.091075,
+          "min_us": 54.418
+        },
+        "eager": {
+          "forks": 7,
+          "max_us": 54.864675000000005,
+          "median_us": 46.146300000000004,
+          "min_us": 29.008775
+        },
+        "shape": {
+          "forks": 7,
+          "max_us": 57.529849999999996,
+          "median_us": 52.5207,
+          "min_us": 29.15875
+        }
+      },
+      "n": 1
+    },
+    {
+      "certificate_over_eager": 2.5023619267521244,
+      "modes": {
+        "certificate": {
+          "forks": 7,
+          "max_us": 76.41267500000001,
+          "median_us": 65.5672,
+          "min_us": 57.53385
+        },
+        "eager": {
+          "forks": 7,
+          "max_us": 40.964675,
+          "median_us": 26.202125,
+          "min_us": 25.242475
+        },
+        "shape": {
+          "forks": 7,
+          "max_us": 34.07,
+          "median_us": 28.04485,
+          "min_us": 22.706975
+        }
+      },
+      "n": 4
+    },
+    {
+      "certificate_over_eager": 4.26612266485619,
+      "modes": {
+        "certificate": {
+          "forks": 7,
+          "max_us": 223.009025,
+          "median_us": 140.752825,
+          "min_us": 127.736625
+        },
+        "eager": {
+          "forks": 7,
+          "max_us": 41.173199999999994,
+          "median_us": 32.99315,
+          "min_us": 32.132125
+        },
+        "shape": {
+          "forks": 7,
+          "max_us": 32.198975,
+          "median_us": 30.6462,
+          "min_us": 28.398125
+        }
+      },
+      "n": 16
+    },
+    {
+      "certificate_over_eager": 11.67795127635759,
+      "modes": {
+        "certificate": {
+          "forks": 7,
+          "max_us": 587.83625,
+          "median_us": 418.884025,
+          "min_us": 343.766525
+        },
+        "eager": {
+          "forks": 7,
+          "max_us": 63.679175,
+          "median_us": 35.86965,
+          "min_us": 24.058725
+        },
+        "shape": {
+          "forks": 7,
+          "max_us": 65.072225,
+          "median_us": 27.0504,
+          "min_us": 21.265125
+        }
+      },
+      "n": 32
+    },
+    {
+      "certificate_over_eager": 19.10309998456611,
+      "modes": {
+        "certificate": {
+          "forks": 7,
+          "max_us": 1418.48625,
+          "median_us": 900.45375,
+          "min_us": 568.407275
+        },
+        "eager": {
+          "forks": 7,
+          "max_us": 78.78945,
+          "median_us": 47.136525,
+          "min_us": 35.243725
+        },
+        "shape": {
+          "forks": 7,
+          "max_us": 81.356475,
+          "median_us": 36.304550000000006,
+          "min_us": 33.6431
+        }
+      },
+      "n": 64
+    },
+    {
+      "certificate_over_eager": 7.99672809328218,
+      "modes": {
+        "certificate": {
+          "forks": 7,
+          "max_us": 580.3544,
+          "median_us": 535.7374,
+          "min_us": 523.279725
+        },
+        "eager": {
+          "forks": 7,
+          "max_us": 97.555875,
+          "median_us": 66.994575,
+          "min_us": 20.228849999999998
+        },
+        "shape": {
+          "forks": 7,
+          "max_us": 144.09025,
+          "median_us": 18.037599999999998,
+          "min_us": 16.6055
+        }
+      },
+      "n": 128
+    }
+  ]
+}

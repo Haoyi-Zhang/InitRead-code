@@ -1,0 +1,11 @@
+{
+  "control": "truncated-second-primitive-array",
+  "before": {
+    "status": "ALLOW",
+    "has_graph": true
+  },
+  "impact": "a malformed trailing value was accepted as EOF; the already checked graph remained invariant-safe but the single-frame contract was violated",
+  "repair": "canonical trusted int-array re-encoding after bounded ObjectInputStream decoding; byte equality rejects all extra or noncanonical wire material",
+  "regression_case": "wire-truncated-tail",
+  "baseline_results_preserved": true
+}

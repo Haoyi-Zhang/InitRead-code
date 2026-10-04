@@ -1,0 +1,3 @@
+{"id":"n64","fork":1,"mode":1,"iterations":200,"ns_total":6993395,"bytes":6951}
+{"id":"n64","fork":1,"mode":2,"iterations":200,"ns_total":24070054,"bytes":6951}
+{"id":"n64","fork":1,"mode":0,"iterations":200,"ns_total":2672642,"bytes":6951}

@@ -1,0 +1,15 @@
+measure,value
+annotation_false_accepts,271864
+checker_mismatches,0
+checker_replays,615984
+checker_steps,4458364
+direct_false_accepts,4296
+frontier_mismatches,0
+frontier_obligations,681696
+full_obligations,1068056
+phase_false_accepts,34756
+root_false_accepts,45612
+safe_states,10438
+stale_false_accepts,52652
+states,33344
+transitions,615984

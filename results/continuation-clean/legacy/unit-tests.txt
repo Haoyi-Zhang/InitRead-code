@@ -1,0 +1,22 @@
+test_admission (test_certificates.CertificateTests.test_admission) ... ok
+test_bound_128 (test_certificates.CertificateTests.test_bound_128) ... ok
+test_bounded_admission (test_certificates.CertificateTests.test_bounded_admission) ... ok
+test_claimed_declared_policy_not_constructor_history (test_certificates.CertificateTests.test_claimed_declared_policy_not_constructor_history) ... ok
+test_cross_object_write (test_certificates.CertificateTests.test_cross_object_write) ... ok
+test_cycle_and_alias (test_certificates.CertificateTests.test_cycle_and_alias) ... ok
+test_deny_and_invalid_do_not_commit (test_certificates.CertificateTests.test_deny_and_invalid_do_not_commit) ... ok
+test_external_retention_must_be_observed (test_certificates.CertificateTests.test_external_retention_must_be_observed) ... ok
+test_mutation_matrix (test_certificates.CertificateTests.test_mutation_matrix) ... ok
+test_new_reachable_raw (test_certificates.CertificateTests.test_new_reachable_raw) ... ok
+test_remove_branch_replaces_footprint (test_certificates.CertificateTests.test_remove_branch_replaces_footprint) ... ok
+test_unreachable_mutation (test_certificates.CertificateTests.test_unreachable_mutation) ... ok
+test_bad_initial_state_is_empty_witness (test_witness.WitnessTests.test_bad_initial_state_is_empty_witness) ... ok
+test_budget_is_unknown_not_safe (test_witness.WitnessTests.test_budget_is_unknown_not_safe) ... ok
+test_epoch_retention_prevents_closure (test_witness.WitnessTests.test_epoch_retention_prevents_closure) ... ok
+test_phase_erasure_loses_bad_trace (test_witness.WitnessTests.test_phase_erasure_loses_bad_trace) ... ok
+test_shortlex_matches_full_path_oracle (test_witness.WitnessTests.test_shortlex_matches_full_path_oracle) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.010s
+
+OK

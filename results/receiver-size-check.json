@@ -1,0 +1,10 @@
+{
+  "integer_array_frames_checked": 4552,
+  "honest_safe_frames_checked": 3397,
+  "actual_max_honest_words": 22128,
+  "general_honest_word_bound": 22149,
+  "general_honest_byte_bound_for_specified_writer": 88623,
+  "failures": [],
+  "pass": true,
+  "scope": "finite evidence plus stated exact fresh primitive-array writer, not arbitrary Java stream overhead"
+}

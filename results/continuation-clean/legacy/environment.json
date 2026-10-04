@@ -1,0 +1,107 @@
+{
+  "schema": "bounded-replay-environment-v1",
+  "record_scope": "this replay only; not a reconstruction of the archived campaign environment",
+  "captured_utc": "2026-10-03T13:17:39.261325+00:00",
+  "platform": {
+    "system": "Linux",
+    "release": "6.18.44",
+    "machine": "x86_64",
+    "pointer_bits": 64,
+    "sys_platform": "linux",
+    "os_release": {
+      "NAME": "Debian GNU/Linux",
+      "VERSION_ID": "13",
+      "VERSION": "13 (trixie)",
+      "ID": "debian"
+    }
+  },
+  "python": {
+    "implementation": "CPython",
+    "version": "3.13.5",
+    "version_string": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "cache_tag": "cpython-313",
+    "minimum_required": "3.9"
+  },
+  "java": {
+    "version_probe": {
+      "available": true,
+      "returncode": 0,
+      "version_output": "openjdk version \"21.0.11\" 2026-04-21\nOpenJDK Runtime Environment (build 21.0.11+10-1-deb13u2-Debian)\nOpenJDK 64-Bit Server VM (build 21.0.11+10-1-deb13u2-Debian, mixed mode, sharing)"
+    },
+    "selected_properties": {
+      "java.runtime.version": "21.0.11+10-1-deb13u2-Debian",
+      "java.specification.version": "21",
+      "java.vendor": "Debian",
+      "java.version": "21.0.11",
+      "java.vm.name": "OpenJDK 64-Bit Server VM",
+      "java.vm.vendor": "Debian",
+      "java.vm.version": "21.0.11+10-1-deb13u2-Debian",
+      "os.arch": "amd64"
+    },
+    "javac_probe": {
+      "available": true,
+      "returncode": 0,
+      "version_output": "javac 21.0.11"
+    }
+  },
+  "execution": {
+    "workers": 1,
+    "jvm_options": [
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m"
+    ],
+    "javac_options": [
+      "-proc:none"
+    ],
+    "environment_overrides": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "JAVA_TOOL_OPTIONS": ""
+    },
+    "java_children_sequential": true
+  },
+  "code_input_summary": {
+    "code": {
+      "sha256": "dfe0deafcdddc0fb2ee04ebfc61bbfc3b18e33491f6dcfbf5ce4b4d58a3b7521",
+      "file_count": 24,
+      "bytes": 159847,
+      "files": [
+        "check_receiver_evidence.py",
+        "export_paper_data.py",
+        "export_receiver_data.py",
+        "export_specialization_data.py",
+        "java/BenignGraphs.java",
+        "java/CertifiedReceiver.java",
+        "java/DeserializationTraceHarness.java",
+        "java/ObservationPair.java",
+        "java/ReceiverHarness.java",
+        "java/SpecializationHarness.java",
+        "reproduce.py",
+        "reproduce_receiver.py",
+        "reproduce_specialization.py",
+        "reproduce_trace_bridge.py",
+        "src/checker.py",
+        "src/exhaustive.py",
+        "src/java_trace_bridge.py",
+        "src/model.py",
+        "src/oracle.py",
+        "src/producer.py",
+        "src/redundant_control.py",
+        "src/witness.py",
+        "tests/test_certificates.py",
+        "tests/test_witness.py"
+      ]
+    },
+    "inputs": {
+      "sha256": "284b8a7acca862bdf24548644933096fb22853a9347ca3e645f2a8cc2dd9476b",
+      "file_count": 2,
+      "bytes": 4182,
+      "files": [
+        "inputs/domain.json",
+        "inputs/witness-programs.json"
+      ]
+    }
+  }
+}

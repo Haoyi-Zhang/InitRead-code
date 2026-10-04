@@ -1,0 +1,6 @@
+{
+  "aggregate_cpu_seconds": 11.591475,
+  "benchmark_skipped": true,
+  "child_peak_rss_kib": 119752,
+  "self_peak_rss_kib": 127400
+}

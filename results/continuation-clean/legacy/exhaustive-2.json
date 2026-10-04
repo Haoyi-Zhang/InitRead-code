@@ -1,0 +1,243 @@
+{
+  "n": 2,
+  "policy": "ready and (next is null or value<=next.value)",
+  "counts": {
+    "states": 576,
+    "safe_states": 286,
+    "transitions": 6864,
+    "frontier_mismatches": 0,
+    "direct_false_accepts": 42,
+    "stale_false_accepts": 680,
+    "root_false_accepts": 288,
+    "phase_false_accepts": 268,
+    "annotation_false_accepts": 2608,
+    "full_obligations": 8480,
+    "frontier_obligations": 6168,
+    "checker_replays": 6864,
+    "checker_mismatches": 0,
+    "checker_steps": 38740
+  },
+  "examples": {
+    "annotation": {
+      "heap": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      "roots": [],
+      "event": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "post_heap": [
+        [
+          1,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      "post_roots": [
+        1
+      ],
+      "violating_objects": [
+        1
+      ],
+      "frontier": [
+        1
+      ]
+    },
+    "root": {
+      "heap": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "roots": [],
+      "event": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "post_heap": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "post_roots": [
+        1
+      ],
+      "violating_objects": [
+        0
+      ],
+      "frontier": [
+        0,
+        1
+      ]
+    },
+    "stale": {
+      "heap": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          0,
+          -1
+        ]
+      ],
+      "roots": [
+        1
+      ],
+      "event": [
+        1,
+        0,
+        0,
+        -1
+      ],
+      "post_heap": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      "post_roots": [
+        1
+      ],
+      "violating_objects": [
+        1
+      ],
+      "frontier": [
+        1
+      ]
+    },
+    "phase": {
+      "heap": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "roots": [],
+      "event": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "post_heap": [
+        [
+          1,
+          0,
+          -1
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "post_roots": [
+        1
+      ],
+      "violating_objects": [
+        1
+      ],
+      "frontier": [
+        0,
+        1
+      ]
+    },
+    "direct": {
+      "heap": [
+        [
+          1,
+          1,
+          -1
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "roots": [
+        1
+      ],
+      "event": [
+        0,
+        1,
+        0,
+        -1
+      ],
+      "post_heap": [
+        [
+          1,
+          0,
+          -1
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "post_roots": [
+        1
+      ],
+      "violating_objects": [
+        1
+      ],
+      "frontier": [
+        1
+      ]
+    }
+  },
+  "sampling_stride": 1,
+  "cpu_seconds": 0.5277510320000001,
+  "wall_seconds": 0.5288428349999776,
+  "peak_rss_kib": 100828,
+  "status": "FINITE_CHECKED"
+}

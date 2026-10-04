@@ -1,0 +1,293 @@
+{
+  "n": 3,
+  "policy": "ready and (next is null or value<=next.value)",
+  "counts": {
+    "states": 32768,
+    "safe_states": 10152,
+    "transitions": 609120,
+    "frontier_mismatches": 0,
+    "direct_false_accepts": 4254,
+    "stale_false_accepts": 51972,
+    "root_false_accepts": 45324,
+    "phase_false_accepts": 34488,
+    "annotation_false_accepts": 269256,
+    "full_obligations": 1059576,
+    "frontier_obligations": 675528,
+    "checker_replays": 609120,
+    "checker_mismatches": 0,
+    "checker_steps": 4419624
+  },
+  "examples": {
+    "annotation": {
+      "heap": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      "roots": [],
+      "event": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "post_heap": [
+        [
+          1,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      "post_roots": [
+        1
+      ],
+      "violating_objects": [
+        1
+      ],
+      "frontier": [
+        1
+      ]
+    },
+    "root": {
+      "heap": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "roots": [],
+      "event": [
+        2,
+        0,
+        1,
+        2
+      ],
+      "post_heap": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "post_roots": [
+        2
+      ],
+      "violating_objects": [
+        0
+      ],
+      "frontier": [
+        0,
+        2
+      ]
+    },
+    "stale": {
+      "heap": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          0,
+          -1
+        ]
+      ],
+      "roots": [
+        2
+      ],
+      "event": [
+        2,
+        0,
+        0,
+        -1
+      ],
+      "post_heap": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      "post_roots": [
+        2
+      ],
+      "violating_objects": [
+        2
+      ],
+      "frontier": [
+        2
+      ]
+    },
+    "phase": {
+      "heap": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "roots": [],
+      "event": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "post_heap": [
+        [
+          1,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "post_roots": [
+        2
+      ],
+      "violating_objects": [
+        2
+      ],
+      "frontier": [
+        0,
+        2
+      ]
+    },
+    "direct": {
+      "heap": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          1,
+          -1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "roots": [
+        2
+      ],
+      "event": [
+        1,
+        1,
+        0,
+        -1
+      ],
+      "post_heap": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          0,
+          -1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "post_roots": [
+        2
+      ],
+      "violating_objects": [
+        2
+      ],
+      "frontier": [
+        2
+      ]
+    }
+  },
+  "sampling_stride": 1,
+  "cpu_seconds": 27.168564538000002,
+  "wall_seconds": 27.171203027000047,
+  "peak_rss_kib": 121124,
+  "status": "FINITE_CHECKED"
+}

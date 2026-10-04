@@ -1,0 +1,150 @@
+{
+  "scope": "current execution-bearing Python and Java sources versus actual clean extracted run",
+  "files": [
+    {
+      "path": "baselines/GenericReceiver.java",
+      "equal": true
+    },
+    {
+      "path": "bridge_tests/test_java_trace_bridge.py",
+      "equal": true
+    },
+    {
+      "path": "check_receiver_evidence.py",
+      "equal": true
+    },
+    {
+      "path": "export_paper_data.py",
+      "equal": true
+    },
+    {
+      "path": "export_receiver_data.py",
+      "equal": true
+    },
+    {
+      "path": "export_specialization_data.py",
+      "equal": true
+    },
+    {
+      "path": "java/BenignGraphs.java",
+      "equal": true
+    },
+    {
+      "path": "java/CertifiedReceiver.java",
+      "equal": true
+    },
+    {
+      "path": "java/DeserializationTraceHarness.java",
+      "equal": true
+    },
+    {
+      "path": "java/ObservationPair.java",
+      "equal": true
+    },
+    {
+      "path": "java/ReceiverHarness.java",
+      "equal": true
+    },
+    {
+      "path": "java/SpecializationHarness.java",
+      "equal": true
+    },
+    {
+      "path": "java/evolution/v1/WriteOld.java",
+      "equal": true
+    },
+    {
+      "path": "java/evolution/v1/evolution/EvolvingNode.java",
+      "equal": true
+    },
+    {
+      "path": "java/evolution/v2/ReadNew.java",
+      "equal": true
+    },
+    {
+      "path": "java/evolution/v2/evolution/EvolvingNode.java",
+      "equal": true
+    },
+    {
+      "path": "receiver/__init__.py",
+      "equal": true
+    },
+    {
+      "path": "receiver/certificate_reference.py",
+      "equal": true
+    },
+    {
+      "path": "receiver/producer.py",
+      "equal": true
+    },
+    {
+      "path": "receiver/reference.py",
+      "equal": true
+    },
+    {
+      "path": "receiver_tests/test_receiver.py",
+      "equal": true
+    },
+    {
+      "path": "receiver_tests/test_specialization.py",
+      "equal": true
+    },
+    {
+      "path": "reproduce.py",
+      "equal": true
+    },
+    {
+      "path": "reproduce_receiver.py",
+      "equal": true
+    },
+    {
+      "path": "reproduce_specialization.py",
+      "equal": true
+    },
+    {
+      "path": "reproduce_trace_bridge.py",
+      "equal": true
+    },
+    {
+      "path": "src/checker.py",
+      "equal": true
+    },
+    {
+      "path": "src/exhaustive.py",
+      "equal": true
+    },
+    {
+      "path": "src/java_trace_bridge.py",
+      "equal": true
+    },
+    {
+      "path": "src/model.py",
+      "equal": true
+    },
+    {
+      "path": "src/oracle.py",
+      "equal": true
+    },
+    {
+      "path": "src/producer.py",
+      "equal": true
+    },
+    {
+      "path": "src/redundant_control.py",
+      "equal": true
+    },
+    {
+      "path": "src/witness.py",
+      "equal": true
+    },
+    {
+      "path": "tests/test_certificates.py",
+      "equal": true
+    },
+    {
+      "path": "tests/test_witness.py",
+      "equal": true
+    }
+  ],
+  "pass": true
+}

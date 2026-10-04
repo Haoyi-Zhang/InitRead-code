@@ -1,0 +1,9 @@
+# Reference and scope review
+
+The current manuscript has17 cited bibliography entries:10 published research/survey works,3 archived manuscripts/preprints, and4 technical specifications/guidance sources. Reference-audit.csv identifies each exact source, use and reading extent. The2013framework and2025studies are explicitly cited by their archived versions; no later publication or peer-review status is inferred.
+
+Citation closure is checked against the actual manual thebibliography entries and LaTeX aux bibcite records, not an unused .bib count. A numeric count does not prove relevance or journal adequacy. No45/60reference threshold is claimed. The old JDD bibliographic entry remains in the source-screening record but is omitted from the current focused manuscript: current full-text access was insufficient for a fresh substantive comparison. A2026Electronics candidate was screened but returned429; it is not cited from a title alone. Broad freshness search results were incomplete/noisy, so this review does not certify exhaustive global novelty.
+
+Primary text supports the narrow comparisons written in the paper. No published experiment is presented as our own result, and no external tool was run as a baseline. Some browser PDF screenshots failed on retry; only successfully accessible method text is used for those comparisons, not unseen tables or diagrams. Container downloads failed, so full third-party PDFs are not bundled and no download success is fabricated. The supplied publisher class and its existing license notices are preserved.
+
+The complete same-venue twelve-paper and award/influential-paper calibration from the original ambition has not been completed. This remains a research-readiness limitation rather than a reason to pad references. The claims in the new manuscript are bounded to the implemented protocol, handwritten arguments, and actual observations.

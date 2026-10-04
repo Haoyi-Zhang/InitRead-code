@@ -1,0 +1,93 @@
+[
+  {
+    "argv": [
+      "python3",
+      "reproduce.py",
+      "--out",
+      "results/clean-legacy",
+      "--verify-against",
+      "results/campaign"
+    ],
+    "working_directory": "<extracted>/artifact",
+    "returncode": 0,
+    "wall_seconds": 28.79665754100006,
+    "child_cpu_seconds": 29.469478,
+    "stdout": "legacy.stdout",
+    "stderr": "legacy.stderr"
+  },
+  {
+    "argv": [
+      "python3",
+      "reproduce_trace_bridge.py",
+      "--out",
+      "results/clean-bridge"
+    ],
+    "working_directory": "<extracted>/artifact",
+    "returncode": 0,
+    "wall_seconds": 2.8237753819998943,
+    "child_cpu_seconds": 4.189342000000005,
+    "stdout": "bridge.stdout",
+    "stderr": "bridge.stderr"
+  },
+  {
+    "argv": [
+      "python3",
+      "reproduce_receiver.py",
+      "--out",
+      "results/clean-receiver-verified",
+      "--verify-against",
+      "results/receiver-campaign",
+      "--skip-benchmark"
+    ],
+    "working_directory": "<extracted>/artifact",
+    "returncode": 0,
+    "wall_seconds": 6.130268415999808,
+    "child_cpu_seconds": 7.817841,
+    "stdout": "receiver-verified.stdout",
+    "stderr": "receiver-verified.stderr"
+  },
+  {
+    "argv": [
+      "python3",
+      "export_receiver_data.py",
+      "--results",
+      "results/receiver-campaign",
+      "--out",
+      "tables-check"
+    ],
+    "working_directory": "<extracted>/artifact",
+    "returncode": 0,
+    "wall_seconds": 0.5655145939999784,
+    "child_cpu_seconds": 0.5215170000000013,
+    "stdout": "tables.stdout",
+    "stderr": "tables.stderr"
+  },
+  {
+    "argv": [
+      "pdflatex",
+      "-interaction=nonstopmode",
+      "-halt-on-error",
+      "main.tex"
+    ],
+    "working_directory": "<extracted>/paper",
+    "returncode": 0,
+    "wall_seconds": 0.5656027949999043,
+    "child_cpu_seconds": 0.5309750000000005,
+    "stdout": "paper-first.stdout",
+    "stderr": "paper-first.stderr"
+  },
+  {
+    "argv": [
+      "pdflatex",
+      "-interaction=nonstopmode",
+      "-halt-on-error",
+      "main.tex"
+    ],
+    "working_directory": "<extracted>/paper",
+    "returncode": 0,
+    "wall_seconds": 0.565754022999954,
+    "child_cpu_seconds": 0.5621540000000004,
+    "stdout": "paper-second.stdout",
+    "stderr": "paper-second.stderr"
+  }
+]

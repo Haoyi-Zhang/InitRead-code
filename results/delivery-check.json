@@ -1,0 +1,457 @@
+{
+  "scientific_status": "bounded constructive receiving and specialization study; general Java defense and new TIFS original-research lock not established",
+  "completed_scope": [
+    "fixed-schedule specialized verifier",
+    "independent integer-certificate parser/model",
+    "status/reason/trace/counter equivalence",
+    "sharp attained packet bound",
+    "paired generic-specialized-eager measurement",
+    "clean deterministic reproduction",
+    "11-page current manuscript and 19-reference closure"
+  ],
+  "clean_extraction_commands": [
+    {
+      "argv": [
+        "python3",
+        "reproduce.py",
+        "--out",
+        "<artifact>/results/continuation-clean/legacy",
+        "--verify-against",
+        "results/campaign"
+      ],
+      "cwd": "<artifact>",
+      "exit_code": 0,
+      "wall_seconds": 62.718553662999966,
+      "stdout": "command-0.stdout",
+      "stderr": "command-0.stderr"
+    },
+    {
+      "argv": [
+        "python3",
+        "reproduce_trace_bridge.py",
+        "--out",
+        "<artifact>/results/continuation-clean/bridge"
+      ],
+      "cwd": "<artifact>",
+      "exit_code": 0,
+      "wall_seconds": 15.42096364200006,
+      "stdout": "command-1.stdout",
+      "stderr": "command-1.stderr"
+    },
+    {
+      "argv": [
+        "python3",
+        "reproduce_receiver.py",
+        "--out",
+        "<artifact>/results/continuation-clean/receiver",
+        "--verify-against",
+        "results/receiver-campaign",
+        "--skip-benchmark"
+      ],
+      "cwd": "<artifact>",
+      "exit_code": 0,
+      "wall_seconds": 20.535566932000165,
+      "stdout": "command-2.stdout",
+      "stderr": "command-2.stderr"
+    },
+    {
+      "argv": [
+        "python3",
+        "reproduce_specialization.py",
+        "--out",
+        "<artifact>/results/continuation-clean/specialization",
+        "--verify-against",
+        "results/specialization-campaign",
+        "--skip-benchmark"
+      ],
+      "cwd": "<artifact>",
+      "exit_code": 0,
+      "wall_seconds": 14.142931441999963,
+      "stdout": "command-3.stdout",
+      "stderr": "command-3.stderr"
+    },
+    {
+      "argv": [
+        "python3",
+        "export_specialization_data.py",
+        "--results",
+        "results/specialization-campaign",
+        "--out",
+        "<artifact>/results/continuation-clean/tables"
+      ],
+      "cwd": "<artifact>",
+      "exit_code": 0,
+      "wall_seconds": 5.1414541550000195,
+      "stdout": "command-4.stdout",
+      "stderr": "command-4.stderr"
+    }
+  ],
+  "clean_execution_sources_match": true,
+  "preserved_incoming_evidence": {
+    "artifact/results/campaign/": {
+      "files": 16,
+      "all_bytes_unchanged": true,
+      "mismatches": []
+    },
+    "artifact/results/receiver-campaign/": {
+      "files": 4663,
+      "all_bytes_unchanged": true,
+      "mismatches": []
+    },
+    "artifact/results/bridge-campaign/": {
+      "files": 14,
+      "all_bytes_unchanged": true,
+      "mismatches": []
+    },
+    "paper/figures/alias.tex": {
+      "byte_equal_to_incoming": true
+    },
+    "paper/figures/checking.tex": {
+      "byte_equal_to_incoming": true
+    },
+    "paper/IEEEtran.cls": {
+      "byte_equal_to_incoming": true
+    },
+    "paper/IEEEtranS.bst": {
+      "byte_equal_to_incoming": true
+    },
+    "artifact/src/checker.py": {
+      "byte_equal_to_incoming": true
+    },
+    "generic_baseline": {
+      "only_class_name_renamed": true
+    }
+  },
+  "legacy_verification": {
+    "status": "MATCH",
+    "scientific_json": [
+      {
+        "file": "exhaustive-2.json",
+        "comparison": "semantic JSON excluding measurement fields",
+        "status": "MATCH"
+      },
+      {
+        "file": "exhaustive-3.json",
+        "comparison": "semantic JSON excluding measurement fields",
+        "status": "MATCH"
+      },
+      {
+        "file": "witnesses.json",
+        "comparison": "semantic JSON excluding measurement fields",
+        "status": "MATCH"
+      },
+      {
+        "file": "java-summary.json",
+        "comparison": "semantic JSON excluding measurement fields",
+        "status": "MATCH"
+      },
+      {
+        "file": "capacity.json",
+        "comparison": "semantic JSON excluding measurement fields",
+        "status": "MATCH"
+      },
+      {
+        "file": "redundant-predicate.json",
+        "comparison": "semantic JSON excluding measurement fields",
+        "status": "MATCH"
+      },
+      {
+        "file": "unit-summary.json",
+        "comparison": "semantic JSON excluding measurement fields",
+        "status": "MATCH"
+      }
+    ],
+    "deterministic_data": [
+      {
+        "file": "exhaustive-2-states.csv",
+        "comparison": "exact bytes",
+        "expected_bytes": 10731,
+        "actual_bytes": 10731,
+        "status": "MATCH"
+      },
+      {
+        "file": "exhaustive-3-states.csv",
+        "comparison": "exact bytes",
+        "expected_bytes": 402950,
+        "actual_bytes": 402950,
+        "status": "MATCH"
+      },
+      {
+        "file": "java-observations.jsonl",
+        "comparison": "exact bytes",
+        "expected_bytes": 9811,
+        "actual_bytes": 9811,
+        "status": "MATCH"
+      },
+      {
+        "file": "certificate-128.json",
+        "comparison": "exact bytes",
+        "expected_bytes": 613,
+        "actual_bytes": 613,
+        "status": "MATCH"
+      },
+      {
+        "file": "summary.csv",
+        "comparison": "exact bytes",
+        "expected_bytes": 355,
+        "actual_bytes": 355,
+        "status": "MATCH"
+      }
+    ],
+    "scientific_matches": 7,
+    "scientific_total": 7,
+    "deterministic_matches": 5,
+    "deterministic_total": 5,
+    "excluded_fields": [
+      "aggregate_rss_upper_kib",
+      "child_peak_rss_kib",
+      "cpu_seconds",
+      "parent_peak_rss_kib",
+      "peak_rss_kib",
+      "wall_seconds"
+    ],
+    "independent_review": false
+  },
+  "receiver_verification": {
+    "files": [
+      {
+        "byte_equal": true,
+        "file": "summary.json"
+      },
+      {
+        "byte_equal": true,
+        "file": "cases.tsv"
+      },
+      {
+        "byte_equal": true,
+        "file": "inputs.jsonl"
+      },
+      {
+        "byte_equal": true,
+        "file": "java-results.jsonl"
+      },
+      {
+        "byte_equal": true,
+        "file": "observation-pair.jsonl"
+      },
+      {
+        "byte_equal": true,
+        "file": "streams/*.ser",
+        "files": 4563
+      }
+    ],
+    "match": true,
+    "performance_compared": false
+  },
+  "specialization_verification": {
+    "files": [
+      {
+        "byte_equal": true,
+        "file": "cases.tsv"
+      },
+      {
+        "byte_equal": true,
+        "file": "inputs.jsonl"
+      },
+      {
+        "byte_equal": true,
+        "file": "comparison.jsonl"
+      },
+      {
+        "byte_equal": true,
+        "file": "summary.json"
+      },
+      {
+        "byte_equal": true,
+        "file": "size-bound.json"
+      }
+    ],
+    "match": true,
+    "timings_compared": false
+  },
+  "specialization_results": {
+    "corrupt_certificates_accepted": 0,
+    "errors": [],
+    "generic_observation_disagreements": 0,
+    "groups": {
+      "certificate-cell": 328,
+      "certificate-prefix": 328,
+      "certificate-tail": 5,
+      "retained": 4552,
+      "seed": 5,
+      "sharp-bound": 30
+    },
+    "independent_certificate_reference_disagreements": 0,
+    "java_cases": 5248,
+    "outcomes": {
+      "ALLOW": 3432,
+      "DENY_UNSAFE": 1046,
+      "INVALID_CERT": 758,
+      "INVALID_DATA": 12
+    },
+    "pass": true,
+    "sharp_bound_equalities": 30
+  },
+  "manuscript": {
+    "pages": 11,
+    "references": 19,
+    "all_fonts_embedded": true,
+    "overfull": 0,
+    "underfull": 11,
+    "figures_preserved": 2,
+    "visually_inspected_pages": 11
+  },
+  "unresolved": [
+    "arbitrary Serializable callback/alias coverage",
+    "certificate-specific semantic advantage over direct invariant checking",
+    "mechanized Java/JVM correctness",
+    "independent application/deployment evidence",
+    "complete original same-venue calibration",
+    "historical unrecorded environment and earlier event-budget overrun"
+  ],
+  "limitations": "A successful command or byte comparison is not a proof of scientific correctness. Timings are not replay-match requirements. Interrupted evidence is retained but not counted as complete.",
+  "full_specialization_campaign": {
+    "command": [
+      "python3",
+      "reproduce_specialization.py",
+      "--out",
+      "results/specialization-campaign"
+    ],
+    "exit_code": 0,
+    "child_commands": 31,
+    "all_children_exit_zero": true,
+    "records": "results/specialization-campaign/commands.json"
+  },
+  "root_validation": {
+    "heap": [
+      [
+        1,
+        0,
+        -1
+      ]
+    ],
+    "strict_type_check_precedes_deduplication": true,
+    "cases": [
+      {
+        "container": "list",
+        "roots": [
+          0,
+          false
+        ],
+        "expected": "REJECT",
+        "actual": "REJECT"
+      },
+      {
+        "container": "list",
+        "roots": [
+          false,
+          0
+        ],
+        "expected": "REJECT",
+        "actual": "REJECT"
+      },
+      {
+        "container": "list",
+        "roots": [
+          0,
+          0.0
+        ],
+        "expected": "REJECT",
+        "actual": "REJECT"
+      },
+      {
+        "container": "list",
+        "roots": [
+          0.0,
+          0
+        ],
+        "expected": "REJECT",
+        "actual": "REJECT"
+      },
+      {
+        "container": "tuple",
+        "roots": [
+          0,
+          false
+        ],
+        "expected": "REJECT",
+        "actual": "REJECT"
+      },
+      {
+        "container": "tuple",
+        "roots": [
+          false,
+          0
+        ],
+        "expected": "REJECT",
+        "actual": "REJECT"
+      },
+      {
+        "container": "tuple",
+        "roots": [
+          0,
+          0.0
+        ],
+        "expected": "REJECT",
+        "actual": "REJECT"
+      },
+      {
+        "container": "tuple",
+        "roots": [
+          0.0,
+          0
+        ],
+        "expected": "REJECT",
+        "actual": "REJECT"
+      },
+      {
+        "container": "list",
+        "root_count": 2,
+        "roots": [
+          0,
+          0
+        ],
+        "expected": "ACCEPT",
+        "actual": "ACCEPT",
+        "normalized_roots": [
+          0
+        ]
+      },
+      {
+        "container": "tuple",
+        "root_count": 2,
+        "roots": [
+          0,
+          0
+        ],
+        "expected": "ACCEPT",
+        "actual": "ACCEPT",
+        "normalized_roots": [
+          0
+        ]
+      },
+      {
+        "container": "list",
+        "root_count": 128,
+        "roots": "[0 repeated 128 times]",
+        "expected": "ACCEPT",
+        "actual": "ACCEPT",
+        "normalized_roots": [
+          0
+        ]
+      },
+      {
+        "container": "list",
+        "root_count": 129,
+        "roots": "[0 repeated 129 times]",
+        "expected": "REJECT",
+        "actual": "REJECT"
+      }
+    ],
+    "status": "PASS"
+  },
+  "claims_in_ledger": 31,
+  "performance_evidence": "results/specialization-campaign/performance.json",
+  "manuscript_checks": "results/manuscript-check.json",
+  "source_comparison": "results/continuation-clean/source-comparison.json"
+}

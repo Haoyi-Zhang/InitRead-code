@@ -1,0 +1,10 @@
+test_data_source_bound_and_domain (test_receiver.RootTests.test_data_source_bound_and_domain) ... ok
+test_exact_type_before_deduplication (test_receiver.RootTests.test_exact_type_before_deduplication) ... ok
+test_fixed_semantics (test_receiver.RootTests.test_fixed_semantics) ... ok
+test_reference_import_separation (test_receiver.RootTests.test_reference_import_separation) ... ok
+test_reference_no_equal_type_erasure (test_receiver.RootTests.test_reference_no_equal_type_erasure) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.004s
+
+OK

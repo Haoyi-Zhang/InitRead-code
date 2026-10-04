@@ -1,0 +1,67 @@
+[
+  {
+    "argv": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "receiver_tests",
+      "-v"
+    ],
+    "returncode": 0,
+    "stderr": "unit-tests.txt.stderr",
+    "stdout": "unit-tests.txt",
+    "wall_seconds": 7.966974747000222
+  },
+  {
+    "argv": [
+      "javac",
+      "-J-XX:ActiveProcessorCount=1",
+      "-J-XX:+UseSerialGC",
+      "-J-Xmx256m",
+      "-proc:none",
+      "-d",
+      "<build>",
+      "<artifact>/java/CertifiedReceiver.java",
+      "<artifact>/java/ReceiverHarness.java",
+      "<artifact>/java/ObservationPair.java"
+    ],
+    "returncode": 0,
+    "stderr": "compile.txt.stderr",
+    "stdout": "compile.txt",
+    "wall_seconds": 0.7964135160000296
+  },
+  {
+    "argv": [
+      "java",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "<build>",
+      "ReceiverHarness",
+      "<artifact>/results/continuation-clean/receiver/cases.tsv",
+      "<artifact>/results/continuation-clean/receiver/streams"
+    ],
+    "returncode": 0,
+    "stderr": "java-results.jsonl.stderr",
+    "stdout": "java-results.jsonl",
+    "wall_seconds": 0.7798495979998279
+  },
+  {
+    "argv": [
+      "java",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "<build>",
+      "ObservationPair"
+    ],
+    "returncode": 0,
+    "stderr": "observation-pair.jsonl.stderr",
+    "stdout": "observation-pair.jsonl",
+    "wall_seconds": 0.10120641599996816
+  }
+]

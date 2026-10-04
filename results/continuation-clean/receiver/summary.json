@@ -1,0 +1,44 @@
+{
+  "actual_java_cases": 4563,
+  "alias_or_freeze_errors": 0,
+  "callbacks_executed": 0,
+  "corrupt_certificates_accepted": 0,
+  "counts": {
+    "capacity": 3,
+    "certificate-control": 97,
+    "data-control": 12,
+    "exact": 4248,
+    "fault-control": 1,
+    "heldout": 96,
+    "renamed": 96,
+    "wire-control": 10
+  },
+  "eager_disagreements": 0,
+  "errors": [],
+  "failure_publications": 0,
+  "input_cases": 4552,
+  "mapped_heap_errors": 0,
+  "max_accepted_bytes": 88539,
+  "max_serialized_bytes_including_negative_controls": 131073,
+  "max_shadow_steps": 512,
+  "metamorphic_errors": 0,
+  "observation_pair": {
+    "same_public_projection": true,
+    "same_wire": true,
+    "unready_read_outcomes": [
+      false,
+      true
+    ]
+  },
+  "oracle_disagreements": 0,
+  "outcomes": {
+    "ALLOW": 3397,
+    "DENY_UNSAFE": 1046,
+    "INJECTED_FAILURE": 1,
+    "INVALID_CERT": 97,
+    "INVALID_DATA": 12,
+    "INVALID_FRAME": 10
+  },
+  "pass": true,
+  "shape_unsafe_accepts": 1046
+}

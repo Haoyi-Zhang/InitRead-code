@@ -1,0 +1,3 @@
+{"id":"chain-one","fork":4,"mode":1,"warmups":1000,"iterations":500,"ns_total":38146358,"bytes":13863}
+{"id":"chain-one","fork":4,"mode":2,"warmups":1000,"iterations":500,"ns_total":31451480,"bytes":13863}
+{"id":"chain-one","fork":4,"mode":0,"warmups":1000,"iterations":500,"ns_total":317742006,"bytes":13863}

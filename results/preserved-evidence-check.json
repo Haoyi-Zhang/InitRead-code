@@ -1,0 +1,35 @@
+{
+  "artifact/results/campaign/": {
+    "files": 16,
+    "all_bytes_unchanged": true,
+    "mismatches": []
+  },
+  "artifact/results/receiver-campaign/": {
+    "files": 4663,
+    "all_bytes_unchanged": true,
+    "mismatches": []
+  },
+  "artifact/results/bridge-campaign/": {
+    "files": 14,
+    "all_bytes_unchanged": true,
+    "mismatches": []
+  },
+  "paper/figures/alias.tex": {
+    "byte_equal_to_incoming": true
+  },
+  "paper/figures/checking.tex": {
+    "byte_equal_to_incoming": true
+  },
+  "paper/IEEEtran.cls": {
+    "byte_equal_to_incoming": true
+  },
+  "paper/IEEEtranS.bst": {
+    "byte_equal_to_incoming": true
+  },
+  "artifact/src/checker.py": {
+    "byte_equal_to_incoming": true
+  },
+  "generic_baseline": {
+    "only_class_name_renamed": true
+  }
+}

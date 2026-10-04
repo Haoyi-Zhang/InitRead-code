@@ -1,151 +1,112 @@
-# Initialization-State Safety: bounded checker and Java observation-gap study
+# Read certificates: bounded checking and a callback-free receiver
 
-This repository contains two related but deliberately separated artifacts:
+This standalone repository contains three related, explicitly different paths:
 
-1. a finite object-graph invariant checker with an untrusted certificate producer,
-   a separately implemented stateful checker, an exact dense oracle, and ordered
-   witness fixtures; and
-2. a CPU-only Java harness that executes ordinary `ObjectInputStream`
-   deserialization on locally authored classes and asks when those passive
-   observations can be translated into the bounded model.
+1. the inherited fixed object-graph checker, certificate producer, independent dense oracle, and bounded witness tests;
+2. the passive Java deserialization observation study, still yielding three MAPPED final snapshots and eight UNKNOWN cases; and
+3. a new data-only Java receiver, independent raw-data reference, private read-only graph representation, an exact schedule specialization and a conditional publication argument.
 
-**Scientific status:** negative-result technical report and research checkpoint.
-The finite checker result is supported in its declared domain.  The Java study
-shows that only a narrow class of owned final snapshots can be mapped; special
-callbacks, early publication, missing fields, type/shape mismatch, failure side
-effects, and incomplete write observation return `UNKNOWN`.  This is not a
-production deserialization defense, constructor-history attestation, JVM proof,
-or established TIFS original-research contribution.
+The new receiver changes the wire/API contract: it deserializes only a canonical primitive int[] and constructs application nodes only after validation. It is not an instrumentation layer or transparent replacement for arbitrary Serializable objects. Readiness is private checker metadata, not constructor-history evidence. The direct eager baseline implements the same final data policy without certificates and was faster in the measured batches.
 
 ## Requirements
 
-- Linux;
-- Python 3.9 or newer, standard library only; and
-- a local JDK providing `java` and `javac`.
+Linux, Python 3.9 or newer, and a local JDK providing java and javac. All Python dependencies are in the standard library. Recorded executions used Debian GNU/Linux 13 x86-64, CPython 3.13.5, and Debian OpenJDK/javac 21.0.11. No other JDK/vendor combination has been experimentally validated here. Runtime-evaluated built-in generic aliases require Python 3.9. Experiment commands do not download dependencies, call network or model services, use GPUs, or consume third-party payloads.
 
-Python 3.9 is the minimum because runtime-evaluated built-in generic aliases
-such as `tuple[...]` and `set[...]` occur in the source.  Neither runner uses a
-network service, model API, GPU, private data, external serialized payload, or
-third-party application.  Both use one worker and sequential Java children.
+All output directories below must be absent or empty. All Java children are sequential; one active processor, SerialGC, a 256 MiB heap cap, and javac -proc:none are recorded by the runners. Each command records actual environment and code/input bindings. Original historical versions and architecture that were never recorded remain unknown.
 
-## Reproduce the preserved finite campaign
+## Commands
 
-From this repository root:
+Preserved finite model, including 17 test methods and 7 scientific JSON / 5 deterministic file comparisons:
 
 ```sh
-python3 reproduce.py \
-  --out replay-output \
-  --verify-against results/campaign
+python3 reproduce.py --out legacy-output --verify-against results/campaign
 ```
 
-`replay-output` must not exist or must be empty.  Exit code 0 means the tests,
-experiments, and recorded comparisons completed; it does not prove general
-correctness or novelty.  The comparison covers seven scientific JSON files
-semantically after excluding timing/RSS fields and five deterministic files by
-exact bytes.  It writes the per-file report before failing on a mismatch.
-
-The latest clean run recorded Debian GNU/Linux 13 on amd64, CPython 3.13.5,
-and Debian OpenJDK/javac 21.0.11.  It exited 0, matched all seven scientific
-JSON files and all five deterministic files, and retained the original
-canonical files unchanged.  The canonical run did not record its architecture
-or exact Python/JDK versions; those historical fields remain unknown and are
-not filled from the later machine.
-
-### Preserved finite results
-
-| Quantity | Result |
-|---|---:|
-| Two-/three-object heap/root states | 33,344 |
-| Safe admitted pre-states | 10,438 |
-| Changing-write/root-addition candidates | 615,984 |
-| Frontier/dense-oracle disagreements | 0 |
-| Checker/dense-oracle disagreements | 0 |
-| Unsafe candidates accepted by written-object control | 4,296 |
-| Directed test methods | 17 passed |
-| Malformed certificates rejected without semantic commit | 18 |
-| Ordered failing witnesses agreeing with a whole-path oracle | 5 |
-| Passive owned Java round trips / callback snapshots | 24 / 66 |
-
-The exact object domain is 1--128 fixed records `(ready,value,next)`, with bit
-fields `ready` and `value` and one nullable reference.  The fixed predicate is:
-
-```text
-ready(o) and (next(o) is null or value(o) <= value(next(o)))
-```
-
-The `ready` bit is abstract metadata.  It is not a constructor-chain record or
-JVM initialization proof.
-
-## Run the concrete Java observation-gap study
+Passive ordinary-object Java observations and five bridge test methods:
 
 ```sh
 python3 reproduce_trace_bridge.py --out bridge-output
 ```
 
-`bridge-output` must not exist or must be empty.  The runner compiles and runs
-ordinary in-memory Java serialization cases, including one two-version class
-evolution fixture.  It records the actual operating system, architecture,
-Python, Java/JDK, `javac`, JVM options, and a digest of executed code and inputs.
-It then runs the independent bridge tests.
+Receiver replay with ten receiver test methods, 4,563 actual Java cases and the paired observation. Omitting --skip-benchmark reruns the older six-size timing protocol on the current code, not the historical generic implementation:
 
-The recorded run used Debian GNU/Linux 13 amd64, CPython 3.13.5, and Debian
-OpenJDK/javac 21.0.11 and exited 0.  Results were:
+```sh
+python3 reproduce_receiver.py --out receiver-output --skip-benchmark
+```
 
-| Outcome | Count |
-|---|---:|
-| Executed Java cases | 11 |
-| Narrow final snapshots mapped | 3 |
-| Conservatively returned `UNKNOWN` | 8 |
-| Mapped safe / unsafe | 2 / 1 |
-| Serializable-fixture constructor calls during reading | 0 |
-| Bridge unit tests | 5 passed |
+Deterministic receiver replay without requiring nondeterministic timings to match:
 
-The nine named negative-control facts all occurred as expected: alias identity
-was preserved; a cyclic callback observed an unfinished peer; an owned callback
-published `this` early; `readResolve` returned a pre-existing canonical object;
-a type/shape mismatch was observed; public callbacks did not provide individual
-field-write events; closed failure left no external alias; failure after escape
-did leave one; and class evolution produced a missing field reported by
-`GetField.defaulted`.
+```sh
+python3 reproduce_receiver.py --out receiver-replay \
+  --verify-against results/receiver-campaign --skip-benchmark
+```
 
-`src/java_trace_bridge.py` is independent of the producer, production checker,
-and dense oracle.  It checks every supplied root's exact type and range before
-deduplication.  Both `[0, False]` orderings, both `[0, 0.0]` orderings, and their
-tuple counterparts return `UNKNOWN`; `[0]` and duplicate integer roots remain
-valid subject to the 128-entry input bound.
+The comparison checks five deterministic result/input files and all saved serialized input files as a complete set. The original finite replay excludes only documented timing/RSS fields from its seven scientific JSON comparisons. No runner overwrites the baseline to produce a match. Nonzero results produce diagnostics rather than a fabricated successful report.
 
-The bridge is intentionally partial.  `MAPPED` means only that a final owned
-snapshot met the narrow encoding discipline.  Its `ready` bit means “the owned
-fixture's `readObject` callback set its marker before exit.”  It does not mean
-that a constructor ran or that all concrete writes and aliases were observed.
-See `proofs/concrete-bridge.md`.
+Table generation has no dependency on a paper directory:
 
-## Files and evidence
+```sh
+python3 export_paper_data.py --results results/campaign --out legacy-tables
+python3 export_receiver_data.py --results results/receiver-campaign --out receiver-tables
+```
 
-- `src/checker.py`: production stateful checker;
-- `src/producer.py`: untrusted certificate producer;
-- `src/oracle.py`: independent dense finite oracle;
-- `src/java_trace_bridge.py`: independent fail-closed observation translator;
-- `java/BenignGraphs.java`: preserved passive round-trip campaign;
-- `java/DeserializationTraceHarness.java`: callback/alias/failure harness;
-- `java/evolution/`: two-version missing-field fixture;
-- `proofs/argument.md`: bounded mathematical argument;
-- `proofs/concrete-bridge.md`: exact partial Java-to-abstract binding and limits;
-- `research-lock-review.md`: route decision, repair record, commands, and unresolved obligations;
-- `results/campaign/`: preserved canonical finite campaign;
-- `results/bridge-campaign/`: recorded Java bridge run;
-- `results/final-replay/`: current recorded-environment finite replay;
-- `results/clean-extraction-check.json`: portable clean-extraction command/exit summary;
-- `claim_evidence_ledger.csv`: claim-to-evidence mapping; and
-- `external_resources.csv`: source and tool provenance.
+## Exact specialization and three-way comparison
 
-## Scope and non-claims
+The production State now represents the fixed schedule without cloning the whole heap at every step. The incoming generic verifier is preserved in `baselines/GenericReceiver.java` with only a class-name change. `receiver/certificate_reference.py` independently parses complete integer certificates and recomputes whole states; it imports no production component. Its scope is not Java stream decoding.
 
-The finite checker assumes authentic complete events, complete retained roots,
-protected checker state, and an atomic abstract commit gate.  The Java harness
-provides passive observations only and does not implement that gate.  The work
-does not cover native code, `Unsafe`, arbitrary reflection, arbitrary class
-loaders, multithreaded publication, all class-evolution behavior, all
-`Externalizable`/record semantics, or production compatibility.  A successful
-command is evidence that the specified finite run completed, not an independent
-review or a guarantee of external submission readiness.
+```sh
+python3 reproduce_specialization.py --out specialization-output
+python3 reproduce_specialization.py --out specialization-replay \
+  --verify-against results/specialization-campaign --skip-benchmark
+python3 export_specialization_data.py --results results/specialization-campaign \
+  --out specialization-tables
+```
+
+The full command adds28 sequential JVM timing forks. The replay checks five deterministic input/result files and does not require timing equality. Plans and inclusion rules are in `receiver/specialization-contract.md`; complete proof arguments are in `proofs/specialization.md`. Safe packets require complete exact proof parsing. `DENY_UNSAFE` identifies a checked unsafe prefix and does not authenticate a later unconsumed tail. Both reject outcomes return a null graph.
+
+An earlier attempt hit an outer execution timeout after completing its core comparison and some timing forks. Its unknown overall exit and partial files remain in `results/specialization-interrupted/`. The successful complete run is separate and its timings are not pooled with the partial attempt.
+
+## Retained evidence
+
+| Study | Result | Scope |
+|---|---|---|
+| Original finite campaign |615,984 transitions ; 0 checker/oracle disagreements ; 4,296 misses by written-object-only control|All two-/three-object cases in the fixed domain, not arbitrary Java|
+| Passive Java bridge |11 cases; 3 MAPPED, 8 UNKNOWN|Original callback/alias/evolution boundary remains unresolved for that path|
+| Receiver valid-data cases |4,443; 3,397 ALLOW, 1,046 DENY_UNSAFE|Includes 4,248 exact small inputs, 96 larger, 96 renamed, 3 capacity|
+| Receiver controls |97 certificate, 12 data, 10 wire, 1 construction failure|All fail without returning a graph|
+| Receiver total |4,563; 0 oracle/representation/alias/decision errors|Only the accepted primitive-data contract|
+| Observation pair |same bytes and selected public projection; unfinished-read outcome differs|Limit for this projection, not all Java observers|
+| Direct baseline |same data policy as an existent valid certificate|No extra semantic protection from certificates in this setting|
+| Retained generic timing at128 nodes |420.45 µs generic vs39.85 µs eager|Historical six-size protocol, not current specialized cost|
+| Exact specialization |5,248 integer packets; zero full-observation and independent-certificate-reference disagreement|4,552 retained inputs plus696 targeted/size cases, not new applications|
+| Sharp accepting packet bound |22,134 words /88,563 canonical serialized bytes|Attained at128 nodes and128 repeated roots|
+| Current paired timing |Median generic/specialized factors4.92–9.94; specialized/eager1.16–2.72|Four controlled families, seven forks each; full ranges retained|
+
+## Evidence locations
+
+- `proofs/argument.md`: inherited handwritten finite-model proof.
+- `proofs/concrete-bridge.md`: retained partial snapshot-mapping conditions.
+- `proofs/receiver.md`: observation limit, shadow soundness, representation, publication, eager-equivalence, and packet bound.
+- `src/`: original model, producer, checker, oracle, witness and passive bridge.
+- `receiver/`, `receiver_tests/`: packet producer, independent data and complete-certificate references; root, oracle, exact-bound and denial-tail tests.
+- `java/CertifiedReceiver.java`, `ReceiverHarness.java`, `ObservationPair.java`: actual receiving path and benign experiments.
+- `java/DeserializationTraceHarness.java`, `java/evolution/`: unchanged ordinary-object study.
+- `results/campaign/`: immutable original scientific baseline.
+- `results/final-replay/`, `results/bridge-campaign/`: inherited verified runs, with their own recorded environments.
+- `results/receiver-campaign/`: unchanged generic receiving baseline and historical timing.
+- `results/specialized-replay/`: current specialized code replaying all 4,563 original receiving cases.
+- `results/specialization-campaign/`: independent certificate reference, generic/specialized differential results and paired timings.
+- `results/continuation-clean/`: successful clean-extraction commands, all legacy/bridge/receiver/specialization comparisons and exported tables.
+- `results/receiver-pilot/`, `results/receiver-framing-control/`: preserved measurement/framing repair evidence and affected source.
+- `results/clean-check/`: retained clean verification of the incoming generic receiver; the current verification is in `results/continuation-clean/`.
+- `claim_evidence_ledger.csv`, `reference-audit.csv`: evidence and interpretation records.
+
+## Root interface
+
+The original checker checks each root with exact `type(r) is int` and range checks before set conversion. Tests cover both orders of [0,False] and [0,0.0], list/tuple containers, a single legal integer, duplicate integers, and 128/129-entry limits. Sets preconstructed by the caller may have already discarded equal differently typed elements; that absent history is unrecoverable. The new Python producer has the same strict-before-normalization discipline; its accepted wire is a primitive integer array.
+
+## Limits and scientific status
+
+The old abstract model still assumes complete writes and roots. The new receiver does not claim to recover them from callback observations: it controls initial publication of newly constructed private objects. Its guarantees require trusted JDK/configuration/code and no privileged mutation of private storage. Public navigation is read-only; untrusted same-package, reflective, native, Unsafe, agent, class-loader, and concurrent interference are not covered. The package-private snapshot, eager and failure hooks are owned tests.
+
+The bounded publication connection is implemented and argued by hand. It does not establish an original TIFS-wide security contribution, arbitrary-JVM initialization guarantees, machine-checked source correctness, production compatibility, or independent external validation. Code separation and the retained internal checks belong to one research execution.

@@ -37,11 +37,95 @@
       "checker_steps": 4459040,
       "comparison": "results/final-replay/replay-verification.json: 7/7 scientific JSON MATCH; 5/5 deterministic files MATCH",
       "workload_breadth": "repeated verification, not additional scientific breadth"
+    },
+    {
+      "experiment": "current clean extracted inherited replay",
+      "source": "results/clean-check/clean-legacy/measurements.json",
+      "cpu_seconds": 28.694201905,
+      "counted_transitions": 621057,
+      "checker_steps": 4459040,
+      "workload_breadth": "repeat, not additional domain"
+    },
+    {
+      "experiment": "receiver pilot",
+      "source": "results/receiver-pilot/resources.json",
+      "cpu_seconds": 10.886771999999999,
+      "observed_java_shadow_steps_in_case_outputs": 79791,
+      "source_derived_benchmark_shadow_steps": 311220,
+      "benchmark_count_basis": "actual recorded mode2 rows times warmup+iterations times fixed3n+1 plan",
+      "python_checker_steps": "not the same counter; not substituted",
+      "workload_breadth": "final cases only define current coverage; repeats/pilots not extra breadth"
+    },
+    {
+      "experiment": "receiver framing-control",
+      "source": "results/receiver-framing-control/resources.json",
+      "cpu_seconds": 35.041137,
+      "observed_java_shadow_steps_in_case_outputs": 79792,
+      "source_derived_benchmark_shadow_steps": 3630900,
+      "benchmark_count_basis": "actual recorded mode2 rows times warmup+iterations times fixed3n+1 plan",
+      "python_checker_steps": "not the same counter; not substituted",
+      "workload_breadth": "final cases only define current coverage; repeats/pilots not extra breadth"
+    },
+    {
+      "experiment": "receiver final",
+      "source": "results/receiver-campaign/resources.json",
+      "cpu_seconds": 37.381853,
+      "observed_java_shadow_steps_in_case_outputs": 79792,
+      "source_derived_benchmark_shadow_steps": 3630900,
+      "benchmark_count_basis": "actual recorded mode2 rows times warmup+iterations times fixed3n+1 plan",
+      "python_checker_steps": "not the same counter; not substituted",
+      "workload_breadth": "final cases only define current coverage; repeats/pilots not extra breadth"
+    },
+    {
+      "experiment": "receiver clean replay",
+      "source": "results/clean-check/clean-receiver/resources.json",
+      "cpu_seconds": 7.102188999999999,
+      "observed_java_shadow_steps_in_case_outputs": 79792,
+      "source_derived_benchmark_shadow_steps": 0,
+      "benchmark_count_basis": "actual recorded mode2 rows times warmup+iterations times fixed3n+1 plan",
+      "python_checker_steps": "not the same counter; not substituted",
+      "workload_breadth": "final cases only define current coverage; repeats/pilots not extra breadth"
+    },
+    {
+      "experiment": "specialized original-corpus replay",
+      "source": "results/specialized-replay/resources.json",
+      "cpu_seconds": 11.591475,
+      "workload_breadth": "replay or targeted fixed-schema study, not independent application breadth",
+      "peak_rss_scope": "per-process maxima, not simultaneous-memory measurement"
+    },
+    {
+      "experiment": "complete specialization study",
+      "source": "results/specialization-campaign/resources.json",
+      "cpu_seconds": 114.838851,
+      "workload_breadth": "replay or targeted fixed-schema study, not independent application breadth",
+      "peak_rss_scope": "per-process maxima, not simultaneous-memory measurement"
+    },
+    {
+      "experiment": "clean specialized receiving replay",
+      "source": "results/continuation-clean/receiver/resources.json",
+      "cpu_seconds": 17.031811,
+      "workload_breadth": "replay or targeted fixed-schema study, not independent application breadth",
+      "peak_rss_scope": "per-process maxima, not simultaneous-memory measurement"
+    },
+    {
+      "experiment": "clean specialization replay",
+      "source": "results/continuation-clean/specialization/resources.json",
+      "cpu_seconds": 11.849704000000001,
+      "workload_breadth": "replay or targeted fixed-schema study, not independent application breadth",
+      "peak_rss_scope": "per-process maxima, not simultaneous-memory measurement"
+    },
+    {
+      "experiment": "latest clean original finite replay",
+      "source": "results/continuation-clean/legacy/measurements.json",
+      "cpu_seconds": 57.618182925000006,
+      "counted_transitions": 621057,
+      "checker_steps": 4459040,
+      "workload_breadth": "repeat, not additional finite domain"
     }
   ],
-  "known_cpu_seconds": 64.201008876,
-  "known_counted_transitions": 1863066,
-  "known_checker_steps": 8953095,
+  "known_cpu_seconds": 396.237185706,
+  "known_counted_transitions": 3105180,
+  "known_checker_steps": 17871175,
   "ceilings": {
     "cpu_seconds": 25200,
     "transitions": 4000000,
@@ -49,14 +133,36 @@
     "peak_rss_bytes": 3221225472,
     "workers": 4
   },
-  "unmetered_work": "The Java trace-bridge runner records commands, results, and environment but not an aggregate CPU/RSS measurement. Early smoke tests and document builds are also not included.",
+  "unmetered_work": "Inherited unmetered work remains. Current four-case smoke work, some interactive checks, source preparation, paper builds, literature transfer, and an interrupted clean receiver attempt do not have complete aggregate meters. The clean bridge child CPU is in clean-check/commands.json but not added here to avoid claiming identical meter semantics. Small wrapper overhead may overlap run meters; no exact whole-session total is asserted. The latest interrupted specialization attempt lacks a complete parent CPU meter; completed child timing/step outputs are counted only as lower bounds. An injected Python site startup hook emitted unrelated spreadsheet warmup errors before entry; it is not imported by experiment code and raw stderr is retained. Latest bridge CPU and proof/test-generation work are not merged into old counters with different semantics.",
   "downloads": "No scientific input or dependency was downloaded by either experiment runner. Browser literature-transfer bytes are outside this accounting and were not measured.",
   "original_environment": "The canonical campaign architecture and exact Python/JDK versions remain unknown; current machine values are not backfilled.",
   "current_replay_environment": "results/final-replay/environment.json",
   "bridge_environment": "results/bridge-campaign/environment.json",
   "remaining_known_budget": {
-    "cpu_seconds": 25135.798991124,
-    "transitions": 2136934,
-    "checker_steps": 7046905
-  }
+    "cpu_seconds_based_only_on_recorded_total": 24803.762814294,
+    "python_checker_steps_only": -1871175,
+    "transition_ceiling_pass": false,
+    "python_checker_ceiling_pass": false
+  },
+  "new_java_shadow_steps_observed_or_source_derived": 7892187,
+  "conservative_old_candidates_plus_java_shadow_steps": 68600597,
+  "budget_interpretation": "Repeated benchmark shadow transitions are counted, not hidden. The conservative combined event tally exceeds the original4000000transition planning ceiling. Original Python checker steps and Java shadow steps are different counters; no claim that all original campaign ceilings were met is made. CPU is a partial measured total, not a reconstruction of unrecorded work.",
+  "continuation_shadow_accounting": [
+    {
+      "source": "results/specialization-campaign/",
+      "completed_certificate_timing_rows": 56,
+      "timing_shadow_steps_from_completed_rows": 37674000,
+      "differential_shadow_steps_two_verifiers": 175882,
+      "scope": "completed case and timing invocations; Python producer/reference work has different counters"
+    },
+    {
+      "source": "results/specialization-interrupted/",
+      "completed_certificate_timing_rows": 32,
+      "timing_shadow_steps_from_completed_rows": 19242000,
+      "differential_shadow_steps_two_verifiers": 175882,
+      "scope": "lower bound for interrupted run; unfinished child work is unknown"
+    }
+  ],
+  "continuation_shadow_steps_from_complete_records": 57603230,
+  "known_current_python_checker_steps_also_exceed_original_ceiling": true
 }

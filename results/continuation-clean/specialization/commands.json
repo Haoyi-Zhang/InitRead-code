@@ -1,0 +1,51 @@
+[
+  {
+    "argv": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "receiver_tests",
+      "-v"
+    ],
+    "returncode": 0,
+    "stderr": "tests.txt.stderr",
+    "stdout": "tests.txt",
+    "wall_seconds": 5.845348497000032
+  },
+  {
+    "argv": [
+      "javac",
+      "-J-XX:ActiveProcessorCount=1",
+      "-J-XX:+UseSerialGC",
+      "-J-Xmx256m",
+      "-proc:none",
+      "-d",
+      "<build>",
+      "<artifact>/java/CertifiedReceiver.java",
+      "<artifact>/baselines/GenericReceiver.java",
+      "<artifact>/java/SpecializationHarness.java"
+    ],
+    "returncode": 0,
+    "stderr": "compile.txt.stderr",
+    "stdout": "compile.txt",
+    "wall_seconds": 0.7774930159998803
+  },
+  {
+    "argv": [
+      "java",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "<build>",
+      "SpecializationHarness",
+      "<artifact>/results/continuation-clean/specialization/cases.tsv"
+    ],
+    "returncode": 0,
+    "stderr": "comparison.jsonl.stderr",
+    "stdout": "comparison.jsonl",
+    "wall_seconds": 0.6488619330000347
+  }
+]

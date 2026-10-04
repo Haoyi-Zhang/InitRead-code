@@ -1,0 +1,23 @@
+{
+  "corrupt_certificates_accepted": 0,
+  "errors": [],
+  "generic_observation_disagreements": 0,
+  "groups": {
+    "certificate-cell": 328,
+    "certificate-prefix": 328,
+    "certificate-tail": 5,
+    "retained": 4552,
+    "seed": 5,
+    "sharp-bound": 30
+  },
+  "independent_certificate_reference_disagreements": 0,
+  "java_cases": 5248,
+  "outcomes": {
+    "ALLOW": 3432,
+    "DENY_UNSAFE": 1046,
+    "INVALID_CERT": 758,
+    "INVALID_DATA": 12
+  },
+  "pass": true,
+  "sharp_bound_equalities": 30
+}

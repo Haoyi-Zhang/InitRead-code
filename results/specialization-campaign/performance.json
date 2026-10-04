@@ -1,0 +1,247 @@
+{
+  "iterations": 500,
+  "rows": [
+    {
+      "family": "chain-one",
+      "modes": {
+        "eager": {
+          "forks": 7,
+          "max_us": 61.041226,
+          "median_us": 44.782948,
+          "min_us": 30.373338
+        },
+        "generic": {
+          "forks": 7,
+          "max_us": 740.509144,
+          "median_us": 537.5381920000001,
+          "min_us": 468.697388
+        },
+        "specialized": {
+          "forks": 7,
+          "max_us": 289.535192,
+          "median_us": 102.334626,
+          "min_us": 75.56744
+        }
+      },
+      "paired_ratios": [
+        {
+          "fork": 0,
+          "generic_over_specialized": 5.762665252143147,
+          "specialized_over_eager": 2.8789507429180157
+        },
+        {
+          "fork": 1,
+          "generic_over_specialized": 7.702784850194739,
+          "specialized_over_eager": 1.3539512617651457
+        },
+        {
+          "fork": 2,
+          "generic_over_specialized": 4.547133727185461,
+          "specialized_over_eager": 2.7223967332509806
+        },
+        {
+          "fork": 3,
+          "generic_over_specialized": 5.104651114536658,
+          "specialized_over_eager": 3.9801322046720116
+        },
+        {
+          "fork": 4,
+          "generic_over_specialized": 5.881352414830218,
+          "specialized_over_eager": 1.8101415300223147
+        },
+        {
+          "fork": 5,
+          "generic_over_specialized": 5.252749856143511,
+          "specialized_over_eager": 2.2851248202775754
+        },
+        {
+          "fork": 6,
+          "generic_over_specialized": 1.6187924678945418,
+          "specialized_over_eager": 4.743272882494201
+        }
+      ]
+    },
+    {
+      "family": "cycle-one",
+      "modes": {
+        "eager": {
+          "forks": 7,
+          "max_us": 64.917346,
+          "median_us": 43.301796,
+          "min_us": 34.693633999999996
+        },
+        "generic": {
+          "forks": 7,
+          "max_us": 542.883638,
+          "median_us": 529.806094,
+          "min_us": 483.562748
+        },
+        "specialized": {
+          "forks": 7,
+          "max_us": 83.494994,
+          "median_us": 59.728517999999994,
+          "min_us": 44.251512000000005
+        }
+      },
+      "paired_ratios": [
+        {
+          "fork": 0,
+          "generic_over_specialized": 12.268137594936869,
+          "specialized_over_eager": 1.1617033133691705
+        },
+        {
+          "fork": 1,
+          "generic_over_specialized": 6.345363579521905,
+          "specialized_over_eager": 1.9282108760569654
+        },
+        {
+          "fork": 2,
+          "generic_over_specialized": 8.602172047864975,
+          "specialized_over_eager": 0.9200702382380204
+        },
+        {
+          "fork": 3,
+          "generic_over_specialized": 7.721750181924377,
+          "specialized_over_eager": 1.876856370825841
+        },
+        {
+          "fork": 4,
+          "generic_over_specialized": 8.978389338071645,
+          "specialized_over_eager": 1.0898545520523608
+        },
+        {
+          "fork": 5,
+          "generic_over_specialized": 7.15315900943068,
+          "specialized_over_eager": 1.130670207403454
+        },
+        {
+          "fork": 6,
+          "generic_over_specialized": 10.131897968045712,
+          "specialized_over_eager": 1.3885394783043719
+        }
+      ]
+    },
+    {
+      "family": "isolated-repeat",
+      "modes": {
+        "eager": {
+          "forks": 7,
+          "max_us": 54.922162,
+          "median_us": 43.85708,
+          "min_us": 28.727994
+        },
+        "generic": {
+          "forks": 7,
+          "max_us": 1184.670102,
+          "median_us": 672.6029540000001,
+          "min_us": 640.2344039999999
+        },
+        "specialized": {
+          "forks": 7,
+          "max_us": 120.15812600000001,
+          "median_us": 67.64628200000001,
+          "min_us": 45.676421999999995
+        }
+      },
+      "paired_ratios": [
+        {
+          "fork": 0,
+          "generic_over_specialized": 25.473246288191802,
+          "specialized_over_eager": 1.5930282847682316
+        },
+        {
+          "fork": 1,
+          "generic_over_specialized": 9.649398773859057,
+          "specialized_over_eager": 1.4871094070560495
+        },
+        {
+          "fork": 2,
+          "generic_over_specialized": 16.53792169207138,
+          "specialized_over_eager": 0.8505881104971796
+        },
+        {
+          "fork": 3,
+          "generic_over_specialized": 9.942940456062315,
+          "specialized_over_eager": 1.5424255787206993
+        },
+        {
+          "fork": 4,
+          "generic_over_specialized": 5.374310614664545,
+          "specialized_over_eager": 3.888634389073906
+        },
+        {
+          "fork": 5,
+          "generic_over_specialized": 7.589983783531995,
+          "specialized_over_eager": 1.6152504301966097
+        },
+        {
+          "fork": 6,
+          "generic_over_specialized": 14.016737212910416,
+          "specialized_over_eager": 1.5899621115209088
+        }
+      ]
+    },
+    {
+      "family": "cycle-repeat",
+      "modes": {
+        "eager": {
+          "forks": 7,
+          "max_us": 259.24358,
+          "median_us": 106.784914,
+          "min_us": 96.08736
+        },
+        "generic": {
+          "forks": 7,
+          "max_us": 1106.126688,
+          "median_us": 1012.915852,
+          "min_us": 918.8960820000001
+        },
+        "specialized": {
+          "forks": 7,
+          "max_us": 291.346836,
+          "median_us": 198.363038,
+          "min_us": 185.68139000000002
+        }
+      },
+      "paired_ratios": [
+        {
+          "fork": 0,
+          "generic_over_specialized": 4.916301181069832,
+          "specialized_over_eager": 2.0644030390677814
+        },
+        {
+          "fork": 1,
+          "generic_over_specialized": 4.852115362874459,
+          "specialized_over_eager": 0.7305118606987299
+        },
+        {
+          "fork": 2,
+          "generic_over_specialized": 5.20177155926252,
+          "specialized_over_eager": 1.9474329866482825
+        },
+        {
+          "fork": 3,
+          "generic_over_specialized": 3.5348077669814595,
+          "specialized_over_eager": 1.6938835089257176
+        },
+        {
+          "fork": 4,
+          "generic_over_specialized": 5.258217687754458,
+          "specialized_over_eager": 1.9485730128234262
+        },
+        {
+          "fork": 5,
+          "generic_over_specialized": 5.455128551116512,
+          "specialized_over_eager": 1.928383020361508
+        },
+        {
+          "fork": 6,
+          "generic_over_specialized": 3.7965975645604746,
+          "specialized_over_eager": 1.6023254611945337
+        }
+      ]
+    }
+  ],
+  "scope": "traced end-to-end receiving; paired JVM batch means, not per-call quantiles",
+  "warmup": 1000
+}

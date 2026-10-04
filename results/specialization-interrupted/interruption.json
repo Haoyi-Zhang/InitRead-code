@@ -1,0 +1,364 @@
+{
+  "overall_exit": null,
+  "outcome": "outer-container timeout at 180 seconds; not a successful full study",
+  "completed_subcommands": [
+    {
+      "argv": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "receiver_tests",
+        "-v"
+      ],
+      "returncode": 0,
+      "stderr": "tests.txt.stderr",
+      "stdout": "tests.txt",
+      "wall_seconds": 1.2850351660000001
+    },
+    {
+      "argv": [
+        "javac",
+        "-J-XX:ActiveProcessorCount=1",
+        "-J-XX:+UseSerialGC",
+        "-J-Xmx256m",
+        "-proc:none",
+        "-d",
+        "<build>",
+        "<artifact>/java/CertifiedReceiver.java",
+        "<artifact>/baselines/GenericReceiver.java",
+        "<artifact>/java/SpecializationHarness.java"
+      ],
+      "returncode": 0,
+      "stderr": "compile.txt.stderr",
+      "stdout": "compile.txt",
+      "wall_seconds": 0.9586053270000434
+    },
+    {
+      "argv": [
+        "java",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "<build>",
+        "SpecializationHarness",
+        "<artifact>/results/specialization-campaign/cases.tsv"
+      ],
+      "returncode": 0,
+      "stderr": "comparison.jsonl.stderr",
+      "stdout": "comparison.jsonl",
+      "wall_seconds": 0.9786160890000133
+    },
+    {
+      "argv": [
+        "java",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "<build>",
+        "SpecializationHarness",
+        "--benchmark",
+        "<artifact>/results/specialization-campaign/benchmark.tsv",
+        "chain-one",
+        "0"
+      ],
+      "returncode": 0,
+      "stderr": "benchmark-chain-one-0.jsonl.stderr",
+      "stdout": "benchmark-chain-one-0.jsonl",
+      "wall_seconds": 1.6075887439999974
+    },
+    {
+      "argv": [
+        "java",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "<build>",
+        "SpecializationHarness",
+        "--benchmark",
+        "<artifact>/results/specialization-campaign/benchmark.tsv",
+        "chain-one",
+        "1"
+      ],
+      "returncode": 0,
+      "stderr": "benchmark-chain-one-1.jsonl.stderr",
+      "stdout": "benchmark-chain-one-1.jsonl",
+      "wall_seconds": 2.0674440619999928
+    },
+    {
+      "argv": [
+        "java",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "<build>",
+        "SpecializationHarness",
+        "--benchmark",
+        "<artifact>/results/specialization-campaign/benchmark.tsv",
+        "chain-one",
+        "2"
+      ],
+      "returncode": 0,
+      "stderr": "benchmark-chain-one-2.jsonl.stderr",
+      "stdout": "benchmark-chain-one-2.jsonl",
+      "wall_seconds": 2.3868431230000056
+    },
+    {
+      "argv": [
+        "java",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "<build>",
+        "SpecializationHarness",
+        "--benchmark",
+        "<artifact>/results/specialization-campaign/benchmark.tsv",
+        "chain-one",
+        "3"
+      ],
+      "returncode": 0,
+      "stderr": "benchmark-chain-one-3.jsonl.stderr",
+      "stdout": "benchmark-chain-one-3.jsonl",
+      "wall_seconds": 1.8063739199999986
+    },
+    {
+      "argv": [
+        "java",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "<build>",
+        "SpecializationHarness",
+        "--benchmark",
+        "<artifact>/results/specialization-campaign/benchmark.tsv",
+        "chain-one",
+        "4"
+      ],
+      "returncode": 0,
+      "stderr": "benchmark-chain-one-4.jsonl.stderr",
+      "stdout": "benchmark-chain-one-4.jsonl",
+      "wall_seconds": 2.6334472679999976
+    },
+    {
+      "argv": [
+        "java",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "<build>",
+        "SpecializationHarness",
+        "--benchmark",
+        "<artifact>/results/specialization-campaign/benchmark.tsv",
+        "chain-one",
+        "5"
+      ],
+      "returncode": 0,
+      "stderr": "benchmark-chain-one-5.jsonl.stderr",
+      "stdout": "benchmark-chain-one-5.jsonl",
+      "wall_seconds": 2.370161269999983
+    },
+    {
+      "argv": [
+        "java",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "<build>",
+        "SpecializationHarness",
+        "--benchmark",
+        "<artifact>/results/specialization-campaign/benchmark.tsv",
+        "chain-one",
+        "6"
+      ],
+      "returncode": 0,
+      "stderr": "benchmark-chain-one-6.jsonl.stderr",
+      "stdout": "benchmark-chain-one-6.jsonl",
+      "wall_seconds": 1.9061128200000326
+    },
+    {
+      "argv": [
+        "java",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "<build>",
+        "SpecializationHarness",
+        "--benchmark",
+        "<artifact>/results/specialization-campaign/benchmark.tsv",
+        "cycle-one",
+        "0"
+      ],
+      "returncode": 0,
+      "stderr": "benchmark-cycle-one-0.jsonl.stderr",
+      "stdout": "benchmark-cycle-one-0.jsonl",
+      "wall_seconds": 1.3611287130000278
+    },
+    {
+      "argv": [
+        "java",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "<build>",
+        "SpecializationHarness",
+        "--benchmark",
+        "<artifact>/results/specialization-campaign/benchmark.tsv",
+        "cycle-one",
+        "1"
+      ],
+      "returncode": 0,
+      "stderr": "benchmark-cycle-one-1.jsonl.stderr",
+      "stdout": "benchmark-cycle-one-1.jsonl",
+      "wall_seconds": 1.645061295000005
+    },
+    {
+      "argv": [
+        "java",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "<build>",
+        "SpecializationHarness",
+        "--benchmark",
+        "<artifact>/results/specialization-campaign/benchmark.tsv",
+        "cycle-one",
+        "2"
+      ],
+      "returncode": 0,
+      "stderr": "benchmark-cycle-one-2.jsonl.stderr",
+      "stdout": "benchmark-cycle-one-2.jsonl",
+      "wall_seconds": 1.4216517250000038
+    },
+    {
+      "argv": [
+        "java",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "<build>",
+        "SpecializationHarness",
+        "--benchmark",
+        "<artifact>/results/specialization-campaign/benchmark.tsv",
+        "cycle-one",
+        "3"
+      ],
+      "returncode": 0,
+      "stderr": "benchmark-cycle-one-3.jsonl.stderr",
+      "stdout": "benchmark-cycle-one-3.jsonl",
+      "wall_seconds": 1.837798743999997
+    },
+    {
+      "argv": [
+        "java",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "<build>",
+        "SpecializationHarness",
+        "--benchmark",
+        "<artifact>/results/specialization-campaign/benchmark.tsv",
+        "cycle-one",
+        "4"
+      ],
+      "returncode": 0,
+      "stderr": "benchmark-cycle-one-4.jsonl.stderr",
+      "stdout": "benchmark-cycle-one-4.jsonl",
+      "wall_seconds": 1.5880967359999545
+    },
+    {
+      "argv": [
+        "java",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "<build>",
+        "SpecializationHarness",
+        "--benchmark",
+        "<artifact>/results/specialization-campaign/benchmark.tsv",
+        "cycle-one",
+        "5"
+      ],
+      "returncode": 0,
+      "stderr": "benchmark-cycle-one-5.jsonl.stderr",
+      "stdout": "benchmark-cycle-one-5.jsonl",
+      "wall_seconds": 1.7212559160000183
+    },
+    {
+      "argv": [
+        "java",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "<build>",
+        "SpecializationHarness",
+        "--benchmark",
+        "<artifact>/results/specialization-campaign/benchmark.tsv",
+        "cycle-one",
+        "6"
+      ],
+      "returncode": 0,
+      "stderr": "benchmark-cycle-one-6.jsonl.stderr",
+      "stdout": "benchmark-cycle-one-6.jsonl",
+      "wall_seconds": 1.325086495999983
+    },
+    {
+      "argv": [
+        "java",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "<build>",
+        "SpecializationHarness",
+        "--benchmark",
+        "<artifact>/results/specialization-campaign/benchmark.tsv",
+        "isolated-repeat",
+        "0"
+      ],
+      "returncode": 0,
+      "stderr": "benchmark-isolated-repeat-0.jsonl.stderr",
+      "stdout": "benchmark-isolated-repeat-0.jsonl",
+      "wall_seconds": 1.5157011759999932
+    },
+    {
+      "argv": [
+        "java",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "<build>",
+        "SpecializationHarness",
+        "--benchmark",
+        "<artifact>/results/specialization-campaign/benchmark.tsv",
+        "isolated-repeat",
+        "1"
+      ],
+      "returncode": 0,
+      "stderr": "benchmark-isolated-repeat-1.jsonl.stderr",
+      "stdout": "benchmark-isolated-repeat-1.jsonl",
+      "wall_seconds": 1.6817404220000185
+    }
+  ],
+  "scientific_rows_saved": 5248,
+  "aggregate_cpu_seconds": null,
+  "original_output_path": "results/specialization-campaign",
+  "retained_path": "results/specialization-interrupted",
+  "disposition": "all files retained; do not pool partial timings with new complete rerun"
+}

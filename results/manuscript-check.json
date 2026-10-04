@@ -1,0 +1,217 @@
+{
+  "paper_file": "paper/main.pdf",
+  "page_count": 11,
+  "main_sections": 9,
+  "paper_style": "unmodified IEEEtran journal, double column, 10pt",
+  "build_commands": [
+    {
+      "argv": [
+        "pdflatex",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "main.tex"
+      ],
+      "cwd": "paper",
+      "exit_code": 0,
+      "log": "manuscript-build-1.log"
+    },
+    {
+      "argv": [
+        "pdflatex",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "main.tex"
+      ],
+      "cwd": "paper",
+      "exit_code": 0,
+      "log": "manuscript-build-2.log"
+    }
+  ],
+  "overfull_warnings": 0,
+  "underfull_warnings": 11,
+  "unresolved_references": false,
+  "font_embedding_all": true,
+  "pdffonts_output": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nFGFNKC+NimbusRomNo9L-Regu            Type 1            Custom           yes yes yes    144  0\nLREKMX+NimbusRomNo9L-MediItal        Type 1            Custom           yes yes yes    146  0\nTZXOSK+NimbusRomNo9L-Medi            Type 1            Custom           yes yes yes    147  0\nLAQOWZ+NimbusMonL-Regu               Type 1            Custom           yes yes yes    148  0\nVZCJXP+CMMI9                         Type 1            Builtin          yes yes yes    164  0\nTFVNFO+CMR6                          Type 1            Builtin          yes yes yes    165  0\nTUTDTY+CMR9                          Type 1            Builtin          yes yes yes    166  0\nGPMZCW+CMSS9                         Type 1            Builtin          yes yes yes    167  0\nFNTHRH+CMSY9                         Type 1            Builtin          yes yes yes    168  0\nBNKVPV+CMMI8                         Type 1            Builtin          yes yes yes    170  0\nLEELDE+NimbusRomNo9L-ReguItal        Type 1            Custom           yes yes yes    171  0\nMSGDHX+CMMI10                        Type 1            Builtin          yes yes yes    172  0\nGTETHE+CMR10                         Type 1            Builtin          yes yes yes    173  0\nTTKJIS+CMSY10                        Type 1            Builtin          yes yes yes    174  0\nBJOYFQ+CMMI7                         Type 1            Builtin          yes yes yes    175  0\nRVPZIX+CMMI5                         Type 1            Builtin          yes yes yes    176  0\nAIZZQU+CMSS10                        Type 1            Builtin          yes yes yes    178  0\nIRHBLU+CMEX10                        Type 1            Builtin          yes yes yes    179  0\nZWLUYF+CMSY7                         Type 1            Builtin          yes yes yes    180  0\nMIDEYQ+CMR7                          Type 1            Builtin          yes yes yes    181  0\nYYCIUM+CMR8                          Type 1            Builtin          yes yes yes    192  0\nPSCNAG+CMMI6                         Type 1            Builtin          yes yes yes    193  0\nULZEWH+MSBM10                        Type 1            Builtin          yes yes yes    208  0\n",
+  "citation_check": {
+    "bibliography_mechanism": "manual thebibliography/bibitem; no BibTeX/bbl claims",
+    "reference_count": 19,
+    "distinct_cited_keys": 19,
+    "all_cited": true,
+    "first_citation_order": true,
+    "duplicate_keys": [],
+    "unresolved_keys": [],
+    "unused_keys": [],
+    "rendered_reference_numbers": {
+      "serialization": "1",
+      "invcop": "2",
+      "certifying": "3",
+      "masked": "4",
+      "musti": "5",
+      "seccode": "6",
+      "enforceable": "7",
+      "verified": "8",
+      "partial": "9",
+      "filtering": "10",
+      "protocol": "11",
+      "benchmarking": "12",
+      "secureinit": "13",
+      "seneca": "14",
+      "sayar": "15",
+      "oddfuzz": "16",
+      "gcminer": "17",
+      "android": "18",
+      "sleeping": "19"
+    },
+    "scope": "mechanical citation closure/order; reading and semantic use are documented separately in reference-audit.csv"
+  },
+  "page_checks": [
+    {
+      "page": 1,
+      "text_characters": 6136,
+      "page_width_pt": 612.0,
+      "page_height_pt": 792.0,
+      "text_blocks_outside_page": []
+    },
+    {
+      "page": 2,
+      "text_characters": 5377,
+      "page_width_pt": 612.0,
+      "page_height_pt": 792.0,
+      "text_blocks_outside_page": []
+    },
+    {
+      "page": 3,
+      "text_characters": 5697,
+      "page_width_pt": 612.0,
+      "page_height_pt": 792.0,
+      "text_blocks_outside_page": []
+    },
+    {
+      "page": 4,
+      "text_characters": 5728,
+      "page_width_pt": 612.0,
+      "page_height_pt": 792.0,
+      "text_blocks_outside_page": []
+    },
+    {
+      "page": 5,
+      "text_characters": 6375,
+      "page_width_pt": 612.0,
+      "page_height_pt": 792.0,
+      "text_blocks_outside_page": []
+    },
+    {
+      "page": 6,
+      "text_characters": 6199,
+      "page_width_pt": 612.0,
+      "page_height_pt": 792.0,
+      "text_blocks_outside_page": []
+    },
+    {
+      "page": 7,
+      "text_characters": 5813,
+      "page_width_pt": 612.0,
+      "page_height_pt": 792.0,
+      "text_blocks_outside_page": []
+    },
+    {
+      "page": 8,
+      "text_characters": 6325,
+      "page_width_pt": 612.0,
+      "page_height_pt": 792.0,
+      "text_blocks_outside_page": []
+    },
+    {
+      "page": 9,
+      "text_characters": 5547,
+      "page_width_pt": 612.0,
+      "page_height_pt": 792.0,
+      "text_blocks_outside_page": []
+    },
+    {
+      "page": 10,
+      "text_characters": 5938,
+      "page_width_pt": 612.0,
+      "page_height_pt": 792.0,
+      "text_blocks_outside_page": []
+    },
+    {
+      "page": 11,
+      "text_characters": 4735,
+      "page_width_pt": 612.0,
+      "page_height_pt": 792.0,
+      "text_blocks_outside_page": []
+    }
+  ],
+  "visual_checks": [
+    {
+      "page": 1,
+      "dpi": 140,
+      "review": "visually inspected; no observed clipping/overlap/missing figure",
+      "unchanged_from_prior_inspected_render": true
+    },
+    {
+      "page": 2,
+      "dpi": 140,
+      "review": "visually inspected; no observed clipping/overlap/missing figure",
+      "unchanged_from_prior_inspected_render": true
+    },
+    {
+      "page": 3,
+      "dpi": 140,
+      "review": "visually inspected; no observed clipping/overlap/missing figure",
+      "unchanged_from_prior_inspected_render": true
+    },
+    {
+      "page": 4,
+      "dpi": 140,
+      "review": "visually inspected; no observed clipping/overlap/missing figure",
+      "unchanged_from_prior_inspected_render": true
+    },
+    {
+      "page": 5,
+      "dpi": 140,
+      "review": "visually inspected; no observed clipping/overlap/missing figure",
+      "unchanged_from_prior_inspected_render": true
+    },
+    {
+      "page": 6,
+      "dpi": 140,
+      "review": "visually inspected; no observed clipping/overlap/missing figure",
+      "unchanged_from_prior_inspected_render": true
+    },
+    {
+      "page": 7,
+      "dpi": 140,
+      "review": "visually inspected; no observed clipping/overlap/missing figure",
+      "unchanged_from_prior_inspected_render": false
+    },
+    {
+      "page": 8,
+      "dpi": 140,
+      "review": "visually inspected; no observed clipping/overlap/missing figure",
+      "unchanged_from_prior_inspected_render": true
+    },
+    {
+      "page": 9,
+      "dpi": 140,
+      "review": "visually inspected; no observed clipping/overlap/missing figure",
+      "unchanged_from_prior_inspected_render": true
+    },
+    {
+      "page": 10,
+      "dpi": 140,
+      "review": "visually inspected; no observed clipping/overlap/missing figure",
+      "unchanged_from_prior_inspected_render": true
+    },
+    {
+      "page": 11,
+      "dpi": 140,
+      "review": "visually inspected; no observed clipping/overlap/missing figure",
+      "unchanged_from_prior_inspected_render": false
+    }
+  ],
+  "figure_sources_unchanged": true,
+  "final_column_balance": "unmodified IEEEtriggeratref{7} support; no class/font/margin edits",
+  "scope": "build and source/visual checks, not an independent peer review or a scientific originality certificate"
+}

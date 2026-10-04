@@ -1,0 +1,6 @@
+{
+  "event": "Outer container time limit interrupted the initial combined extraction/validation call after recorded legacy and bridge exits0. No return code is asserted for the incomplete receiver attempt.",
+  "partial_output": "interrupted-receiver",
+  "retry_uses_fresh_output": "clean-receiver-verified",
+  "cpu_of_interrupted_attempt": "not recovered"
+}

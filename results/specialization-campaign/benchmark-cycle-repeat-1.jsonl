@@ -1,0 +1,3 @@
+{"id":"cycle-repeat","fork":1,"mode":1,"warmups":1000,"iterations":500,"ns_total":94690255,"bytes":88563}
+{"id":"cycle-repeat","fork":1,"mode":2,"warmups":1000,"iterations":500,"ns_total":129621790,"bytes":88563}
+{"id":"cycle-repeat","fork":1,"mode":0,"warmups":1000,"iterations":500,"ns_total":459448041,"bytes":88563}

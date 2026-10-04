@@ -1,0 +1,77 @@
+[
+  {
+    "argv": [
+      "python3",
+      "reproduce.py",
+      "--out",
+      "<artifact>/results/continuation-clean/legacy",
+      "--verify-against",
+      "results/campaign"
+    ],
+    "cwd": "<artifact>",
+    "exit_code": 0,
+    "wall_seconds": 62.718553662999966,
+    "stdout": "command-0.stdout",
+    "stderr": "command-0.stderr"
+  },
+  {
+    "argv": [
+      "python3",
+      "reproduce_trace_bridge.py",
+      "--out",
+      "<artifact>/results/continuation-clean/bridge"
+    ],
+    "cwd": "<artifact>",
+    "exit_code": 0,
+    "wall_seconds": 15.42096364200006,
+    "stdout": "command-1.stdout",
+    "stderr": "command-1.stderr"
+  },
+  {
+    "argv": [
+      "python3",
+      "reproduce_receiver.py",
+      "--out",
+      "<artifact>/results/continuation-clean/receiver",
+      "--verify-against",
+      "results/receiver-campaign",
+      "--skip-benchmark"
+    ],
+    "cwd": "<artifact>",
+    "exit_code": 0,
+    "wall_seconds": 20.535566932000165,
+    "stdout": "command-2.stdout",
+    "stderr": "command-2.stderr"
+  },
+  {
+    "argv": [
+      "python3",
+      "reproduce_specialization.py",
+      "--out",
+      "<artifact>/results/continuation-clean/specialization",
+      "--verify-against",
+      "results/specialization-campaign",
+      "--skip-benchmark"
+    ],
+    "cwd": "<artifact>",
+    "exit_code": 0,
+    "wall_seconds": 14.142931441999963,
+    "stdout": "command-3.stdout",
+    "stderr": "command-3.stderr"
+  },
+  {
+    "argv": [
+      "python3",
+      "export_specialization_data.py",
+      "--results",
+      "results/specialization-campaign",
+      "--out",
+      "<artifact>/results/continuation-clean/tables"
+    ],
+    "cwd": "<artifact>",
+    "exit_code": 0,
+    "wall_seconds": 5.1414541550000195,
+    "stdout": "command-4.stdout",
+    "stderr": "command-4.stderr"
+  }
+]

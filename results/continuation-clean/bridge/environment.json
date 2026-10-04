@@ -1,0 +1,93 @@
+{
+  "captured_utc": "2026-10-03T13:18:43.992924+00:00",
+  "code_input_summary": {
+    "bytes": 102158,
+    "file_count": 20,
+    "files": [
+      "bridge_tests/test_java_trace_bridge.py",
+      "java/BenignGraphs.java",
+      "java/CertifiedReceiver.java",
+      "java/DeserializationTraceHarness.java",
+      "java/ObservationPair.java",
+      "java/ReceiverHarness.java",
+      "java/SpecializationHarness.java",
+      "java/evolution/v1/WriteOld.java",
+      "java/evolution/v1/evolution/EvolvingNode.java",
+      "java/evolution/v2/ReadNew.java",
+      "java/evolution/v2/evolution/EvolvingNode.java",
+      "reproduce_trace_bridge.py",
+      "src/checker.py",
+      "src/exhaustive.py",
+      "src/java_trace_bridge.py",
+      "src/model.py",
+      "src/oracle.py",
+      "src/producer.py",
+      "src/redundant_control.py",
+      "src/witness.py"
+    ],
+    "sha256": "0241986ba9c8e5405879c50a5eb92378de886133e394bbcb06ec5d382894d3cc"
+  },
+  "execution": {
+    "environment_overrides": {
+      "JAVA_TOOL_OPTIONS": "",
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "external_serialized_input": false,
+    "java_children_sequential": true,
+    "javac_options": [
+      "-proc:none"
+    ],
+    "jvm_options": [
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m"
+    ],
+    "network_used": false,
+    "workers": 1
+  },
+  "java": {
+    "javac_probe": {
+      "available": true,
+      "returncode": 0,
+      "version_output": "javac 21.0.11"
+    },
+    "selected_properties": {
+      "java.runtime.version": "21.0.11+10-1-deb13u2-Debian",
+      "java.specification.version": "21",
+      "java.vendor": "Debian",
+      "java.version": "21.0.11",
+      "java.vm.name": "OpenJDK 64-Bit Server VM",
+      "java.vm.vendor": "Debian",
+      "java.vm.version": "21.0.11+10-1-deb13u2-Debian",
+      "os.arch": "amd64"
+    },
+    "version_probe": {
+      "available": true,
+      "returncode": 0,
+      "version_output": "openjdk version \"21.0.11\" 2026-04-21\nOpenJDK Runtime Environment (build 21.0.11+10-1-deb13u2-Debian)\nOpenJDK 64-Bit Server VM (build 21.0.11+10-1-deb13u2-Debian, mixed mode, sharing)"
+    }
+  },
+  "platform": {
+    "machine": "x86_64",
+    "os_release": {
+      "ID": "debian",
+      "NAME": "Debian GNU/Linux",
+      "VERSION": "13 (trixie)",
+      "VERSION_ID": "13"
+    },
+    "pointer_bits": 64,
+    "release": "6.18.44",
+    "sys_platform": "linux",
+    "system": "Linux"
+  },
+  "python": {
+    "implementation": "CPython",
+    "minimum_required": "3.9",
+    "version": "3.13.5",
+    "version_string": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]"
+  },
+  "record_scope": "this trace-bridge run only; not a reconstruction of any earlier environment",
+  "schema": "java-trace-bridge-environment-v1"
+}
