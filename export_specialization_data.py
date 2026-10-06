@@ -32,7 +32,7 @@ def main():
     for name,lines in [('specialization-performance.tex',rows),('specialization-ratios.tex',ratios)]:
         lines.extend([r'\bottomrule',r'\end{tabular}'])
         (args.out/name).write_text('\n'.join(lines)+'\n')
-    print(json.dumps({'tables':2,'cases':summary['java_cases'],'source':'specialization-campaign'},sort_keys=True))
+    print(json.dumps({'tables':2,'cases':summary['java_cases'],'source':args.results.as_posix()},sort_keys=True))
 
 if __name__ == '__main__':
     main()
