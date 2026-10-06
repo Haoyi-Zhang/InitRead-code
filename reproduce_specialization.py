@@ -11,7 +11,10 @@ import hashlib
 import json
 import os
 from pathlib import Path
-import resource
+try:
+    import resource
+except ImportError:
+    resource = None
 import statistics
 import subprocess
 import sys
@@ -62,6 +65,9 @@ def as_tsv(rows):
 
 
 def main():
+    if resource is None:
+        raise RuntimeError('Full JVM campaign requires POSIX resource telemetry; '
+                           'reproduce_portable.py runs only the Python reference scope')
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--skip-benchmark', action='store_true')

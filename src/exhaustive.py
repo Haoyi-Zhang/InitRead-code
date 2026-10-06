@@ -3,7 +3,7 @@ from __future__ import annotations
 import csv
 import itertools
 import json
-import resource
+from runtime_resources import self_peak_rss_kib
 import time
 from pathlib import Path
 from model import evaluate, reachable, successor
@@ -90,7 +90,7 @@ def run(n: int, out: Path, stride: int = 1):
               "counts": totals, "examples": examples, "sampling_stride": stride,
               "cpu_seconds": time.process_time() - begin_cpu,
               "wall_seconds": time.perf_counter() - begin_wall,
-              "peak_rss_kib": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
+              "peak_rss_kib": self_peak_rss_kib(),
               "status": "FINITE_CHECKED"}
     (out / f"exhaustive-{n}.json").write_text(json.dumps(result, indent=2) + "\n")
     assert totals["frontier_mismatches"] == totals["checker_mismatches"] == 0

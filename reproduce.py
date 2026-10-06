@@ -15,7 +15,10 @@ import json
 import os
 from pathlib import Path
 import platform
-import resource
+try:
+    import resource
+except ImportError:
+    resource = None
 import shutil
 import struct
 import subprocess
@@ -33,6 +36,7 @@ from oracle import exact
 from producer import initial_cache, produce
 from redundant_control import run as redundant_run
 from witness import bfs, enumerated_oracle
+from runtime_resources import self_peak_rss_kib
 
 MEASUREMENT_KEYS = {'cpu_seconds', 'wall_seconds', 'peak_rss_kib',
                     'parent_peak_rss_kib', 'child_peak_rss_kib', 'aggregate_rss_upper_kib'}
@@ -196,15 +200,19 @@ def measured_process(command, timeout, output):
             # Linux maximum over children seen so far, NOT an isolated per-stage measurement.
             'child_peak_rss_kib': after.ru_maxrss}
 
-def compare(reference, actual):
+def compare(reference, actual, python_only=False):
     scientific=[]; deterministic=[]
     for name in SCIENTIFIC_JSON_FILES:
+        if python_only and name == 'java-summary.json':
+            continue
         expected=json.loads((reference/name).read_text())
         obtained=json.loads((actual/name).read_text())
         scientific.append({'file':name,
                            'comparison':'semantic JSON excluding measurement fields',
                            'status':'MATCH' if semantic(expected)==semantic(obtained) else 'MISMATCH'})
     for name in DETERMINISTIC_DATA_FILES:
+        if python_only and name == 'java-observations.jsonl':
+            continue
         expected=(reference/name).read_bytes(); obtained=(actual/name).read_bytes()
         deterministic.append({'file':name, 'comparison':'exact bytes',
                               'expected_bytes':len(expected), 'actual_bytes':len(obtained),
@@ -218,11 +226,16 @@ def compare(reference, actual):
             'deterministic_total':len(deterministic),
             'excluded_fields':sorted(MEASUREMENT_KEYS), 'independent_review':False}
 
-def main():
+def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--out', required=True, type=Path, help='fresh or empty output directory')
     parser.add_argument('--verify-against', type=Path, help='compare scientific results, not timing/RSS')
-    args=parser.parse_args()
+    parser.add_argument('--python-only', action='store_true',
+                        help='finite Python scope only; not a full Java replay')
+    args=parser.parse_args(argv)
+    if not args.python_only and resource is None:
+        parser.error('full replay requires POSIX resource telemetry and a local JDK; '
+                     'use --python-only for the explicitly partial finite scope')
     out=args.out.resolve()
     if out.exists() and any(out.iterdir()):
         parser.error('--out must be empty; archived evidence is not overwritten')
@@ -233,7 +246,7 @@ def main():
     if contract['object_counts'] != [2,3] or contract['checker_sampling_stride'] != 1:
         raise ValueError('the implemented audit and input contract do not match')
     begin=time.perf_counter(); own_begin=time.process_time()
-    children_begin=resource.getrusage(resource.RUSAGE_CHILDREN)
+    children_begin=resource.getrusage(resource.RUSAGE_CHILDREN) if resource else None
     stages=[]
     unit_cpu, unit_wall = time.process_time(), time.perf_counter()
     import unittest
@@ -286,6 +299,36 @@ def main():
               'obligations':len(cert['checks']),'checker_steps':checker.steps}
     if capacity['decision']!='DENY_UNSAFE': raise AssertionError('capacity fixture did not deny')
     write_json(out/'capacity.json',capacity)
+    with (out/'summary.csv').open('w',newline='') as stream:
+        writer=csv.writer(stream);writer.writerow(['measure','value'])
+        writer.writerows(sorted(totals.items()))
+    if args.python_only:
+        elapsed={'cpu_seconds':time.process_time()-own_begin,
+                 'wall_seconds':time.perf_counter()-begin,
+                 'parent_peak_rss_kib':self_peak_rss_kib(),
+                 'child_peak_rss_kib':None,'aggregate_rss_upper_kib':None,
+                 'cpu_scope':'Python process only; no JVM scientific execution',
+                 'rss_scope':'Linux self maximum in KiB; unavailable elsewhere',
+                 'stages':stages,'workers':1,'java_executed':False,
+                 'scientific_status':'PYTHON_FINITE_ONLY_NOT_FULL_REPLAY',
+                 'semantic_transitions':totals['transitions']+redundant['counts']['transitions']+
+                    sum(x['bfs']['transitions']+x['path_oracle']['transitions'] for x in witnesses)+
+                    sum(x['transitions'] for x in negative.values()),
+                 'checker_steps_exhaustive':totals['checker_steps'],
+                 'checker_steps_unit':unit_counts['checker_steps'],
+                 'checker_steps_capacity':capacity['checker_steps'],
+                 'unit_inspect_calls':unit_counts['inspect_calls']}
+        write_json(out/'measurements.json',elapsed)
+        if args.verify_against:
+            comparison=compare(args.verify_against.resolve(),out,python_only=True)
+            comparison['scope']='Python-only subset: six semantic JSON and four byte comparisons'
+            comparison['not_executed']=['java-summary.json','java-observations.jsonl']
+            write_json(out/'replay-verification.json',comparison)
+            if comparison['status']!='MATCH':
+                raise AssertionError('Python-only replay mismatch; baseline unchanged')
+        print(json.dumps({'status':'PASS_PYTHON_SCOPE_ONLY','totals':totals,
+                          'java_executed':False,'measurements':elapsed},indent=2))
+        return
     for binary in ('javac','java'):
         if shutil.which(binary) is None: raise RuntimeError('a local JDK is required; nothing is downloaded')
     with tempfile.TemporaryDirectory(prefix='initialization-classes-') as temporary:
@@ -328,9 +371,6 @@ def main():
         'round_trip_validity_changes':sum(x['input_valid']!=x['valid'] for x in observations),
         'interpretation':'passive owned round trips; no JVM monitor or constructor-history refinement'}
     write_json(out/'java-summary.json',java_summary)
-    with (out/'summary.csv').open('w',newline='') as stream:
-        writer=csv.writer(stream);writer.writerow(['measure','value'])
-        writer.writerows(sorted(totals.items()))
     children=resource.getrusage(resource.RUSAGE_CHILDREN)
     parent=resource.getrusage(resource.RUSAGE_SELF)
     elapsed={'cpu_seconds':time.process_time()-own_begin+children.ru_utime+children.ru_stime-

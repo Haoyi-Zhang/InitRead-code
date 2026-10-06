@@ -1,5 +1,6 @@
 """Owned finite-object pilot: no JVM payloads and no target applications."""
-import itertools,json,time,resource
+import itertools,json,time
+from runtime_resources import self_peak_rss_kib
 from pathlib import Path
 # State: per-object (phase-ready bit, value bit, next object or -1).
 # A safe object is ready, its bit is 1, and a non-null next object's bit is 1.
@@ -60,7 +61,7 @@ def run(n, path):
        if naive and not truth:
         cnt['stale_false_accepts']+=1
         examples.setdefault('stale_cache',dict(before=hs,roots=sorted(roots),write=[obj,f,v],add=add,after=h,truth=truth))
- out=dict(n=n,counts=cnt,examples=examples,cpu_seconds=time.process_time()-t,wall_seconds=time.perf_counter()-wall,peak_rss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)
+ out=dict(n=n,counts=cnt,examples=examples,cpu_seconds=time.process_time()-t,wall_seconds=time.perf_counter()-wall,peak_rss_kib=self_peak_rss_kib())
  Path(path).write_text(json.dumps(out,indent=2)+'\n')
 
  assert cnt['frontier_mismatches']==0 and cnt['stale_false_accepts']>0

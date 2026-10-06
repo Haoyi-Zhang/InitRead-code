@@ -11,7 +11,10 @@ import itertools
 import json
 import os
 from pathlib import Path
-import resource
+try:
+    import resource
+except ImportError:
+    resource = None
 import statistics
 import subprocess
 import sys
@@ -82,6 +85,9 @@ def cpu():
     return a.ru_utime+a.ru_stime+b.ru_utime+b.ru_stime
 
 def main():
+    if resource is None:
+        raise RuntimeError('Full JVM campaign requires POSIX resource telemetry; '
+                           'reproduce_portable.py runs only the Python reference scope')
     ap=argparse.ArgumentParser();ap.add_argument('--out',type=Path,required=True)
     ap.add_argument('--verify-against',type=Path);ap.add_argument('--skip-benchmark',action='store_true')
     args=ap.parse_args();out=args.out.resolve();require_fresh(out);started=cpu()

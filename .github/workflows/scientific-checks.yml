@@ -1,0 +1,151 @@
+name: Scientific checks
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  scientific-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30 # execution ceiling, not a predicted scientific duration
+    steps:
+      - name: Check out this reviewed project
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          submodules: false
+          lfs: false
+      - name: Python 3.12
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Trusted Temurin JDK 21
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Run all four full offline campaigns and retain actual telemetry
+        working-directory: .
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+          JAVA_TOOL_OPTIONS: ''
+          JDK_JAVA_OPTIONS: ''
+          _JAVA_OPTIONS: ''
+          CLASSPATH: ''
+        run: |
+          python -B - <<'PY'
+          from datetime import datetime, timezone
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import platform
+          import re
+          import signal
+          import shutil
+          import subprocess
+          import sys
+          import time
+
+          repo = Path.cwd().resolve()
+          required = ('reproduce.py', 'reproduce_trace_bridge.py',
+                      'reproduce_receiver.py', 'reproduce_specialization.py')
+          if any(not (repo/name).is_file() for name in required):
+              raise RuntimeError('Run from the standalone InitRead repository root')
+          root = Path(os.environ['RUNNER_TEMP']).resolve() / (
+              'p002-' + os.environ['GITHUB_RUN_ID'] + '-' + os.environ['GITHUB_RUN_ATTEMPT'])
+          root.mkdir() # Refuse an existing/nonfresh run, never overwrite prior evidence.
+          scratch = root/'tmp'; scratch.mkdir()
+          logs = root/'logs'; logs.mkdir()
+          env = {**os.environ, 'TMPDIR':str(scratch), 'TMP':str(scratch), 'TEMP':str(scratch)}
+
+          def write_json(path, value):
+              path.write_bytes((json.dumps(value, indent=2, sort_keys=True)+'\n').encode('utf-8'))
+
+          def binding(paths):
+              return {p.relative_to(repo).as_posix():hashlib.sha256(p.read_bytes()).hexdigest()
+                      for p in sorted(paths)}
+
+          sources = [p for p in repo.rglob('*') if p.is_file() and
+                     not {'results','__pycache__','.git'}.intersection(p.relative_to(repo).parts)]
+          protected = [p for p in (repo/'results').rglob('*')
+                       if p.is_file() and '__pycache__' not in p.parts]
+          before = binding(sources + protected)
+          write_json(root/'input-source-binding.json', before)
+          for p in sources:
+              target = root/'source-snapshot'/p.relative_to(repo)
+              target.parent.mkdir(parents=True, exist_ok=True); shutil.copy2(p, target)
+          workflow = repo/'.github/workflows/scientific-checks.yml'
+          shutil.copy2(workflow, root/'workflow-snapshot.yml')
+
+          java = subprocess.run(['java','-XshowSettings:properties','-version'], env=env,
+                                text=True, capture_output=True, timeout=15, check=True)
+          javac = subprocess.run(['javac','-version'], env=env,
+                                 text=True, capture_output=True, timeout=15, check=True)
+          properties = {key.strip(): value.strip() for line in java.stderr.splitlines()
+                        for key, separator, value in [line.partition(' = ')] if separator}
+          write_json(root/'runtime.json', {
+              'platform':platform.platform(), 'python':sys.version,
+              'java_version_output':java.stderr, 'javac_version_output':javac.stdout+javac.stderr,
+              'timing_scope':'This new Actions machine only; archived timings not pooled or replaced',
+              'experiment_network_used':False, 'external_serialized_inputs':False})
+          if sys.version_info[:2] != (3,12) or properties.get('java.specification.version') != '21':
+              raise RuntimeError('Expected Python 3.12 and Java 21')
+          compiler_version = re.search(r'^javac\s+(\d+)(?:\.|\s|$)',
+                                       javac.stdout+javac.stderr, re.MULTILINE)
+          if not compiler_version or compiler_version.group(1) != '21':
+              raise RuntimeError('Expected javac 21')
+
+          # The four complete reviewed commands: no --skip-benchmark, no external targets.
+          commands = [
+              ('portability-tests', [sys.executable,'-B','-m','unittest','discover','-s','portability_tests','-v']),
+              ('finite', [sys.executable,'-B','reproduce.py','--out',str(root/'finite'),
+                          '--verify-against','results/campaign']),
+              ('passive', [sys.executable,'-B','reproduce_trace_bridge.py','--out',str(root/'passive')]),
+              ('receiver', [sys.executable,'-B','reproduce_receiver.py','--out',str(root/'receiver'),
+                            '--verify-against','results/receiver-campaign']),
+              ('specialization', [sys.executable,'-B','reproduce_specialization.py','--out',str(root/'specialization'),
+                                  '--verify-against','results/specialization-campaign']),
+          ]
+          records = []; failed = False
+          for name, argv in commands:
+              started = datetime.now(timezone.utc).isoformat(); tick = time.perf_counter()
+              with (logs/(name+'.stdout')).open('wb') as stdout, (logs/(name+'.stderr')).open('wb') as stderr:
+                  try:
+                      result = subprocess.Popen(argv, cwd=repo, env=env, stdout=stdout, stderr=stderr,
+                                                start_new_session=True)
+                      code, outcome = result.wait(timeout=900), 'EXIT'
+                  except subprocess.TimeoutExpired:
+                      # Kill only this newly owned session, including a live JVM child;
+                      # otherwise a timed-out driver could overlap the next campaign.
+                      try:
+                          os.killpg(result.pid, signal.SIGKILL)
+                      except ProcessLookupError:
+                          pass
+                      result.wait(timeout=15)
+                      code, outcome = None, 'TIMEOUT_UNKNOWN'
+              records.append({'name':name,'argv':argv,'returncode':code,'outcome':outcome,
+                              'started_utc':started,'wall_seconds':time.perf_counter()-tick,
+                              'stdout':'logs/'+name+'.stdout','stderr':'logs/'+name+'.stderr'})
+              write_json(root/'commands.json', records)
+              failed |= code != 0
+              print(name, outcome, code, flush=True)
+          after = binding(sources + protected)
+          unchanged = before == after
+          write_json(root/'integrity.json', {'repository_sources_and_archived_results_unchanged':unchanged})
+          raise SystemExit(1 if failed or not unchanged else 0)
+          PY
+      - name: Upload actual outputs, including failure/timeout diagnostics
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: p002-scientific-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/p002-${{ github.run_id }}-${{ github.run_attempt }}/
+          if-no-files-found: warn
+          retention-days: 14

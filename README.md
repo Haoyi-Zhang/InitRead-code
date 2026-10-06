@@ -14,6 +14,36 @@ Linux, Python 3.9 or newer, and a local JDK providing java and javac. All Python
 
 All output directories below must be absent or empty. All Java children are sequential; one active processor, SerialGC, a 256 MiB heap cap, and javac -proc:none are recorded by the runners. Each command records actual environment and code/input bindings. Original historical versions and architecture that were never recorded remain unknown.
 
+### Portable Python-only execution
+
+The bounded Python computation and integer references can also run without a
+JDK or POSIX `resource`. This is an explicitly partial execution, not a new Java
+stream-decoding, receiver-differential, or performance experiment:
+
+```sh
+python -B -m unittest discover -s portability_tests -v
+python -B reproduce_portable.py --out /absolute/fresh/python-scope
+```
+
+This runs the complete two-/three-object enumeration, witness/capacity controls,
+all 32 existing Python tests, receiver packet generation, the independent
+5,248-packet certificate reference, and reinterpretation of the 11 archived
+passive observations. It compares six inherited semantic JSON and four byte
+files, plus both campaigns' generated input files. It never supplies synthetic
+Java observations or serialized sizes. Wall time and Python CPU are measured;
+unsupported peak RSS is JSON `null`, not zero or a Linux-equivalent estimate.
+
+In the standalone InitRead code repository, the contents of this `artifact/`
+directory are the repository root. Its `.github/workflows/scientific-checks.yml`
+runs all four full campaigns and the portability regressions on Ubuntu,
+Python 3.12, and Temurin 21. The complete current run passed all five commands:
+615,984 finite transitions, 4,563 real Java receiver cases, 5,248 specialization
+cases, 42 receiver timing forks, 28 paired specialization forks, and 30 exact
+size-bound equalities. Raw observations and command logs are in `results/current/`.
+They use their own measured environment; historical timings are not pooled.
+The saved receiver streams reproduce the unchanged `results/receiver-campaign/`
+streams byte-for-byte, so that input set is retained once rather than duplicated.
+
 ## Commands
 
 Preserved finite model, including 17 test methods and 7 scientific JSON / 5 deterministic file comparisons:
@@ -80,7 +110,7 @@ An earlier attempt hit an outer execution timeout after completing its core comp
 | Retained generic timing at128 nodes |420.45 µs generic vs39.85 µs eager|Historical six-size protocol, not current specialized cost|
 | Exact specialization |5,248 integer packets; zero full-observation and independent-certificate-reference disagreement|4,552 retained inputs plus696 targeted/size cases, not new applications|
 | Sharp accepting packet bound |22,134 words /88,563 canonical serialized bytes|Attained at128 nodes and128 repeated roots|
-| Current paired timing |Median generic/specialized factors4.92–9.94; specialized/eager1.16–2.72|Four controlled families, seven forks each; full ranges retained|
+| Current paired timing |Median generic/specialized factors2.81–10.36; specialized/eager1.18–3.69|Four controlled families, seven forks each; full ranges retained|
 
 ## Evidence locations
 
