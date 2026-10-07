@@ -10,7 +10,7 @@ The new receiver changes the wire/API contract: it deserializes only a canonical
 
 ## Requirements
 
-Linux, Python 3.9 or newer, and a local JDK providing java and javac. All Python dependencies are in the standard library. Recorded executions used Debian GNU/Linux 13 x86-64, CPython 3.13.5, and Debian OpenJDK/javac 21.0.11. No other JDK/vendor combination has been experimentally validated here. Runtime-evaluated built-in generic aliases require Python 3.9. Experiment commands do not download dependencies, call network or model services, use GPUs, or consume third-party payloads.
+Historical full campaigns used Linux, Python 3.9 or newer, and a local JDK providing java and javac. All Python dependencies are in the standard library. Those recorded executions used Debian GNU/Linux 13 x86-64, CPython 3.13.5, and Debian OpenJDK/javac 21.0.11. The separate current-only correctness replay below was also executed on Windows x64, CPython 3.12.14 and Temurin 17.0.20.1+1; it adds no timing evidence. No additional JDK/vendor combination is experimentally validated here. Runtime-evaluated built-in generic aliases require Python 3.9. Experiment commands do not download dependencies, call network or model services, use GPUs, or consume third-party payloads.
 
 All output directories below must be absent or empty. All Java children are sequential; one active processor, SerialGC, a 256 MiB heap cap, and javac -proc:none are recorded by the runners. Each command records actual environment and code/input bindings. Original historical versions and architecture that were never recorded remain unknown.
 
@@ -36,13 +36,56 @@ unsupported peak RSS is JSON `null`, not zero or a Linux-equivalent estimate.
 In the standalone InitRead code repository, the contents of this `artifact/`
 directory are the repository root. Its `.github/workflows/scientific-checks.yml`
 runs all four full campaigns and the portability regressions on Ubuntu,
-Python 3.12, and Temurin 21. The complete current run passed all five commands:
+Python 3.12, and Temurin 21. The retained pre-preallocation run passed all five commands:
 615,984 finite transitions, 4,563 real Java receiver cases, 5,248 specialization
 cases, 42 receiver timing forks, 28 paired specialization forks, and 30 exact
 size-bound equalities. Raw observations and command logs are in `results/current/`.
-They use their own measured environment; historical timings are not pooled.
+They use their own measured Linux/OpenJDK 21 environment and original sources,
+before the capacity pre-sizing below; they are not new timings of current code.
+The workflow definition is not a receipt of a fresh CI execution.
 The saved receiver streams reproduce the unchanged `results/receiver-campaign/`
 streams byte-for-byte, so that input set is retained once rather than duplicated.
+
+### Current-only portable Java correctness
+
+With Python 3.9+ and a local JDK 17+ (no automatic download), run:
+
+```sh
+python -B reproduce_java_conformance.py --java-home /absolute/local/jdk \
+  --out /absolute/fresh/java-correctness-output
+```
+
+From this artifact directory, the equivalent single-line PowerShell command is
+`python -B reproduce_java_conformance.py --java-home "D:/your/local/jdk" --out "D:/your/fresh/java-correctness-output"`.
+Replace both example paths with your chosen local JDK and absent output directory.
+
+`--java-home` may be omitted when `JAVA_HOME`, or both `java` and `javac` on
+`PATH`, select the intended JDK. The output directory must not exist and must
+be outside this artifact. All classes, newly serialized inputs, raw observations,
+fresh Python-reference results and command/version receipts stay there. The
+driver has no timing option and invokes no benchmark branch. It uses no before
+copy, private validation path, network service or third-party serialized input.
+
+This compiles the two current receivers and three reviewed harnesses with
+`--release 17 -proc:none`, runs the ten receiver test methods, and replays the
+included 4,563 receiver observations and 5,248 integer cases. It compares full
+receiver and integer outputs against `results/current/`, the complete serialized
+input set byte-for-byte against `results/receiver-campaign/streams`, and 31,488
+six-mode observations against a compact retained original-output fingerprint.
+The added `CapacityObservationHarness` has no benchmark path. The fingerprint
+and its exact canonicalization/provenance are in `java-conformance-contract.json`;
+no second serialized stream archive is included.
+
+Both independent Python references execute anew. Certificate classifications
+are checked for every integer packet; the final-data reference independently
+checks eager policy and published representation wherever it has complete valid
+data. Six-mode matched comparisons retain reasons, traces, steps/read counters,
+heap/ordered roots and alias-freeze observations, including negative controls.
+References do not model Java serialization. This is bounded replay evidence,
+not a universal proof or performance measurement. A mismatch, timeout or child
+failure exits nonzero and preserves diagnostics; historical campaigns and
+timings are never rewritten. Current portable execution metadata, when available,
+is separate in `results/current/java-portable-conformance.json`.
 
 ## Commands
 
@@ -82,7 +125,7 @@ python3 export_receiver_data.py --results results/receiver-campaign --out receiv
 
 ## Exact specialization and three-way comparison
 
-The production State now represents the fixed schedule without cloning the whole heap at every step. The incoming generic verifier is preserved in `baselines/GenericReceiver.java` with only a class-name change. `receiver/certificate_reference.py` independently parses complete integer certificates and recomputes whole states; it imports no production component. Its scope is not Java stream decoding.
+The production State represents the fixed schedule without cloning the whole heap at every step. The historical generic verifier was retained in `baselines/GenericReceiver.java` with a class/constructor rename. The current copy additionally pre-sizes the canonical transport buffer using `27 + Integer.BYTES * words.length`, exactly as the current specialized receiver does. Its generic shadow-state algorithm, parser and data policy remain unchanged. Frozen Linux/OpenJDK 21 measurements describe the original sources before this matched capacity change, not current preallocation performance. `receiver/certificate_reference.py` independently parses complete integer certificates and recomputes whole states; it imports no production component. Its scope is not Java stream decoding.
 
 ```sh
 python3 reproduce_specialization.py --out specialization-output
@@ -110,7 +153,8 @@ An earlier attempt hit an outer execution timeout after completing its core comp
 | Retained generic timing at128 nodes |420.45 µs generic vs39.85 µs eager|Historical six-size protocol, not current specialized cost|
 | Exact specialization |5,248 integer packets; zero full-observation and independent-certificate-reference disagreement|4,552 retained inputs plus696 targeted/size cases, not new applications|
 | Sharp accepting packet bound |22,134 words /88,563 canonical serialized bytes|Attained at128 nodes and128 repeated roots|
-| Current paired timing |Median generic/specialized factors2.81–10.36; specialized/eager1.18–3.69|Four controlled families, seven forks each; full ranges retained|
+| Retained paired timing before preallocation |Median generic/specialized factors2.81–10.36; specialized/eager1.18–3.69|Original Linux/OpenJDK 21 sources; four controlled families, seven forks each; full ranges retained; no new capacity timing|
+| Current Windows 17 finite conformance |4,563 receiver/serialized cases; 5,248 integer packets; 31,488 six-mode observations; ten receiver tests|Temurin 17.0.20.1+1; fresh independent Python references; exact retained comparisons; no benchmark or universal correctness claim|
 
 ## Evidence locations
 

@@ -160,7 +160,7 @@ public final class CertifiedReceiver {
             // thrown halfway through a second, truncated value. This deliberately
             // narrow wire contract accepts only the canonical OOS representation
             // of one int[]. Re-encoding invokes no application code.
-            ByteArrayOutputStream canonical = new ByteArrayOutputStream();
+            ByteArrayOutputStream canonical = new ByteArrayOutputStream(27 + Integer.BYTES * words.length);
             try (ObjectOutputStream out = new ObjectOutputStream(canonical)) {
                 out.writeObject(words);
             }

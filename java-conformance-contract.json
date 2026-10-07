@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "scope": "Finite owned-case correctness only; no timing, network, arbitrary object input or before-copy dependency",
+  "receiver_cases": 4552,
+  "receiver_observations": 4563,
+  "integer_cases": 5248,
+  "full_observations": 31488,
+  "receiver_cases_sha256": "d1b45083ac8c4c69cfeb344fcc20ddee300312f8224155563d81631707b9bc16",
+  "integer_cases_sha256": "e07a25778332d10246aedf9394fb86094e82c70d75f5530d95b721e6d41cbd3e",
+  "full_observations_canonical_sha256": "d1ed648742a3c93eaab7ab3e57c9d0e2edab3a0aa1955a332354bb53582dd70f",
+  "canonicalization": "Each parsed JSON object: Python json.dumps(sort_keys=True,separators=(',',':'),ensure_ascii=True), ASCII LF; original case/mode order retained",
+  "fingerprint_provenance": "Original unmodified receiver sources, retained P002-capacity java-validation-17_0_20_1_1 before-full-observations campaign; actual Temurin 17.0.20.1+1; candidate previously matched every full observation. This compact fingerprint is an additional retained control, not a replacement for included historical campaigns.",
+  "original_raw_full_observations_sha256": "42b9bea4b11d2cbda60c6ec7a2e79a01b833ab166f6a27222dd9a04d539dea33"
+}
