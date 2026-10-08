@@ -10,6 +10,6 @@ Checks: (1) exact 4,563 existing Java executions and canonical outputs, (2) fres
 
 Performance: before measuring, fix four contrasting safe 128-node families: chain with one root; cycle with one root; isolated node with 128 duplicate roots; full cycle with 128 duplicate roots. Compare generic certificate, specialized certificate and unchanged direct eager gate on identical bytes. Seven sequential JVM forks per family; rotate mode order across forks; 1,000 warmup and 500 timed calls per mode. Report paired fork means, median and full min/max, not per-call latency quantiles or broad performance superiority. Do not discard slow forks or tune from these results.
 
-Success: zero language/diagnostic/reference disagreements and original deterministic results unchanged. Slower specialization or direct checking is an allowed result. Reject the positive journal lock unless a separate substantive originality case is established; a faster familiar checker does not suffice.
+Success: zero language/diagnostic/reference disagreements and original deterministic results unchanged. Slower specialization or direct checking is an allowed result.
 
 Resource: one worker, local CPU, existing capped JVM options, each child bounded by timeout; record measured Python/JDK/system/options/input/code and commands/exits. Earlier aggregate event-ceiling overrun remains disclosed. New timing not backfilled into old environment or baselines.

@@ -24,7 +24,7 @@ From the artifact root, using Python3.9+ and a local JDK (recorded execution:JDK
 python3 reproduce_receiver.py --out receiver-output
 ```
 
-This executes five unit test methods, creates and saves all benign serialized inputs, compiles the Java source, runs4,563 Java cases and the same-byte observation pair, and measures42 sequential size-specific Java forks. No dependency is downloaded and no network or model API is used. The output directory must be absent or empty.
+This executes ten unit test methods across `test_receiver.py` and `test_specialization.py`, creates and saves all benign serialized inputs, compiles the Java source, runs 4,563 Java cases and the same-byte observation pair, and measures 42 sequential size-specific Java forks. The output directory must be absent or empty. Running it now measures the current preallocated sources, not the original generic receiver.
 
 A deterministic replay without repeating variable timing measurements is:
 
@@ -51,7 +51,9 @@ The artifact has no dependency on the paper directory. The `tables` files can be
 - `java/ReceiverHarness.java`: owned serialization, controls, snapshots, aliases, costs.
 - `java/ObservationPair.java`: same serialized input and public projection with different owned unfinished-read observations.
 - `receiver_tests/test_receiver.py`: raw-root, data, and code-separation tests.
-- `results/receiver-campaign/`: current raw correctness and performance evidence.
+- `results/receiver-campaign/`: original Debian/OpenJDK 21.0.11 generic-receiver correctness and timing records, before specialization and buffer preallocation.
+- `results/current/specialization/`: separate Ubuntu/Temurin 21.0.12.1 paired generic/specialized/eager measurements used in the manuscript, before buffer preallocation.
+- `results/current/java-portable-conformance.json`: Windows/Temurin 17 correctness replay when supplied; no timing measurements.
 - `results/receiver-pilot/`: retained shorter-warmup observations and affected source; not pooled with final timings.
 - `results/receiver-framing-control/`: retained pre-canonical-check run, minimal acceptance probe, and affected source.
 
