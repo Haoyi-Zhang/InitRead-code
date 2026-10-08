@@ -105,6 +105,7 @@ jobs:
           # The four complete reviewed commands: no --skip-benchmark, no external targets.
           commands = [
               ('portability-tests', [sys.executable,'-B','-m','unittest','discover','-s','portability_tests','-v']),
+              ('portable-java', [sys.executable,'-B','reproduce_java_conformance.py','--out',str(root/'portable-java')]),
               ('finite', [sys.executable,'-B','reproduce.py','--out',str(root/'finite'),
                           '--verify-against','results/campaign']),
               ('passive', [sys.executable,'-B','reproduce_trace_bridge.py','--out',str(root/'passive')]),

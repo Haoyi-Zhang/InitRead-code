@@ -90,8 +90,8 @@ def main():
         parser.error('--out must be a new directory outside, and not containing, this artifact')
     java, javac = tools(args.java_home)
     contract = json.loads((ROOT / 'java-conformance-contract.json').read_text(encoding='utf-8'))
-    receiver_path = ROOT / 'results/current/receiver/cases.tsv'
-    integer_path = ROOT / 'results/current/specialization/cases.tsv'
+    receiver_path = ROOT / 'results/receiver-campaign/cases.tsv'
+    integer_path = ROOT / 'results/specialization-campaign/cases.tsv'
     receiver_inputs = packets(receiver_path, contract['receiver_cases'], contract['receiver_cases_sha256'])
     integer_inputs = packets(integer_path, contract['integer_cases'], contract['integer_cases_sha256'])
     out.mkdir(parents=True)
@@ -127,8 +127,8 @@ def main():
     try:
         bindings = SOURCES + ['reproduce_java_conformance.py', 'java-conformance-contract.json',
                               'receiver/reference.py', 'receiver/certificate_reference.py',
-                              'results/current/receiver/cases.tsv', 'results/current/receiver/java-results.jsonl',
-                              'results/current/specialization/cases.tsv', 'results/current/specialization/comparison.jsonl']
+                              'results/receiver-campaign/cases.tsv', 'results/receiver-campaign/java-results.jsonl',
+                              'results/specialization-campaign/cases.tsv', 'results/specialization-campaign/comparison.jsonl']
         save(out / 'environment.json', {'python': sys.version, 'platform': sys.platform,
              'java': java, 'javac': javac, 'jvm_options': VM,
              'bindings_sha256': {p: digest(ROOT / p) for p in bindings},
@@ -145,11 +145,11 @@ def main():
         run('full-observations', prefix + ['CapacityObservationHarness', str(integer_path)], 180)
 
         actual = rows(out / 'receiver.stdout.txt')
-        retained = rows(ROOT / 'results/current/receiver/java-results.jsonl')
+        retained = rows(ROOT / 'results/receiver-campaign/java-results.jsonl')
         if actual != retained or len(actual) != contract['receiver_observations']:
             raise AssertionError('receiver full retained observations differ')
         integers = rows(out / 'integer.stdout.txt')
-        if integers != rows(ROOT / 'results/current/specialization/comparison.jsonl') or len(integers) != len(integer_inputs):
+        if integers != rows(ROOT / 'results/specialization-campaign/comparison.jsonl') or len(integers) != len(integer_inputs):
             raise AssertionError('integer retained observations differ')
         full = rows(out / 'full-observations.stdout.txt', ('id', 'mode'))
         if len(full) != contract['full_observations']:

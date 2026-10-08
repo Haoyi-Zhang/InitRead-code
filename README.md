@@ -59,6 +59,11 @@ From this artifact directory, the equivalent single-line PowerShell command is
 `python -B reproduce_java_conformance.py --java-home "D:/your/local/jdk" --out "D:/your/fresh/java-correctness-output"`.
 Replace both example paths with your chosen local JDK and absent output directory.
 
+The input tables and retained observations are supplied under
+`results/receiver-campaign/` and `results/specialization-campaign/`. The command
+reads those canonical records directly; it does not require a separate
+`results/current/` copy.
+
 `--java-home` may be omitted when `JAVA_HOME`, or both `java` and `javac` on
 `PATH`, select the intended JDK. The output directory must not exist and must
 be outside this artifact. All classes, newly serialized inputs, raw observations,
