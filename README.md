@@ -74,7 +74,8 @@ copy, private validation path, network service or third-party serialized input.
 This compiles the two current receivers and three reviewed harnesses with
 `--release 17 -proc:none`, runs the ten receiver test methods, and replays the
 included 4,563 receiver observations and 5,248 integer cases. It compares full
-receiver and integer outputs against `results/current/`, the complete serialized
+receiver outputs against `results/receiver-campaign/java-results.jsonl` and
+integer outputs against `results/specialization-campaign/comparison.jsonl`, the complete serialized
 input set byte-for-byte against `results/receiver-campaign/streams`, and 31,488
 six-mode observations against a compact retained original-output fingerprint.
 The added `CapacityObservationHarness` has no benchmark path. The fingerprint
