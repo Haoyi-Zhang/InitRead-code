@@ -1,0 +1,394 @@
+[
+  {
+    "batch": 0,
+    "id": "chain-one",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 164505300
+  },
+  {
+    "batch": 1,
+    "id": "chain-one",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 148918500
+  },
+  {
+    "batch": 2,
+    "id": "chain-one",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 150571600
+  },
+  {
+    "batch": 3,
+    "id": "chain-one",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 152184000
+  },
+  {
+    "batch": 4,
+    "id": "chain-one",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 147687700
+  },
+  {
+    "batch": 5,
+    "id": "chain-one",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 152159200
+  },
+  {
+    "batch": 6,
+    "id": "chain-one",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 151885400
+  },
+  {
+    "batch": 0,
+    "id": "chain-one",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 75200
+  },
+  {
+    "batch": 1,
+    "id": "chain-one",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 74000
+  },
+  {
+    "batch": 2,
+    "id": "chain-one",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 75600
+  },
+  {
+    "batch": 3,
+    "id": "chain-one",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 73900
+  },
+  {
+    "batch": 4,
+    "id": "chain-one",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 74200
+  },
+  {
+    "batch": 5,
+    "id": "chain-one",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 75600
+  },
+  {
+    "batch": 6,
+    "id": "chain-one",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 74200
+  },
+  {
+    "batch": 0,
+    "id": "cycle-one",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 153689100
+  },
+  {
+    "batch": 1,
+    "id": "cycle-one",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 153898600
+  },
+  {
+    "batch": 2,
+    "id": "cycle-one",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 153649300
+  },
+  {
+    "batch": 3,
+    "id": "cycle-one",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 173107600
+  },
+  {
+    "batch": 4,
+    "id": "cycle-one",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 153087700
+  },
+  {
+    "batch": 5,
+    "id": "cycle-one",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 150540300
+  },
+  {
+    "batch": 6,
+    "id": "cycle-one",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 149141200
+  },
+  {
+    "batch": 0,
+    "id": "cycle-one",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 73100
+  },
+  {
+    "batch": 1,
+    "id": "cycle-one",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 72200
+  },
+  {
+    "batch": 2,
+    "id": "cycle-one",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 72100
+  },
+  {
+    "batch": 3,
+    "id": "cycle-one",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 72300
+  },
+  {
+    "batch": 4,
+    "id": "cycle-one",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 71600
+  },
+  {
+    "batch": 5,
+    "id": "cycle-one",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 72300
+  },
+  {
+    "batch": 6,
+    "id": "cycle-one",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 71700
+  },
+  {
+    "batch": 0,
+    "id": "isolated-repeat",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 201672100
+  },
+  {
+    "batch": 1,
+    "id": "isolated-repeat",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 202367900
+  },
+  {
+    "batch": 2,
+    "id": "isolated-repeat",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 201402100
+  },
+  {
+    "batch": 3,
+    "id": "isolated-repeat",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 197259600
+  },
+  {
+    "batch": 4,
+    "id": "isolated-repeat",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 213658700
+  },
+  {
+    "batch": 5,
+    "id": "isolated-repeat",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 200188200
+  },
+  {
+    "batch": 6,
+    "id": "isolated-repeat",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 200117800
+  },
+  {
+    "batch": 0,
+    "id": "isolated-repeat",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 113500
+  },
+  {
+    "batch": 1,
+    "id": "isolated-repeat",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 112400
+  },
+  {
+    "batch": 2,
+    "id": "isolated-repeat",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 113500
+  },
+  {
+    "batch": 3,
+    "id": "isolated-repeat",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 118800
+  },
+  {
+    "batch": 4,
+    "id": "isolated-repeat",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 112500
+  },
+  {
+    "batch": 5,
+    "id": "isolated-repeat",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 112100
+  },
+  {
+    "batch": 6,
+    "id": "isolated-repeat",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 113100
+  },
+  {
+    "batch": 0,
+    "id": "cycle-repeat",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 278495500
+  },
+  {
+    "batch": 1,
+    "id": "cycle-repeat",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 278051100
+  },
+  {
+    "batch": 2,
+    "id": "cycle-repeat",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 298077300
+  },
+  {
+    "batch": 3,
+    "id": "cycle-repeat",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 285910000
+  },
+  {
+    "batch": 4,
+    "id": "cycle-repeat",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 278336200
+  },
+  {
+    "batch": 5,
+    "id": "cycle-repeat",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 278331400
+  },
+  {
+    "batch": 6,
+    "id": "cycle-repeat",
+    "iterations": 5,
+    "mode": "certificate",
+    "python_preparation_ns": 277674000
+  },
+  {
+    "batch": 0,
+    "id": "cycle-repeat",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 116900
+  },
+  {
+    "batch": 1,
+    "id": "cycle-repeat",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 113000
+  },
+  {
+    "batch": 2,
+    "id": "cycle-repeat",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 114000
+  },
+  {
+    "batch": 3,
+    "id": "cycle-repeat",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 113400
+  },
+  {
+    "batch": 4,
+    "id": "cycle-repeat",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 113800
+  },
+  {
+    "batch": 5,
+    "id": "cycle-repeat",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 113100
+  },
+  {
+    "batch": 6,
+    "id": "cycle-repeat",
+    "iterations": 5,
+    "mode": "eager_data_only",
+    "python_preparation_ns": 113400
+  }
+]

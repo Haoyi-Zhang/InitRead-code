@@ -1,0 +1,763 @@
+[
+  {
+    "argv": [
+      "java.exe",
+      "-version"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "java-version",
+    "started_utc": "2026-10-12T00:26:53.986710+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.046959700000115845
+  },
+  {
+    "argv": [
+      "javac.exe",
+      "-version"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "javac-version",
+    "started_utc": "2026-10-12T00:26:54.034956+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.1061174999999821
+  },
+  {
+    "argv": [
+      "javac.exe",
+      "-J-XX:ActiveProcessorCount=1",
+      "-J-XX:+UseSerialGC",
+      "-J-Xmx256m",
+      "-proc:none",
+      "--release",
+      "17",
+      "-encoding",
+      "UTF-8",
+      "-d",
+      "results/public-boundary/classes",
+      "java/CertifiedReceiver.java",
+      "java/PublicBoundaryHarness.java",
+      "java/DeserializationTraceHarness.java",
+      "java/ObservationPair.java"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "compile",
+    "started_utc": "2026-10-12T00:26:54.142385+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.6097491999998965
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "DeserializationTraceHarness"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "passive",
+    "started_utc": "2026-10-12T00:26:54.752567+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.1209924999998293
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "ObservationPair"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "observation-pair",
+    "started_utc": "2026-10-12T00:26:54.873720+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.07698130000017045
+  },
+  {
+    "argv": [
+      "javac.exe",
+      "-proc:none",
+      "--release",
+      "17",
+      "-d",
+      "results/public-boundary/v1",
+      "java/evolution/v1/WriteOld.java",
+      "java/evolution/v1/evolution/EvolvingNode.java"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "evolution-compile-v1",
+    "started_utc": "2026-10-12T00:26:54.952096+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.37592540000014196
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/v1",
+      "WriteOld",
+      "results/public-boundary/owned-evolution.ser"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "evolution-v1",
+    "started_utc": "2026-10-12T00:26:55.328428+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.05788320000010572
+  },
+  {
+    "argv": [
+      "javac.exe",
+      "-proc:none",
+      "--release",
+      "17",
+      "-d",
+      "results/public-boundary/v2",
+      "java/evolution/v2/ReadNew.java",
+      "java/evolution/v2/evolution/EvolvingNode.java"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "evolution-compile-v2",
+    "started_utc": "2026-10-12T00:26:55.387103+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.41093880000016725
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/v2",
+      "ReadNew",
+      "results/public-boundary/owned-evolution.ser"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "evolution-v2",
+    "started_utc": "2026-10-12T00:26:55.799029+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.08890990000008969
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "results/public-boundary/valid-data-cases.tsv"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "public-boundary",
+    "started_utc": "2026-10-12T00:26:57.710826+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.38838570000007167
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "chain-one",
+      "0"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-chain-one-0",
+    "started_utc": "2026-10-12T00:27:05.430149+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.32458269999960976
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "chain-one",
+      "1"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-chain-one-1",
+    "started_utc": "2026-10-12T00:27:05.756040+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.25030530000003637
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "chain-one",
+      "2"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-chain-one-2",
+    "started_utc": "2026-10-12T00:27:06.007280+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.2812622999999803
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "chain-one",
+      "3"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-chain-one-3",
+    "started_utc": "2026-10-12T00:27:06.288974+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.3126612999999452
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "chain-one",
+      "4"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-chain-one-4",
+    "started_utc": "2026-10-12T00:27:06.602328+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.2500646999997116
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "chain-one",
+      "5"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-chain-one-5",
+    "started_utc": "2026-10-12T00:27:06.853771+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.2611354000000574
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "chain-one",
+      "6"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-chain-one-6",
+    "started_utc": "2026-10-12T00:27:07.115548+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.28906819999974687
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "cycle-one",
+      "0"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-cycle-one-0",
+    "started_utc": "2026-10-12T00:27:07.404813+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.2619328000000678
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "cycle-one",
+      "1"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-cycle-one-1",
+    "started_utc": "2026-10-12T00:27:07.668388+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.2464074999998047
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "cycle-one",
+      "2"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-cycle-one-2",
+    "started_utc": "2026-10-12T00:27:07.915426+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.2640965000000506
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "cycle-one",
+      "3"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-cycle-one-3",
+    "started_utc": "2026-10-12T00:27:08.180952+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.24188980000008087
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "cycle-one",
+      "4"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-cycle-one-4",
+    "started_utc": "2026-10-12T00:27:08.423235+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.2631803000003856
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "cycle-one",
+      "5"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-cycle-one-5",
+    "started_utc": "2026-10-12T00:27:08.686946+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.26388309999993
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "cycle-one",
+      "6"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-cycle-one-6",
+    "started_utc": "2026-10-12T00:27:08.952250+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.26529900000014095
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "isolated-repeat",
+      "0"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-isolated-repeat-0",
+    "started_utc": "2026-10-12T00:27:09.218489+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.2813028000000486
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "isolated-repeat",
+      "1"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-isolated-repeat-1",
+    "started_utc": "2026-10-12T00:27:09.501328+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.27680759999975635
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "isolated-repeat",
+      "2"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-isolated-repeat-2",
+    "started_utc": "2026-10-12T00:27:09.778653+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.2944569999999658
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "isolated-repeat",
+      "3"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-isolated-repeat-3",
+    "started_utc": "2026-10-12T00:27:10.074904+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.2905158000003212
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "isolated-repeat",
+      "4"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-isolated-repeat-4",
+    "started_utc": "2026-10-12T00:27:10.365857+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.296094599999833
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "isolated-repeat",
+      "5"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-isolated-repeat-5",
+    "started_utc": "2026-10-12T00:27:10.663384+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.29469380000000456
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "isolated-repeat",
+      "6"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-isolated-repeat-6",
+    "started_utc": "2026-10-12T00:27:10.958520+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.3094684000002417
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "cycle-repeat",
+      "0"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-cycle-repeat-0",
+    "started_utc": "2026-10-12T00:27:11.269465+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.4672648000000663
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "cycle-repeat",
+      "1"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-cycle-repeat-1",
+    "started_utc": "2026-10-12T00:27:11.738179+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.4461648999999852
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "cycle-repeat",
+      "2"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-cycle-repeat-2",
+    "started_utc": "2026-10-12T00:27:12.185457+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.4830087000000276
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "cycle-repeat",
+      "3"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-cycle-repeat-3",
+    "started_utc": "2026-10-12T00:27:12.669525+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.5144317999997838
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "cycle-repeat",
+      "4"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-cycle-repeat-4",
+    "started_utc": "2026-10-12T00:27:13.184887+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.48197010000012597
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "cycle-repeat",
+      "5"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-cycle-repeat-5",
+    "started_utc": "2026-10-12T00:27:13.667479+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.449147300000277
+  },
+  {
+    "argv": [
+      "java.exe",
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m",
+      "-cp",
+      "results/public-boundary/classes",
+      "PublicBoundaryHarness",
+      "--cost",
+      "results/public-boundary/cost-cases.tsv",
+      "cycle-repeat",
+      "6"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "label": "cost-cycle-repeat-6",
+    "started_utc": "2026-10-12T00:27:14.118773+00:00",
+    "timeout_seconds": 60,
+    "wall_seconds": 0.4522954999997637
+  }
+]

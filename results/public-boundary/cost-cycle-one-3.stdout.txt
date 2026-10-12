@@ -1,0 +1,3 @@
+{"id":"cycle-one","mode":"certificate","fork":3,"warmups":300,"iterations":200,"sender_framing_ns":2438200,"receiving_ns":19311400,"java_pipeline_ns":14508800,"words":3465,"bytes":13887}
+{"id":"cycle-one","mode":"eager_same_frame","fork":3,"warmups":300,"iterations":200,"sender_framing_ns":1519200,"receiving_ns":5063000,"java_pipeline_ns":7616900,"words":3465,"bytes":13887}
+{"id":"cycle-one","mode":"eager_data_only","fork":3,"warmups":300,"iterations":200,"sender_framing_ns":220700,"receiving_ns":2693300,"java_pipeline_ns":2936600,"words":262,"bytes":1075}

@@ -1,0 +1,291 @@
+{
+  "derived_from": "cost-summary.json",
+  "derivation": "Java summary *_ns keys alias microseconds per call; renamed to *_us without changing any numeric value. Raw timing totals remain nanoseconds in java-costs.json and python-preparation.json.",
+  "excludes": "common application data creation; process startup from per-call timing (command wall times recorded); network latency/bandwidth; cross-language transfer and caller use",
+  "families": {
+    "chain-one": {
+      "certificate": {
+        "bytes": 13863,
+        "java_pipeline_us": {
+          "maximum": 196.255,
+          "median": 94.204,
+          "minimum": 65.861
+        },
+        "python_preparation_us": {
+          "maximum": 32901.06,
+          "median": 30377.08,
+          "minimum": 29537.54
+        },
+        "receiving_us": {
+          "maximum": 156.376,
+          "median": 79.5815,
+          "minimum": 58.7645
+        },
+        "sender_framing_us": {
+          "maximum": 27.6315,
+          "median": 12.9615,
+          "minimum": 7.76
+        },
+        "words": 3459
+      },
+      "eager_data_only": {
+        "bytes": 1075,
+        "java_pipeline_us": {
+          "maximum": 31.301,
+          "median": 18.609,
+          "minimum": 16.336
+        },
+        "python_preparation_us": {
+          "maximum": 15.12,
+          "median": 14.84,
+          "minimum": 14.78
+        },
+        "receiving_us": {
+          "maximum": 33.3955,
+          "median": 21.7305,
+          "minimum": 16.1225
+        },
+        "sender_framing_us": {
+          "maximum": 4.2125,
+          "median": 1.3695,
+          "minimum": 1.073
+        },
+        "words": 262
+      },
+      "eager_same_frame": {
+        "bytes": 13863,
+        "java_pipeline_us": {
+          "maximum": 62.16,
+          "median": 47.8425,
+          "minimum": 34.6565
+        },
+        "receiving_us": {
+          "maximum": 49.327,
+          "median": 43.134,
+          "minimum": 31.435
+        },
+        "sender_framing_us": {
+          "maximum": 22.7525,
+          "median": 12.717,
+          "minimum": 7.8475
+        },
+        "words": 3459
+      }
+    },
+    "cycle-one": {
+      "certificate": {
+        "bytes": 13887,
+        "java_pipeline_us": {
+          "maximum": 91.483,
+          "median": 72.544,
+          "minimum": 65.846
+        },
+        "python_preparation_us": {
+          "maximum": 34621.52,
+          "median": 30729.86,
+          "minimum": 29828.24
+        },
+        "receiving_us": {
+          "maximum": 103.247,
+          "median": 74.9,
+          "minimum": 57.9015
+        },
+        "sender_framing_us": {
+          "maximum": 13.4865,
+          "median": 12.191,
+          "minimum": 7.625
+        },
+        "words": 3465
+      },
+      "eager_data_only": {
+        "bytes": 1075,
+        "java_pipeline_us": {
+          "maximum": 28.7345,
+          "median": 16.2125,
+          "minimum": 14.683
+        },
+        "python_preparation_us": {
+          "maximum": 14.62,
+          "median": 14.44,
+          "minimum": 14.32
+        },
+        "receiving_us": {
+          "maximum": 36.8355,
+          "median": 20.554,
+          "minimum": 13.188
+        },
+        "sender_framing_us": {
+          "maximum": 4.4785,
+          "median": 1.147,
+          "minimum": 1.0925
+        },
+        "words": 262
+      },
+      "eager_same_frame": {
+        "bytes": 13887,
+        "java_pipeline_us": {
+          "maximum": 47.4115,
+          "median": 38.0845,
+          "minimum": 33.5095
+        },
+        "receiving_us": {
+          "maximum": 60.818,
+          "median": 32.319,
+          "minimum": 25.315
+        },
+        "sender_framing_us": {
+          "maximum": 14.1425,
+          "median": 11.4045,
+          "minimum": 7.4985
+        },
+        "words": 3465
+      }
+    },
+    "cycle-repeat": {
+      "certificate": {
+        "bytes": 88563,
+        "java_pipeline_us": {
+          "maximum": 238.333,
+          "median": 201.675,
+          "minimum": 191.5105
+        },
+        "python_preparation_us": {
+          "maximum": 59615.46,
+          "median": 55667.24,
+          "minimum": 55534.8
+        },
+        "receiving_us": {
+          "maximum": 172.113,
+          "median": 140.3,
+          "minimum": 135.828
+        },
+        "sender_framing_us": {
+          "maximum": 73.328,
+          "median": 54.2605,
+          "minimum": 50.0225
+        },
+        "words": 22134
+      },
+      "eager_data_only": {
+        "bytes": 1583,
+        "java_pipeline_us": {
+          "maximum": 38.401,
+          "median": 23.102,
+          "minimum": 15.817
+        },
+        "python_preparation_us": {
+          "maximum": 23.38,
+          "median": 22.68,
+          "minimum": 22.6
+        },
+        "receiving_us": {
+          "maximum": 38.0355,
+          "median": 20.248,
+          "minimum": 12.999
+        },
+        "sender_framing_us": {
+          "maximum": 8.427,
+          "median": 1.289,
+          "minimum": 1.172
+        },
+        "words": 389
+      },
+      "eager_same_frame": {
+        "bytes": 88563,
+        "java_pipeline_us": {
+          "maximum": 186.017,
+          "median": 143.138,
+          "minimum": 133.8685
+        },
+        "receiving_us": {
+          "maximum": 108.0375,
+          "median": 87.0415,
+          "minimum": 84.672
+        },
+        "sender_framing_us": {
+          "maximum": 74.3435,
+          "median": 54.18,
+          "minimum": 52.2845
+        },
+        "words": 22134
+      }
+    },
+    "isolated-repeat": {
+      "certificate": {
+        "bytes": 12847,
+        "java_pipeline_us": {
+          "maximum": 130.785,
+          "median": 93.18,
+          "minimum": 60.5395
+        },
+        "python_preparation_us": {
+          "maximum": 42731.74,
+          "median": 40280.42,
+          "minimum": 39451.92
+        },
+        "receiving_us": {
+          "maximum": 112.637,
+          "median": 104.4015,
+          "minimum": 64.824
+        },
+        "sender_framing_us": {
+          "maximum": 22.404,
+          "median": 7.379,
+          "minimum": 6.7945
+        },
+        "words": 3205
+      },
+      "eager_data_only": {
+        "bytes": 1583,
+        "java_pipeline_us": {
+          "maximum": 25.2885,
+          "median": 17.0615,
+          "minimum": 14.9595
+        },
+        "python_preparation_us": {
+          "maximum": 23.76,
+          "median": 22.62,
+          "minimum": 22.42
+        },
+        "receiving_us": {
+          "maximum": 34.375,
+          "median": 14.802,
+          "minimum": 12.699
+        },
+        "sender_framing_us": {
+          "maximum": 4.7745,
+          "median": 1.446,
+          "minimum": 1.225
+        },
+        "words": 389
+      },
+      "eager_same_frame": {
+        "bytes": 12847,
+        "java_pipeline_us": {
+          "maximum": 63.296,
+          "median": 46.0265,
+          "minimum": 41.3125
+        },
+        "receiving_us": {
+          "maximum": 56.3225,
+          "median": 43.4565,
+          "minimum": 38.855
+        },
+        "sender_framing_us": {
+          "maximum": 24.457,
+          "median": 12.716,
+          "minimum": 7.2115
+        },
+        "words": 3205
+      }
+    }
+  },
+  "includes": "Python domain validation and word/proof production separately; Java sender framing; receiver copying/decoding/canonical validation/graph construction and diagnostics; actual transmitted bytes",
+  "java_forks_per_family": 7,
+  "jvm_iterations_per_metric": 200,
+  "jvm_warmups_per_mode": 300,
+  "not_end_to_end": "Separate Python and JVM measurements are not a measured combined deployment latency; Java pipeline is measured jointly, not summed from component medians; no RSS claim",
+  "python_batches": 7,
+  "python_iterations_per_batch": 5,
+  "units": "microseconds per call, median/min/max of batch means"
+}

@@ -1,0 +1,40 @@
+{
+  "scope": "Lossless storage representation of the recorded raw bytes; commands and measurements are unchanged.",
+  "records": [
+    {
+      "logical_path": "full-observations.stdout.txt",
+      "stored_path": "full-observations.stdout.txt.gz",
+      "encoding": "lossless-gzip",
+      "raw_bytes": 16957202,
+      "raw_sha256": "42b9bea4b11d2cbda60c6ec7a2e79a01b833ab166f6a27222dd9a04d539dea33"
+    },
+    {
+      "logical_path": "receiver.stdout.txt",
+      "stored_path": "receiver.stdout.txt.gz",
+      "encoding": "lossless-gzip",
+      "raw_bytes": 4586966,
+      "raw_sha256": "8ce281a5a296ae1e00006d015a42c591b90dfbbc2393e915538f707d302ec33f"
+    },
+    {
+      "logical_path": "integer.stdout.txt",
+      "stored_path": "integer.stdout.txt.gz",
+      "encoding": "lossless-gzip",
+      "raw_bytes": 989149,
+      "raw_sha256": "816b319d44c93d4d618ac44a2b593cf47ec13aafbc1c744dad5080b8cec1fa1b"
+    },
+    {
+      "logical_path": "python-reference.jsonl",
+      "stored_path": "python-reference.jsonl.gz",
+      "encoding": "lossless-gzip",
+      "raw_bytes": 987382,
+      "raw_sha256": "759b81d514780f18226142a68a034a1b04d912b043a4081141babf57f3864c91"
+    },
+    {
+      "logical_path": "stream-comparison.jsonl",
+      "stored_path": "stream-comparison.jsonl.gz",
+      "encoding": "lossless-gzip",
+      "raw_bytes": 554350,
+      "raw_sha256": "1bdd4725c6f2af3b97b9f5b1ac47bb10a7558959d1021418cffffef565134fb8"
+    }
+  ]
+}

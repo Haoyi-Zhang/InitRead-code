@@ -43,8 +43,10 @@ size-bound equalities. Raw observations and command logs are in `results/current
 They use their own measured Linux/OpenJDK 21 environment and original sources,
 before the capacity pre-sizing below; they are not new timings of current code.
 The workflow definition is not a receipt of a fresh CI execution.
-The saved receiver streams reproduce the unchanged `results/receiver-campaign/`
-streams byte-for-byte, so that input set is retained once rather than duplicated.
+The saved receiver streams from this retained Linux run reproduce the unchanged
+`results/receiver-campaign/` streams byte-for-byte, so that run's input set is
+retained once. The separate 2026-10-12 native replay below includes its own fresh
+stream outputs.
 
 ### Current-only portable Java correctness
 
@@ -81,7 +83,8 @@ input set byte-for-byte against `results/receiver-campaign/streams`, and 31,488
 six-mode observations against a compact retained original-output fingerprint.
 The added `CapacityObservationHarness` has no benchmark path. The fingerprint
 and its exact canonicalization/provenance are in `java-conformance-contract.json`;
-no second serialized stream archive is included.
+the fresh 2026-10-12 observations and serialized outputs are included separately
+in `results/native-replay/`.
 
 Both independent Python references execute anew. Certificate classifications
 are checked for every integer packet; the final-data reference independently
@@ -180,6 +183,8 @@ An earlier attempt hit an outer execution timeout after completing its core comp
 - `results/continuation-clean/`: successful clean-extraction commands, all legacy/bridge/receiver/specialization comparisons and exported tables.
 - `results/receiver-pilot/`, `results/receiver-framing-control/`: preserved measurement/framing repair evidence and affected source.
 - `results/clean-check/`: retained clean verification of the incoming generic receiver; the current verification is in `results/continuation-clean/`.
+- `results/native-replay/`: fresh 2026-10-12 native observations, serialized outputs, references, source/input bindings and relocatable command receipts for C33.
+- `results/public-boundary/`: fresh 2026-10-12 public-navigation inputs/outputs, cost batches/forks, run-source snapshots and relocatable receipts for C34/C35.
 - `claim_evidence_ledger.csv`, `reference-audit.csv`: evidence and interpretation records.
 
 ## Public-navigation regression and cost accounting
@@ -212,7 +217,7 @@ mismatches. Both eager modes reject all 1,046 unsafe packets and accept the
 4,184 safe-data packets. Certificate checking accepts 3,432 and rejects 752
 damaged proofs on otherwise safe data; that is exact-proof checking, not extra
 data protection. The same run retains three MAPPED and eight UNKNOWN passive
-cases. Separately, `native-replay-20261012/` records a fresh exact match of all
+cases. Separately, `results/native-replay/` records a fresh exact match of all
 4,563 receiver observations/streams, 5,248 classifications and 31,488 six-mode
 observations. Neither fresh directory replaces an older campaign.
 
@@ -239,12 +244,35 @@ cost is larger for certification than either eager mode in all four families;
 all batch/fork minima and maxima are retained. These are costs of the current
 implementations, not optimal algorithmic bounds or a production speedup claim.
 The run uses Windows 11 AMD64, CPython 3.12.14 and Temurin 17.0.20.1+1 with the
-same bounded JVM options. Raw values and source bindings are under the project
-directory `public-boundary-run-20261012/`. Its original `cost-summary.json`
+same bounded JVM options. Raw values and source bindings are in
+`results/public-boundary/`. Its original `cost-summary.json`
 uses `_ns` field names for already converted microseconds; the explicit
 `units` field and raw `java-costs.json` establish the scale. Future summaries
 use `_us` field names. Historical Linux tables and their source versions are
 unchanged.
+
+`results/public-boundary/cost-summary-us.json` is a derived interpretation view
+of that original receipt: its 36 Java summary metric keys use `_us`, with every
+numeric value unchanged and `derived_from` naming `cost-summary.json`. It is
+not a rerun or a modified Java-source receipt. Raw Java/Python `_ns` totals
+remain nanoseconds; only the already-microsecond summary keys are aliased.
+
+The public copies preserve the recorded inputs, measurements, source hashes,
+run timestamps and filesystem timestamps. Only private absolute path fields in
+the command/environment receipts (and the native summary's embedded commands)
+are made relocatable: working directory `.` and source/input paths are relative
+to this repository root, output paths use the corresponding `results/`
+directory, and executable paths become `java.exe`, `javac.exe` or `python`.
+Class-output directories mentioned in the commands are generated targets, not
+shipped binaries; a new reproduction still uses an absent output directory
+outside the artifact as required above. No classes or local runtime are included.
+`results/public-boundary/sources/` retains the exact measured source versions.
+Its driver predates the current runner's additional Python test orchestration and
+`_us` summary keys; its original `_ns` values and stated units are not rewritten.
+To reproduce that version, overlay those source snapshots onto a separate copy
+of the artifact, leaving its retained input/result files in place, then use the
+same driver command with a new sibling output directory. The snapshots alone
+are source bindings, not a second standalone runnable artifact.
 
 ### Root validation
 

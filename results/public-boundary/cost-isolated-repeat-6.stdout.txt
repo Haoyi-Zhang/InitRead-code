@@ -1,0 +1,3 @@
+{"id":"isolated-repeat","mode":"certificate","fork":6,"warmups":300,"iterations":200,"sender_framing_ns":4480800,"receiving_ns":19641300,"java_pipeline_ns":12122700,"words":3205,"bytes":12847}
+{"id":"isolated-repeat","mode":"eager_same_frame","fork":6,"warmups":300,"iterations":200,"sender_framing_ns":4760200,"receiving_ns":9886800,"java_pipeline_ns":12659200,"words":3205,"bytes":12847}
+{"id":"isolated-repeat","mode":"eager_data_only","fork":6,"warmups":300,"iterations":200,"sender_framing_ns":260800,"receiving_ns":2722200,"java_pipeline_ns":3330400,"words":389,"bytes":1583}

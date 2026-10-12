@@ -1,0 +1,19 @@
+{
+  "scope": "Lossless storage representation of the recorded raw bytes; commands and measurements are unchanged.",
+  "records": [
+    {
+      "logical_path": "public-boundary.stdout.txt",
+      "stored_path": "public-boundary.stdout.txt.gz",
+      "encoding": "lossless-gzip",
+      "raw_bytes": 3104468,
+      "raw_sha256": "f8cc589ed81ce92f92dd28a76444912dfe19d18c0d7dced95d9e564153ee3a2d"
+    },
+    {
+      "logical_path": "valid-data-cases.tsv",
+      "stored_path": "valid-data-cases.tsv.gz",
+      "encoding": "lossless-gzip",
+      "raw_bytes": 1743663,
+      "raw_sha256": "770f3f550f964045c4732456718245cc8b59f74371f5b731e775673f37646864"
+    }
+  ]
+}

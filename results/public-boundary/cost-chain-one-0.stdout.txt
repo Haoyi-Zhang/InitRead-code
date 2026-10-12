@@ -1,0 +1,3 @@
+{"id":"chain-one","mode":"certificate","fork":0,"warmups":300,"iterations":200,"sender_framing_ns":5526300,"receiving_ns":31201800,"java_pipeline_ns":39251000,"words":3459,"bytes":13863}
+{"id":"chain-one","mode":"eager_same_frame","fork":0,"warmups":300,"iterations":200,"sender_framing_ns":4550500,"receiving_ns":9865400,"java_pipeline_ns":12432000,"words":3459,"bytes":13863}
+{"id":"chain-one","mode":"eager_data_only","fork":0,"warmups":300,"iterations":200,"sender_framing_ns":214600,"receiving_ns":3401600,"java_pipeline_ns":3669200,"words":262,"bytes":1075}

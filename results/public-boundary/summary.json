@@ -1,0 +1,14 @@
+{
+  "cost_forks": 28,
+  "ended_utc": "2026-10-12T00:27:14.573386+00:00",
+  "historical_results_modified": false,
+  "observation_pair_equal_projection": true,
+  "passive_mapped": 3,
+  "passive_unknown": 8,
+  "public_data_cases": 5230,
+  "public_mismatches": 0,
+  "public_observations": 15690,
+  "started_utc": "2026-10-12T00:26:53.923331+00:00",
+  "status": "PASS",
+  "unsafe_data_cases": 1046
+}

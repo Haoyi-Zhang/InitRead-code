@@ -1,0 +1,141 @@
+{
+  "benchmark_runs": 0,
+  "commands": [
+    {
+      "argv": [
+        "java.exe",
+        "-version"
+      ],
+      "cwd": ".",
+      "ended_utc": "2026-10-12T00:23:52.080266+00:00",
+      "exit_code": 0,
+      "label": "java-version",
+      "started_utc": "2026-10-12T00:23:51.977467+00:00",
+      "timeout_seconds": 20
+    },
+    {
+      "argv": [
+        "javac.exe",
+        "-version"
+      ],
+      "cwd": ".",
+      "ended_utc": "2026-10-12T00:23:52.202891+00:00",
+      "exit_code": 0,
+      "label": "javac-version",
+      "started_utc": "2026-10-12T00:23:52.080266+00:00",
+      "timeout_seconds": 20
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "receiver_tests",
+        "-v"
+      ],
+      "cwd": ".",
+      "ended_utc": "2026-10-12T00:23:52.667309+00:00",
+      "exit_code": 0,
+      "label": "python-receiver-tests",
+      "started_utc": "2026-10-12T00:23:52.204152+00:00",
+      "timeout_seconds": 60
+    },
+    {
+      "argv": [
+        "javac.exe",
+        "-J-XX:ActiveProcessorCount=1",
+        "-J-XX:+UseSerialGC",
+        "-J-Xmx256m",
+        "-proc:none",
+        "--release",
+        "17",
+        "-encoding",
+        "UTF-8",
+        "-d",
+        "results/native-replay/classes",
+        "java/CertifiedReceiver.java",
+        "baselines/GenericReceiver.java",
+        "java/ReceiverHarness.java",
+        "java/SpecializationHarness.java",
+        "java/CapacityObservationHarness.java"
+      ],
+      "cwd": ".",
+      "ended_utc": "2026-10-12T00:23:53.285595+00:00",
+      "exit_code": 0,
+      "label": "compile",
+      "started_utc": "2026-10-12T00:23:52.668337+00:00",
+      "timeout_seconds": 60
+    },
+    {
+      "argv": [
+        "java.exe",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "results/native-replay/classes",
+        "ReceiverHarness",
+        "results/receiver-campaign/cases.tsv",
+        "results/native-replay/streams"
+      ],
+      "cwd": ".",
+      "ended_utc": "2026-10-12T00:23:54.318747+00:00",
+      "exit_code": 0,
+      "label": "receiver",
+      "started_utc": "2026-10-12T00:23:53.285595+00:00",
+      "timeout_seconds": 180
+    },
+    {
+      "argv": [
+        "java.exe",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "results/native-replay/classes",
+        "SpecializationHarness",
+        "results/specialization-campaign/cases.tsv"
+      ],
+      "cwd": ".",
+      "ended_utc": "2026-10-12T00:23:54.723247+00:00",
+      "exit_code": 0,
+      "label": "integer",
+      "started_utc": "2026-10-12T00:23:54.318747+00:00",
+      "timeout_seconds": 180
+    },
+    {
+      "argv": [
+        "java.exe",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "results/native-replay/classes",
+        "CapacityObservationHarness",
+        "results/specialization-campaign/cases.tsv"
+      ],
+      "cwd": ".",
+      "ended_utc": "2026-10-12T00:23:55.314870+00:00",
+      "exit_code": 0,
+      "label": "full-observations",
+      "started_utc": "2026-10-12T00:23:54.723753+00:00",
+      "timeout_seconds": 180
+    }
+  ],
+  "ended_utc": "2026-10-12T00:24:01.086209+00:00",
+  "fresh_certificate_reference_cases": 5248,
+  "fresh_dense_data_reference_cases": 5230,
+  "fresh_receiver_reference_cases": 4552,
+  "full_observations": 31488,
+  "full_observations_canonical_sha256": "d1ed648742a3c93eaab7ab3e57c9d0e2edab3a0aa1955a332354bb53582dd70f",
+  "integer_cases": 5248,
+  "limits": "Finite included cases only; Python references do not model Java stream decoding; dense representation comparison only for reference-valid complete data; no performance or universal correctness claim",
+  "receiver_observations": 4563,
+  "scope": "Finite owned-case correctness only; no timing, network, arbitrary object input or before-copy dependency",
+  "serialized_byte_equalities": 4563,
+  "started_utc": "2026-10-12T00:23:51.962918+00:00",
+  "status": "PASS"
+}
