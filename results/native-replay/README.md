@@ -31,7 +31,7 @@ distinction does not alter the recorded ten-method output.
 Private absolute path fields in `commands.json`, `environment.json` and the
 summary's embedded commands are replaced by repository-relative paths and
 executable names. All other JSON values, timestamps and source hashes are
-unchanged. The original filesystem creation/last-write timestamps are retained.
+unchanged. Uncompressed copies retain their original creation/last-write timestamps.
 Paths for `classes/` are generated compilation targets, deliberately absent
 from this evidence copy. The top-level README gives the current reproduction
 command, which writes to a new output directory outside the artifact.

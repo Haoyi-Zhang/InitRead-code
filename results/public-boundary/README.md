@@ -46,8 +46,8 @@ All 38 recorded subprocesses exited zero. Commands retain their recorded flags,
 exit codes, UTC timestamps and wall seconds. Private absolute path fields in
 `commands.json` and `environment.json` are replaced with repository-relative
 paths and executable names; all other JSON values and source hashes are
-unchanged. Filesystem creation/last-write timestamps of copied evidence are
-retained. `classes/`, `v1/` and `v2/` paths in the command receipts are generated
+unchanged. Uncompressed copies retain their original filesystem timestamps.
+`classes/`, `v1/` and `v2/` paths in the command receipts are generated
 class-output targets, not included binaries. The recorded runtime is Windows
 11 AMD64, CPython 3.12.14 and Temurin 17.0.20.1+1; version logs are included.
 
