@@ -26,7 +26,7 @@ python -B reproduce_portable.py --out /absolute/fresh/python-scope
 ```
 
 This runs the complete two-/three-object enumeration, witness/capacity controls,
-all 32 existing Python tests, receiver packet generation, the independent
+all 35 current Python tests, receiver packet generation, the independent
 5,248-packet certificate reference, and reinterpretation of the 11 archived
 passive observations. It compares six inherited semantic JSON and four byte
 files, plus both campaigns' generated input files. It never supplies synthetic
@@ -72,7 +72,8 @@ driver has no timing option and invokes no benchmark branch. It uses no before
 copy, private validation path, network service or third-party serialized input.
 
 This compiles the two current receivers and three reviewed harnesses with
-`--release 17 -proc:none`, runs the ten receiver test methods, and replays the
+`--release 17 -proc:none`, runs the current thirteen receiver test methods (ten
+in the retained earlier replay), and replays the
 included 4,563 receiver observations and 5,248 integer cases. It compares full
 receiver outputs against `results/receiver-campaign/java-results.jsonl` and
 integer outputs against `results/specialization-campaign/comparison.jsonl`, the complete serialized
@@ -181,7 +182,71 @@ An earlier attempt hit an outer execution timeout after completing its core comp
 - `results/clean-check/`: retained clean verification of the incoming generic receiver; the current verification is in `results/continuation-clean/`.
 - `claim_evidence_ledger.csv`, `reference-audit.csv`: evidence and interpretation records.
 
-## Root interface
+## Public-navigation regression and cost accounting
+
+`reproduce_public_boundary.py` adds a public-API comparison without reading a
+private graph snapshot. From an absent output directory inside the project but
+outside `artifact/`, run:
+
+```sh
+python -B reproduce_public_boundary.py --java-home /absolute/local/jdk \
+  --out /absolute/this-project/public-boundary-output
+```
+
+Add `--skip-costs` for correctness only. The runner re-executes the eleven owned
+passive cases and the indistinguishable pair, then selects the 5,230 packets
+with complete valid data from the retained 5,248-packet corpus. Repeated data
+under different certificates remain separate packet cases. Three modes use
+exactly the same values, links and ordered roots: certificate checking, eager
+checking on the same proof-carrying frame, and eager checking on a data-only
+frame. The latter retains the existing data layout and a zero ignored step
+word; it is not a certificate packet or a proposed public protocol extension.
+All transport/filter/canonicalization and immutable graph-construction checks
+are retained. After mutating caller-held input bytes and a root-array copy,
+the harness enumerates only public roots/successors and compares their scalar
+values, links, reachable identities and canonical aliases with the independent
+dense reference. It never calls `snapshot()` or exposes an unreachable node.
+
+The 2026-10-12 Windows native run records 15,690 public observations with zero
+mismatches. Both eager modes reject all 1,046 unsafe packets and accept the
+4,184 safe-data packets. Certificate checking accepts 3,432 and rejects 752
+damaged proofs on otherwise safe data; that is exact-proof checking, not extra
+data protection. The same run retains three MAPPED and eight UNKNOWN passive
+cases. Separately, `native-replay-20261012/` records a fresh exact match of all
+4,563 receiver observations/streams, 5,248 classifications and 31,488 six-mode
+observations. Neither fresh directory replaces an older campaign.
+
+Four inherited 128-node families receive seven JVM forks each, rotating the
+three mode orders, with 300 warm-ups and 200 calls per measured operation.
+Sender Java serialization, receiving, and serialization-plus-receiving are
+timed separately; the last is measured jointly, not a sum of component medians.
+Python domain validation and packet preparation are recorded separately in
+seven five-call batches after ten warm-ups. Certificate preparation uses the
+actual producer, including its returned shadow diagnostics; eager preparation
+uses the same domain validation and only the data words. The same-frame eager
+control reuses the certificate packet and hence its sender preparation cost.
+Actual serialized bytes account for transport volume. Data creation, network
+latency/bandwidth, cross-language transfer and caller use are not measured;
+process startup appears only in command wall-time receipts, and no RSS estimate
+is supplied. Separate Python/JVM batches cannot be added into a measured
+deployment latency. Fixed warm-up does not establish steady state.
+
+In the recorded run, certificate frames range from 12,847 to 88,563 bytes,
+versus 1,075 or 1,583 bytes for the corresponding data-only frame. Median Python
+certificate preparation takes 30.38--55.67 ms versus 14.44--22.68 microseconds
+for data assembly. Median jointly measured Java serialization-plus-receiving
+cost is larger for certification than either eager mode in all four families;
+all batch/fork minima and maxima are retained. These are costs of the current
+implementations, not optimal algorithmic bounds or a production speedup claim.
+The run uses Windows 11 AMD64, CPython 3.12.14 and Temurin 17.0.20.1+1 with the
+same bounded JVM options. Raw values and source bindings are under the project
+directory `public-boundary-run-20261012/`. Its original `cost-summary.json`
+uses `_ns` field names for already converted microseconds; the explicit
+`units` field and raw `java-costs.json` establish the scale. Future summaries
+use `_us` field names. Historical Linux tables and their source versions are
+unchanged.
+
+### Root validation
 
 The original checker checks each root with exact `type(r) is int` and range checks before set conversion. Tests cover both orders of [0,False] and [0,0.0], list/tuple containers, a single legal integer, duplicate integers, and 128/129-entry limits. Sets preconstructed by the caller may have already discarded equal differently typed elements; that absent history is unrecoverable. The new Python producer has the same strict-before-normalization discipline; its accepted wire is a primitive integer array.
 

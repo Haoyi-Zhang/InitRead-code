@@ -83,6 +83,17 @@ Before PUBLISH, the client-level abstract observation is a private region with n
 
 The equivalence concerns data projected from successful packets, not arbitrary packet bytes. The eager baseline intentionally ignores the certificate suffix; it can accept safe data accompanied by a corrupt proof. This is not an eager safety failure. The certificate gate adds independently checkable decision evidence, not a larger safe language or a stronger invariant in this one-shot immutable setting. If no audit evidence is required, the direct check is the simpler sufficient mechanism.
 
+The public-navigation regression observes R4 through `roots()`, `id()`, `value()`
+and `next()` only; it does not use the package-private scalar snapshot. Its dense
+reference predicts the exact exposed closure and ordered roots from the same
+data D. On all 5,230 complete-data packets selected from the retained corpus,
+the certificate path and two eager paths agree with their respective specified
+policies, including 1,046 unsafe packets. The proof-free eager fixture retains
+the same data header with an ignored zero step word and omits proof records.
+This is an owned comparison fixture, not a newly accepted certificate grammar.
+Finite public navigation checks support source correspondence for J; they do
+not replace R3--R6 or establish an arbitrary Java refinement.
+
 **Lemma R7 (successful packet bound).** Every well-formed safe d has a deterministic proof requiring at most 5+26n+19m+nm integer words, hence at most 22,149 words at n=m=128.
 
 *Proof.* The data prefix plus step count uses 5+2n+m words. The first 3n certificates have no roots or obligations and use 9n words. Each of the m root-step certificates uses at most n+3 words for closure count, closure, obligation count and decision. Across these root steps, each identity is newly reachable at most once (at most n obligations); each repeated/successive root addition can additionally invalidate at most the added root's cached ready read (at most m obligations). No other object's predicate reads that root's ready field. Each obligation occupies 3 header words and at most four 3-word reads, for at most 15 words. Summing gives 5+2n+m+9n+m(n+3)+15(n+m) = 5+26n+19m+nm. The configured 24,576-word cap leaves room. For the specified fresh, unmodified ObjectOutputStream with no preceding values or class annotations, the single primitive int[] encoding uses 27 fixed bytes: stream header4, array tag1, class descriptor tag1, UTF class name length2 plus name2, serial identifier8, flags1, field count2, end annotation1, null superclass1, and array length4. Each integer adds4 bytes. Thus 27+4*22,149=88,623 bytes is below131,072. This size statement is conditional on that exact writer/protocol, not arbitrary annotated or multi-object streams. All4,552 generated integer-array frames were also checked against27+4*word_count; zero differed. □

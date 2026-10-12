@@ -24,7 +24,7 @@ From the artifact root, using Python3.9+ and a local JDK (recorded execution:JDK
 python3 reproduce_receiver.py --out receiver-output
 ```
 
-This executes ten unit test methods across `test_receiver.py` and `test_specialization.py`, creates and saves all benign serialized inputs, compiles the Java source, runs 4,563 Java cases and the same-byte observation pair, and measures 42 sequential size-specific Java forks. The output directory must be absent or empty. Running it now measures the current preallocated sources, not the original generic receiver.
+This executes thirteen unit test methods across `test_receiver.py`, `test_specialization.py` and `test_public_boundary.py` (the retained older campaign ran ten), creates and saves all benign serialized inputs, compiles the Java source, runs 4,563 Java cases and the same-byte observation pair, and measures 42 sequential size-specific Java forks. The output directory must be absent or empty. Running it now measures the current preallocated sources, not the original generic receiver. The newer public-navigation and sender-cost comparison is documented in `../README.md` and run separately by `reproduce_public_boundary.py`.
 
 A deterministic replay without repeating variable timing measurements is:
 
