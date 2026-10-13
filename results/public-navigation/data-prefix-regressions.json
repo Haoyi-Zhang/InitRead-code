@@ -1,0 +1,511 @@
+[
+  {
+    "certificate": "INVALID_CERT",
+    "data": {
+      "links": [
+        1,
+        -1
+      ],
+      "reachable": [
+        0,
+        1
+      ],
+      "roots": [
+        0
+      ],
+      "status": "ALLOW",
+      "values": [
+        0,
+        1
+      ]
+    },
+    "id": "retained-cert-short-009",
+    "name": "two-node-chain",
+    "observations": [
+      {
+        "bytes": 63,
+        "canonical_aliases": true,
+        "frozen": true,
+        "has_graph": false,
+        "id": "retained-cert-short-009",
+        "mode": "certificate",
+        "nodes": [],
+        "roots": null,
+        "status": "INVALID_CERT",
+        "words": 9
+      },
+      {
+        "bytes": 63,
+        "canonical_aliases": true,
+        "frozen": true,
+        "has_graph": true,
+        "id": "retained-cert-short-009",
+        "mode": "eager_same_frame",
+        "nodes": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            -1
+          ]
+        ],
+        "roots": [
+          0
+        ],
+        "status": "ALLOW",
+        "words": 9
+      },
+      {
+        "bytes": 67,
+        "canonical_aliases": true,
+        "frozen": true,
+        "has_graph": true,
+        "id": "retained-cert-short-009",
+        "mode": "eager_data_only",
+        "nodes": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            -1
+          ]
+        ],
+        "roots": [
+          0
+        ],
+        "status": "ALLOW",
+        "words": 10
+      }
+    ]
+  },
+  {
+    "certificate": "INVALID_CERT",
+    "data": {
+      "links": [
+        0
+      ],
+      "reachable": [
+        0
+      ],
+      "roots": [
+        0
+      ],
+      "status": "ALLOW",
+      "values": [
+        0
+      ]
+    },
+    "id": "prefix-0-7",
+    "name": "self-loop",
+    "observations": [
+      {
+        "bytes": 55,
+        "canonical_aliases": true,
+        "frozen": true,
+        "has_graph": false,
+        "id": "prefix-0-7",
+        "mode": "certificate",
+        "nodes": [],
+        "roots": null,
+        "status": "INVALID_CERT",
+        "words": 7
+      },
+      {
+        "bytes": 55,
+        "canonical_aliases": true,
+        "frozen": true,
+        "has_graph": true,
+        "id": "prefix-0-7",
+        "mode": "eager_same_frame",
+        "nodes": [
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "roots": [
+          0
+        ],
+        "status": "ALLOW",
+        "words": 7
+      },
+      {
+        "bytes": 59,
+        "canonical_aliases": true,
+        "frozen": true,
+        "has_graph": true,
+        "id": "prefix-0-7",
+        "mode": "eager_data_only",
+        "nodes": [
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "roots": [
+          0
+        ],
+        "status": "ALLOW",
+        "words": 8
+      }
+    ]
+  },
+  {
+    "certificate": "INVALID_CERT",
+    "data": {
+      "links": [
+        1,
+        2,
+        -1
+      ],
+      "reachable": [
+        0,
+        1,
+        2
+      ],
+      "roots": [
+        0,
+        0,
+        2
+      ],
+      "status": "ALLOW",
+      "values": [
+        0,
+        1,
+        1
+      ]
+    },
+    "id": "prefix-1-13",
+    "name": "chain-duplicate-roots",
+    "observations": [
+      {
+        "bytes": 79,
+        "canonical_aliases": true,
+        "frozen": true,
+        "has_graph": false,
+        "id": "prefix-1-13",
+        "mode": "certificate",
+        "nodes": [],
+        "roots": null,
+        "status": "INVALID_CERT",
+        "words": 13
+      },
+      {
+        "bytes": 79,
+        "canonical_aliases": true,
+        "frozen": true,
+        "has_graph": true,
+        "id": "prefix-1-13",
+        "mode": "eager_same_frame",
+        "nodes": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            2
+          ],
+          [
+            2,
+            1,
+            -1
+          ]
+        ],
+        "roots": [
+          0,
+          0,
+          2
+        ],
+        "status": "ALLOW",
+        "words": 13
+      },
+      {
+        "bytes": 83,
+        "canonical_aliases": true,
+        "frozen": true,
+        "has_graph": true,
+        "id": "prefix-1-13",
+        "mode": "eager_data_only",
+        "nodes": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            2
+          ],
+          [
+            2,
+            1,
+            -1
+          ]
+        ],
+        "roots": [
+          0,
+          0,
+          2
+        ],
+        "status": "ALLOW",
+        "words": 14
+      }
+    ]
+  },
+  {
+    "certificate": "INVALID_CERT",
+    "data": {
+      "links": [
+        1,
+        2,
+        0
+      ],
+      "reachable": [
+        0,
+        1,
+        2
+      ],
+      "roots": [
+        0,
+        0,
+        2
+      ],
+      "status": "ALLOW",
+      "values": [
+        1,
+        1,
+        1
+      ]
+    },
+    "id": "prefix-2-13",
+    "name": "cycle-duplicate-roots",
+    "observations": [
+      {
+        "bytes": 79,
+        "canonical_aliases": true,
+        "frozen": true,
+        "has_graph": false,
+        "id": "prefix-2-13",
+        "mode": "certificate",
+        "nodes": [],
+        "roots": null,
+        "status": "INVALID_CERT",
+        "words": 13
+      },
+      {
+        "bytes": 79,
+        "canonical_aliases": true,
+        "frozen": true,
+        "has_graph": true,
+        "id": "prefix-2-13",
+        "mode": "eager_same_frame",
+        "nodes": [
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            2
+          ],
+          [
+            2,
+            1,
+            0
+          ]
+        ],
+        "roots": [
+          0,
+          0,
+          2
+        ],
+        "status": "ALLOW",
+        "words": 13
+      },
+      {
+        "bytes": 83,
+        "canonical_aliases": true,
+        "frozen": true,
+        "has_graph": true,
+        "id": "prefix-2-13",
+        "mode": "eager_data_only",
+        "nodes": [
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            2
+          ],
+          [
+            2,
+            1,
+            0
+          ]
+        ],
+        "roots": [
+          0,
+          0,
+          2
+        ],
+        "status": "ALLOW",
+        "words": 14
+      }
+    ]
+  },
+  {
+    "certificate": "INVALID_CERT",
+    "data": {
+      "links": [
+        -1,
+        2,
+        1
+      ],
+      "reachable": [
+        0
+      ],
+      "roots": [
+        0
+      ],
+      "status": "ALLOW",
+      "values": [
+        1,
+        1,
+        0
+      ]
+    },
+    "id": "prefix-3-11",
+    "name": "unreachable-unsafe-component",
+    "observations": [
+      {
+        "bytes": 71,
+        "canonical_aliases": true,
+        "frozen": true,
+        "has_graph": false,
+        "id": "prefix-3-11",
+        "mode": "certificate",
+        "nodes": [],
+        "roots": null,
+        "status": "INVALID_CERT",
+        "words": 11
+      },
+      {
+        "bytes": 71,
+        "canonical_aliases": true,
+        "frozen": true,
+        "has_graph": true,
+        "id": "prefix-3-11",
+        "mode": "eager_same_frame",
+        "nodes": [
+          [
+            0,
+            1,
+            -1
+          ]
+        ],
+        "roots": [
+          0
+        ],
+        "status": "ALLOW",
+        "words": 11
+      },
+      {
+        "bytes": 75,
+        "canonical_aliases": true,
+        "frozen": true,
+        "has_graph": true,
+        "id": "prefix-3-11",
+        "mode": "eager_data_only",
+        "nodes": [
+          [
+            0,
+            1,
+            -1
+          ]
+        ],
+        "roots": [
+          0
+        ],
+        "status": "ALLOW",
+        "words": 12
+      }
+    ]
+  },
+  {
+    "certificate": "INVALID_CERT",
+    "data": {
+      "links": [
+        1,
+        2,
+        0
+      ],
+      "reachable": [],
+      "roots": [],
+      "status": "ALLOW",
+      "values": [
+        1,
+        0,
+        1
+      ]
+    },
+    "id": "prefix-4-10",
+    "name": "empty-roots",
+    "observations": [
+      {
+        "bytes": 67,
+        "canonical_aliases": true,
+        "frozen": true,
+        "has_graph": false,
+        "id": "prefix-4-10",
+        "mode": "certificate",
+        "nodes": [],
+        "roots": null,
+        "status": "INVALID_CERT",
+        "words": 10
+      },
+      {
+        "bytes": 67,
+        "canonical_aliases": true,
+        "frozen": true,
+        "has_graph": true,
+        "id": "prefix-4-10",
+        "mode": "eager_same_frame",
+        "nodes": [],
+        "roots": [],
+        "status": "ALLOW",
+        "words": 10
+      },
+      {
+        "bytes": 71,
+        "canonical_aliases": true,
+        "frozen": true,
+        "has_graph": true,
+        "id": "prefix-4-10",
+        "mode": "eager_data_only",
+        "nodes": [],
+        "roots": [],
+        "status": "ALLOW",
+        "words": 11
+      }
+    ]
+  }
+]

@@ -1,0 +1,232 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "java.exe",
+        "-version"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "label": "java-version",
+      "started_utc": "2026-10-13T16:22:10.232593+00:00",
+      "timeout_seconds": 60,
+      "wall_seconds": 0.050056600011885166
+    },
+    {
+      "argv": [
+        "javac.exe",
+        "-version"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "label": "javac-version",
+      "started_utc": "2026-10-13T16:22:10.283426+00:00",
+      "timeout_seconds": 60,
+      "wall_seconds": 0.09186939999926835
+    },
+    {
+      "argv": [
+        "python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "label": "python-tests",
+      "started_utc": "2026-10-13T16:22:10.374992+00:00",
+      "timeout_seconds": 60,
+      "wall_seconds": 0.0627480000257492
+    },
+    {
+      "argv": [
+        "python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "receiver_tests",
+        "-v"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "label": "python-receiver_tests",
+      "started_utc": "2026-10-13T16:22:10.439066+00:00",
+      "timeout_seconds": 60,
+      "wall_seconds": 0.5099579000088852
+    },
+    {
+      "argv": [
+        "python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "bridge_tests",
+        "-v"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "label": "python-bridge_tests",
+      "started_utc": "2026-10-13T16:22:10.949698+00:00",
+      "timeout_seconds": 60,
+      "wall_seconds": 0.052077699976507574
+    },
+    {
+      "argv": [
+        "javac.exe",
+        "-J-XX:ActiveProcessorCount=1",
+        "-J-XX:+UseSerialGC",
+        "-J-Xmx256m",
+        "-proc:none",
+        "--release",
+        "17",
+        "-encoding",
+        "UTF-8",
+        "-d",
+        "<fresh-output>/classes",
+        "java/CertifiedReceiver.java",
+        "java/PublicBoundaryHarness.java",
+        "java/DeserializationTraceHarness.java",
+        "java/ObservationPair.java"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "label": "compile",
+      "started_utc": "2026-10-13T16:22:11.002709+00:00",
+      "timeout_seconds": 60,
+      "wall_seconds": 0.5587832000164781
+    },
+    {
+      "argv": [
+        "java.exe",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "<fresh-output>/classes",
+        "DeserializationTraceHarness"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "label": "passive",
+      "started_utc": "2026-10-13T16:22:11.561839+00:00",
+      "timeout_seconds": 60,
+      "wall_seconds": 0.10402530001010746
+    },
+    {
+      "argv": [
+        "java.exe",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "<fresh-output>/classes",
+        "ObservationPair"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "label": "observation-pair",
+      "started_utc": "2026-10-13T16:22:11.666144+00:00",
+      "timeout_seconds": 60,
+      "wall_seconds": 0.07570009998744354
+    },
+    {
+      "argv": [
+        "javac.exe",
+        "-proc:none",
+        "--release",
+        "17",
+        "-d",
+        "<fresh-output>/v1",
+        "java/evolution/v1/WriteOld.java",
+        "java/evolution/v1/evolution/EvolvingNode.java"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "label": "evolution-compile-v1",
+      "started_utc": "2026-10-13T16:22:11.743118+00:00",
+      "timeout_seconds": 60,
+      "wall_seconds": 0.38518199999816716
+    },
+    {
+      "argv": [
+        "java.exe",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "<fresh-output>/v1",
+        "WriteOld",
+        "<fresh-output>/owned-evolution.ser"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "label": "evolution-v1",
+      "started_utc": "2026-10-13T16:22:12.129266+00:00",
+      "timeout_seconds": 60,
+      "wall_seconds": 0.05672939997748472
+    },
+    {
+      "argv": [
+        "javac.exe",
+        "-proc:none",
+        "--release",
+        "17",
+        "-d",
+        "<fresh-output>/v2",
+        "java/evolution/v2/ReadNew.java",
+        "java/evolution/v2/evolution/EvolvingNode.java"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "label": "evolution-compile-v2",
+      "started_utc": "2026-10-13T16:22:12.186619+00:00",
+      "timeout_seconds": 60,
+      "wall_seconds": 0.385038699983852
+    },
+    {
+      "argv": [
+        "java.exe",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "<fresh-output>/v2",
+        "ReadNew",
+        "<fresh-output>/owned-evolution.ser"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "label": "evolution-v2",
+      "started_utc": "2026-10-13T16:22:12.571952+00:00",
+      "timeout_seconds": 60,
+      "wall_seconds": 0.08986300000105985
+    },
+    {
+      "argv": [
+        "java.exe",
+        "-XX:ActiveProcessorCount=1",
+        "-XX:+UseSerialGC",
+        "-Xmx256m",
+        "-cp",
+        "<fresh-output>/classes",
+        "PublicBoundaryHarness",
+        "<fresh-output>/valid-data-cases.tsv"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "label": "public-boundary",
+      "started_utc": "2026-10-13T16:22:14.443281+00:00",
+      "timeout_seconds": 60,
+      "wall_seconds": 0.37994679997791536
+    }
+  ],
+  "path_normalization": "Source paths are artifact-relative; outputs in command receipts were generated in a fresh directory. Local executable paths are represented by basenames."
+}

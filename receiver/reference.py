@@ -12,7 +12,9 @@ def decide(words):
     if words[:2] != [0x52434331, 1]:
         return {'status': 'INVALID_DATA', 'reason': 'schema'}
     n, m = words[2:4]
-    if not 1 <= n <= 128 or not 0 <= m <= 128 or len(words) < 5 + 2*n + m:
+    # D ends after the roots. A missing proof step-count is a certificate error,
+    # not incomplete data; this oracle intentionally ignores the proof suffix.
+    if not 1 <= n <= 128 or not 0 <= m <= 128 or len(words) < 4 + 2*n + m:
         return {'status': 'INVALID_DATA', 'reason': 'dimensions'}
     values, links, roots = words[4:4+n], words[4+n:4+2*n], words[4+2*n:4+2*n+m]
     if any(v not in (0, 1) for v in values):

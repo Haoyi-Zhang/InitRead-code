@@ -10,7 +10,7 @@ import time
 import unittest
 
 import reproduce as finite
-from reproduce_receiver import cases, tsv
+from reproduce_receiver import cases, tsv, compare_receiver_inputs
 from reproduce_specialization import make_cases, as_tsv
 from reproduce_trace_bridge import require_fresh, aggregate_summary, EXPECTED
 from receiver.certificate_reference import classify
@@ -32,11 +32,16 @@ def write_rows(path, rows):
 
 
 def compare_bytes(actual, expected, names):
-    records = [{'file': name, 'byte_equal': (actual/name).read_bytes() == (expected/name).read_bytes()}
-               for name in names]
+    records = []
+    for name in names:
+        if name == 'inputs.jsonl' and expected.resolve() == (ROOT/'results/receiver-campaign').resolve():
+            records.append(compare_receiver_inputs(actual/name, expected/name))
+        else:
+            records.append({'file': name, 'byte_equal': (actual/name).read_bytes() == (expected/name).read_bytes()})
+    matched = all(r.get('match', r['byte_equal']) for r in records)
     write_json(actual/'verification.json', {'scope':'Python input generation only', 'files':records,
-                                          'match':all(r['byte_equal'] for r in records)})
-    if not all(r['byte_equal'] for r in records):
+                                          'match':matched})
+    if not matched:
         raise AssertionError('generated input mismatch; baseline unchanged')
 
 

@@ -26,10 +26,13 @@ python -B reproduce_portable.py --out /absolute/fresh/python-scope
 ```
 
 This runs the complete two-/three-object enumeration, witness/capacity controls,
-all 35 current Python tests, receiver packet generation, the independent
+all 39 current Python tests, receiver packet generation, the independent
 5,248-packet certificate reference, and reinterpretation of the 11 archived
 passive observations. It compares six inherited semantic JSON and four byte
-files, plus both campaigns' generated input files. It never supplies synthetic
+files, plus both campaigns' generated input files. Receiver input words remain
+exact; its comparison separately records the corrected data-oracle label for
+the named cert-short-009 prefix rather than rewriting the historical input file.
+It never supplies synthetic
 Java observations or serialized sizes. Wall time and Python CPU are measured;
 unsupported peak RSS is JSON `null`, not zero or a Linux-equivalent estimate.
 
@@ -74,7 +77,7 @@ driver has no timing option and invokes no benchmark branch. It uses no before
 copy, private validation path, network service or third-party serialized input.
 
 This compiles the two current receivers and three reviewed harnesses with
-`--release 17 -proc:none`, runs the current thirteen receiver test methods (ten
+`--release 17 -proc:none`, runs the current seventeen receiver test methods (ten
 in the retained earlier replay), and replays the
 included 4,563 receiver observations and 5,248 integer cases. It compares full
 receiver outputs against `results/receiver-campaign/java-results.jsonl` and
@@ -111,7 +114,7 @@ Passive ordinary-object Java observations and five bridge test methods:
 python3 reproduce_trace_bridge.py --out bridge-output
 ```
 
-Receiver replay with ten receiver test methods, 4,563 actual Java cases and the paired observation. Omitting --skip-benchmark reruns the older six-size timing protocol on the current code, not the historical generic implementation:
+Receiver replay with seventeen current receiver test methods, 4,563 actual Java cases and the paired observation (the initial retained run had ten test methods). Omitting --skip-benchmark reruns the older six-size timing protocol on the current code, not the historical generic implementation:
 
 ```sh
 python3 reproduce_receiver.py --out receiver-output --skip-benchmark
@@ -124,7 +127,7 @@ python3 reproduce_receiver.py --out receiver-replay \
   --verify-against results/receiver-campaign --skip-benchmark
 ```
 
-The comparison checks five deterministic result/input files and all saved serialized input files as a complete set. The original finite replay excludes only documented timing/RSS fields from its seven scientific JSON comparisons. No runner overwrites the baseline to produce a match. Nonzero results produce diagnostics rather than a fabricated successful report.
+The comparison checks five result/input files and all saved serialized inputs as a complete set. Four receiver files remain byte-exact; inputs.jsonl retains exact input words and records the one named corrected data-oracle label separately. Other reference differences fail the comparison. The original finite replay excludes only documented timing/RSS fields from its seven scientific JSON comparisons. No runner overwrites the baseline to produce a match. Nonzero results produce diagnostics rather than a fabricated successful report.
 
 Table generation has no dependency on a paper directory:
 
@@ -132,6 +135,11 @@ Table generation has no dependency on a paper directory:
 python3 export_paper_data.py --results results/campaign --out legacy-tables
 python3 export_receiver_data.py --results results/receiver-campaign --out receiver-tables
 ```
+
+Reference comparisons use exact canonical JSON, both for unchanged labels and
+for the permitted named correction. Integer zero, Boolean false and floating
+zero remain distinct in values, links, roots and reachable identities; equality
+in Python alone is not a replay-schema check.
 
 ## Exact specialization and three-way comparison
 
@@ -164,7 +172,8 @@ An earlier attempt hit an outer execution timeout after completing its core comp
 | Exact specialization |5,248 integer packets; zero full-observation and independent-certificate-reference disagreement|4,552 retained inputs plus696 targeted/size cases, not new applications|
 | Sharp accepting packet bound |22,134 words /88,563 canonical serialized bytes|Attained at128 nodes and128 repeated roots|
 | Retained paired timing before preallocation |Median generic/specialized factors2.81–10.36; specialized/eager1.18–3.69|Original Linux/OpenJDK 21 sources; four controlled families, seven forks each; full ranges retained; no new capacity timing|
-| Current Windows 17 finite conformance |4,563 receiver/serialized cases; 5,248 integer packets; 31,488 six-mode observations; ten receiver tests|Temurin 17.0.20.1+1; fresh independent Python references; exact retained comparisons; no benchmark or universal correctness claim|
+| Retained Windows 17 finite conformance |4,563 receiver/serialized cases; 5,248 integer packets; 31,488 six-mode observations; ten receiver tests|Earlier Temurin 17.0.20.1+1 protocol; no benchmark or universal correctness claim|
+| Current data-prefix conformance |Same receiver observations/frames and integer certificate outcomes; 5,236 dense data checks; seventeen receiver tests|Six existing complete prefixes now checked as data, without changing certificate semantics|
 
 ## Evidence locations
 
@@ -185,37 +194,65 @@ An earlier attempt hit an outer execution timeout after completing its core comp
 - `results/clean-check/`: retained clean verification of the incoming generic receiver; the current verification is in `results/continuation-clean/`.
 - `results/native-replay/`: fresh 2026-10-12 native observations, serialized outputs, references, source/input bindings and relocatable command receipts for C33.
 - `results/public-boundary/`: fresh 2026-10-12 public-navigation inputs/outputs, cost batches/forks, run-source snapshots and relocatable receipts for C34/C35.
+- `results/public-navigation/`: current corrected semantic inputs, public observations, six named regression receipts, summary, source/runtime bindings and command receipts; no new performance measurements.
 - `claim_evidence_ledger.csv`, `reference-audit.csv`: evidence and interpretation records.
 
 ## Public-navigation regression and cost accounting
 
 `reproduce_public_boundary.py` adds a public-API comparison without reading a
-private graph snapshot. From an absent output directory inside the project but
-outside `artifact/`, run:
+private graph snapshot. With an absent output directory outside `artifact/`
+(including a private directory outside the project), run:
 
 ```sh
 python -B reproduce_public_boundary.py --java-home /absolute/local/jdk \
-  --out /absolute/this-project/public-boundary-output
+  --out /absolute/private/public-boundary-output
 ```
 
 Add `--skip-costs` for correctness only. The runner re-executes the eleven owned
-passive cases and the indistinguishable pair, then selects the 5,230 packets
+passive cases and the indistinguishable pair, then selects all 5,236 packets
 with complete valid data from the retained 5,248-packet corpus. Repeated data
 under different certificates remain separate packet cases. Three modes use
 exactly the same values, links and ordered roots: certificate checking, eager
 checking on the same proof-carrying frame, and eager checking on a data-only
 frame. The latter retains the existing data layout and a zero ignored step
 word; it is not a certificate packet or a proposed public protocol extension.
+The complete data prefix has 4+2n+m words. A missing subsequent step-count word
+is a certificate error, not missing graph data. The six packets in
+`inputs/data-prefix-regressions.json` are selected unchanged from the retained
+corpus, not duplicated as new samples. `data-prefix-regressions-results.json`
+records their exact native observations in each new run.
 All transport/filter/canonicalization and immutable graph-construction checks
 are retained. After mutating caller-held input bytes and a root-array copy,
 the harness enumerates only public roots/successors and compares their scalar
 values, links, reachable identities and canonical aliases with the independent
 dense reference. It never calls `snapshot()` or exposes an unreachable node.
 
-The 2026-10-12 Windows native run records 15,690 public observations with zero
+Current semantic results are supplied in `results/public-navigation/`:
+`inputs.tsv.gz`, `observations.jsonl.gz`, `data-prefix-regressions.json`,
+`summary.json`, `environment.json` and `commands.json`. Gzip preserves the exact
+generated input/output bytes; environment bindings identify the source corpus,
+selected inputs, observations, receiver/checker sources and actual runtime.
+Command receipts use generated-output placeholders and executable basenames;
+classes, caches and local executables are not included. The earlier timings and
+their sources remain in `results/public-boundary/`, separate from this semantic
+result set.
+
+The current correctness run records 15,708 public observations with zero
+mismatches. Both eager modes reject 1,046 unsafe packets and accept 4,190 safe
+packets. The certificate path accepts 3,432, denies 1,046 and refuses 758 damaged
+or absent proofs on safe data. All six named complete-data prefixes are ALLOW
+for eager checking and INVALID_CERT with no graph for certificate checking.
+The current native replay preserves all 4,563 receiver observations/streams,
+5,248 integer classifications and 31,488 six-mode observations, with 5,236 fresh
+dense data checks. Seventeen receiver test methods pass. Correctness-only runs
+do not replace measurements or collect new timing samples.
+
+The retained 2026-10-12 Windows run records 15,690 public observations with zero
 mismatches. Both eager modes reject all 1,046 unsafe packets and accept the
 4,184 safe-data packets. Certificate checking accepts 3,432 and rejects 752
-damaged proofs on otherwise safe data; that is exact-proof checking, not extra
+damaged proofs on otherwise safe data. Its former 5+2n+m completeness condition
+excluded the six prefixes; the receipt is preserved, not relabeled as the new
+full-data selection. That is exact-proof checking, not extra
 data protection. The same run retains three MAPPED and eight UNKNOWN passive
 cases. Separately, `results/native-replay/` records a fresh exact match of all
 4,563 receiver observations/streams, 5,248 classifications and 31,488 six-mode

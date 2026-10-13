@@ -45,7 +45,7 @@ SCIENTIFIC_JSON_FILES = ['exhaustive-2.json', 'exhaustive-3.json', 'witnesses.js
                          'unit-summary.json']
 DETERMINISTIC_DATA_FILES = ['exhaustive-2-states.csv', 'exhaustive-3-states.csv',
                             'java-observations.jsonl', 'certificate-128.json', 'summary.csv']
-RUN_ENV_OVERRIDES = {'OMP_NUM_THREADS':'1', 'OPENBLAS_NUM_THREADS':'1',
+RUN_ENV_OVERRIDES = {'PYTHONDONTWRITEBYTECODE':'1', 'OMP_NUM_THREADS':'1', 'OPENBLAS_NUM_THREADS':'1',
                      'MKL_NUM_THREADS':'1', 'JAVA_TOOL_OPTIONS':''}
 JVM_OPTIONS = ['-XX:ActiveProcessorCount=1', '-XX:+UseSerialGC', '-Xmx256m']
 JAVAC_OPTIONS = ['-proc:none']

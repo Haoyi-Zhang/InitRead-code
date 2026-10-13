@@ -19,9 +19,10 @@ public final class PublicBoundaryHarness {
     }
     private static int[] dataOnly(int[] words) {
         int n = words[2], m = words[3];
-        if (n < 1 || n > 128 || m < 0 || m > 128 || words.length < 5 + 2*n + m)
+        if (n < 1 || n > 128 || m < 0 || m > 128 || words.length < 4 + 2*n + m)
             throw new IllegalArgumentException("complete bounded data required");
-        // Retain the existing header/data layout and one ignored zero step word.
+        // D is complete without a proof step word. Append our own zero placeholder
+        // when the input stops exactly after the roots, or replace the old word.
         // This is an eager test frame, not an accepting certificate packet.
         int[] data = Arrays.copyOf(words, 5 + 2*n + m);
         data[data.length - 1] = 0;

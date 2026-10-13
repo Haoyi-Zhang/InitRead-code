@@ -1,0 +1,66 @@
+{
+  "cleared_injected_java_environment": true,
+  "data_bindings": {
+    "inputs": "inputs.tsv.gz",
+    "inputs_uncompressed_sha256": "3da94019139694542adff4bc33d9f843c8d51b8bc60aa23284a72c381ef75b1d",
+    "named_fixture": "inputs/data-prefix-regressions.json",
+    "named_fixture_sha256": "d372eb52f1fc858ffee69ab2a7e85c17654a1b10378a4d40aed0039a654b9c61",
+    "observations": "observations.jsonl.gz",
+    "observations_uncompressed_sha256": "094848c2ae5fad40e0d6b9b03ff33fb720359ebd9613200e7a33d2122c98d3c1",
+    "source_corpus": "results/specialization-campaign/cases.tsv",
+    "source_corpus_sha256": "e07a25778332d10246aedf9394fb86094e82c70d75f5530d95b721e6d41cbd3e"
+  },
+  "ended_utc": "2026-10-13T16:22:14.892260+00:00",
+  "java_version": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "javac_version": "javac 17.0.20.1",
+  "jvm_options": [
+    "-XX:ActiveProcessorCount=1",
+    "-XX:+UseSerialGC",
+    "-Xmx256m"
+  ],
+  "machine": "AMD64",
+  "platform": "Windows-11-10.0.28000-SP0",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "receipt_paths": "Source paths are artifact-relative; outputs in command receipts were generated in a fresh directory. Local executable paths are represented by basenames.",
+  "scope": "Current public-navigation semantics only; no new timing samples, classes, caches or external serialized input.",
+  "source_sha256": {
+    "bridge_tests/test_java_trace_bridge.py": "29661026003516c9482d588efea875db4ca04d761d70a5c9e80d8be7f63be147",
+    "inputs/data-prefix-regressions.json": "d372eb52f1fc858ffee69ab2a7e85c17654a1b10378a4d40aed0039a654b9c61",
+    "inputs/witness-programs.json": "b08225bb997a0266cd1ff394ec1263f72ffad94cedfab2d6a7b212b503d2bdcb",
+    "java/CertifiedReceiver.java": "dd78a91c2ee56b5a94c8993d043be545be438658bd585e080844de4c525fb492",
+    "java/DeserializationTraceHarness.java": "a97f1f623de7c30ca60a96f3c84c97d39d952dc07d5537d4c7946376cd1343bb",
+    "java/ObservationPair.java": "50691ff9d4b43ef3a11af3889be3b580d0f8a971fd851c700de3f27216eb696b",
+    "java/PublicBoundaryHarness.java": "94878f47835c33f7f9d04e79d17d64e9933b7f629fbcb5395dd12ac2dbbdde2c",
+    "java/evolution/v1/WriteOld.java": "4f711d91cca261bc70ea46a6452bdb7adc54704529ddc2c8331472651403636e",
+    "java/evolution/v1/evolution/EvolvingNode.java": "caa7d80b449cabd5ba2b6fdaf6f23549a7d85895379ab5836f06a0a485069601",
+    "java/evolution/v2/ReadNew.java": "cdb77fc4ce60c8cdbe89de460e2e9334a8245ebe358ea1c1ea9f5b0916c697b2",
+    "java/evolution/v2/evolution/EvolvingNode.java": "37c9c84d6c95a241fe21a12f96b0166ee196d4a428ad1666c434df533e96f0cf",
+    "receiver/certificate_reference.py": "d633e5b070696e434b0ad245d84305760e0e216ef7c5a63cd474105f11026e41",
+    "receiver/producer.py": "8a23ba2693b7956efbcc1cd0f28dd864d9f0897ee0723c60074f439810e1013f",
+    "receiver/reference.py": "fd4877bb0758ff27c229b6207bbb17f4c5b381be39f786c57497df2be7d5af27",
+    "receiver_tests/test_public_boundary.py": "5e3aa5e0dbc1328e02dae61e85fcaa231d5785b4d2779354ffa8969338270f80",
+    "receiver_tests/test_receiver.py": "79c680e3f21bd991a74b42f01fd184d0ae856daf87d2ee867bf4789e278a7f35",
+    "receiver_tests/test_specialization.py": "4d7b90c13c503d3733f71916d47941469876c9e330b13a9c6e71461b133ff779",
+    "reproduce_java_conformance.py": "1570bd7c21fa49d322e3b550a80a526598cf4e4259773074fd456119fe0f9c32",
+    "reproduce_public_boundary.py": "8ad6fd0e489478c5a08a6a6159a030cde21f294240f68135ebe88d03441be4ed",
+    "reproduce_trace_bridge.py": "a91614e93a0fa1f2a522c057c942ed49deb3fdcba7017bc1f8106f76257a1d27",
+    "results/specialization-campaign/cases.tsv": "e07a25778332d10246aedf9394fb86094e82c70d75f5530d95b721e6d41cbd3e",
+    "src/checker.py": "4db581a974b715ff63b65e0038ecc22c3dda7512ddf7bade6bddd60c28d935a6",
+    "src/java_trace_bridge.py": "ba01860b9cb2dcf7146647712ebd22cb1843d59975871021a2ea0df1a8b29680",
+    "src/model.py": "6ae2da6e175bd08f79f23aec976e48968e1501aec86da22d887dd3b69fac2f33",
+    "src/oracle.py": "45035b19b6b9430572e2191fc9a720146e182aa39e6c024cdff7135cc327cd87",
+    "src/producer.py": "25ee7a936a6bbbccab249eaa1aeae110ebb353b761b7bcc1a8f07300ae912145",
+    "src/witness.py": "a88aaed328e23e18010a9b6a1d6dadee1377b690911ff14ed697d1b845f11ff5",
+    "tests/test_certificates.py": "620512b49bec03652011ad421a0a4a7071f15c9e8f69f8e937087ad411d17c56",
+    "tests/test_witness.py": "5c628de6aa54ed8a8068c597cf061aabeca3ca5a55f4c2b54aa9ecb2e7eecd2a"
+  },
+  "started_utc": "2026-10-13T16:22:10.187893+00:00",
+  "test_methods": {
+    "bridge_tests": 5,
+    "receiver_tests": 17,
+    "tests": 17
+  },
+  "test_subprocess_environment": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  }
+}

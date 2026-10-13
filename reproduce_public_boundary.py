@@ -2,7 +2,7 @@
 
 No external serialized input, downloads, exploit cases or historical rewrites.
 The independent dense reference supplies exactly the data information available
-to every receiving mode. Output must be a fresh directory in the project.
+to every receiving mode. Output must be a fresh directory outside the artifact.
 """
 import argparse
 from datetime import datetime, timezone
@@ -61,8 +61,8 @@ def main():
     parser.add_argument('--skip-costs', action='store_true')
     args = parser.parse_args()
     out = args.out.resolve()
-    if out.exists() or ROOT.parent not in out.parents or ROOT in out.parents:
-        parser.error('--out must be absent, inside this project and outside artifact')
+    if out.exists() or out == ROOT or ROOT in out.parents or out in ROOT.parents:
+        parser.error('--out must be absent, outside and not containing this artifact')
     java, javac = tools(args.java_home)
     out.mkdir(parents=True)
     (out / 'classes').mkdir()
@@ -105,7 +105,8 @@ def main():
                     'receiver/producer.py', 'receiver/reference.py', 'receiver/certificate_reference.py',
                     'src/model.py', 'src/producer.py', 'src/checker.py', 'src/oracle.py',
                     'src/witness.py', 'inputs/witness-programs.json',
-                    'src/java_trace_bridge.py', 'results/specialization-campaign/cases.tsv']
+                    'src/java_trace_bridge.py', 'results/specialization-campaign/cases.tsv',
+                    'inputs/data-prefix-regressions.json']
         bindings += [str(p.relative_to(ROOT)).replace('\\', '/') for p in (ROOT / 'java/evolution').rglob('*.java')]
         bindings += [str(p.relative_to(ROOT)).replace('\\', '/') for folder in ('tests', 'receiver_tests', 'bridge_tests')
                      for p in (ROOT / folder).glob('*.py') if str(p.relative_to(ROOT)).replace('\\', '/') not in bindings]
@@ -159,15 +160,23 @@ def main():
             raise AssertionError('passive case coverage')
         save('passive-results.json', passive_rows)
 
+        prefix_cases = json.loads((ROOT / 'inputs/data-prefix-regressions.json').read_text(encoding='utf-8'))['cases']
+        named = {case['id']: case for case in prefix_cases}
+        if len(prefix_cases) != 6 or len(named) != 6:
+            raise AssertionError('named data-prefix fixture count')
         cases, expectations = [], {}
         for line in (ROOT / 'results/specialization-campaign/cases.tsv').read_text(encoding='utf-8').splitlines():
             ident, kind, text = line.split('\t')
             words = [int(cell) for cell in text.split(',')]
+            if ident in named and words != named[ident]['words']:
+                raise AssertionError('named data-prefix fixture changed')
             truth = decide(words)
             if truth['status'] not in ('ALLOW', 'DENY_UNSAFE'):
                 continue
             cases.append(line)
             expectations[ident] = (truth, classify(words))
+        if not set(named) <= set(expectations):
+            raise AssertionError('complete data-prefix cases omitted')
         (out / 'valid-data-cases.tsv').write_text('\n'.join(cases) + '\n', encoding='utf-8')
         raw = run('public-boundary', prefix + ['PublicBoundaryHarness', str(out / 'valid-data-cases.tsv')])
         rows = [json.loads(line) for line in raw.splitlines()]
@@ -181,10 +190,24 @@ def main():
             verify_public(row, truth, certificate if row['mode'] == 'certificate' else truth['status'])
         if seen != {(ident, mode) for ident in expectations for mode in MODES}:
             raise AssertionError('public case coverage')
+        regressions = []
+        for ident, case in named.items():
+            truth, certificate = expectations[ident]
+            if truth['status'] != case['data'] or certificate != case['certificate']:
+                raise AssertionError('data-prefix/certificate policy separation')
+            regressions.append({'id': ident, 'name': case['name'], 'data': truth,
+                                'certificate': certificate,
+                                'observations': [row for row in rows if row['id'] == ident]})
+        save('data-prefix-regressions-results.json', regressions)
+        mode_outcomes = {mode: {} for mode in MODES}
+        for row in rows:
+            counts = mode_outcomes[row['mode']]
+            counts[row['status']] = counts.get(row['status'], 0) + 1
         summary.update(public_data_cases=len(expectations), public_observations=len(rows),
                        public_mismatches=0, passive_mapped=mapped, passive_unknown=unknown,
                        unsafe_data_cases=sum(truth['status'] == 'DENY_UNSAFE' for truth, _ in expectations.values()),
-                       observation_pair_equal_projection=True)
+                       observation_pair_equal_projection=True, mode_outcomes=mode_outcomes,
+                       named_data_prefix_regressions=len(regressions), costs_skipped=args.skip_costs)
 
         if not args.skip_costs:
             # Four inherited contrasting families, fixed before this new run.

@@ -32,6 +32,7 @@ from java_trace_bridge import BLOCKING_FEATURES, map_observation
 from oracle import exact
 
 RUN_ENV_OVERRIDES = {
+    "PYTHONDONTWRITEBYTECODE": "1",
     "OMP_NUM_THREADS": "1",
     "OPENBLAS_NUM_THREADS": "1",
     "MKL_NUM_THREADS": "1",

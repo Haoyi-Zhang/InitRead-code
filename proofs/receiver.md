@@ -86,10 +86,14 @@ The equivalence concerns data projected from successful packets, not arbitrary p
 The public-navigation regression observes R4 through `roots()`, `id()`, `value()`
 and `next()` only; it does not use the package-private scalar snapshot. Its dense
 reference predicts the exact exposed closure and ordered roots from the same
-data D. On all 5,230 complete-data packets selected from the retained corpus,
+data D. On all 5,236 complete-data packets selected from the retained corpus,
 the certificate path and two eager paths agree with their respective specified
 policies, including 1,046 unsafe packets. The proof-free eager fixture retains
 the same data header with an ignored zero step word and omits proof records.
+Data completeness requires only 4+2n+m words, through the final root. Six named
+existing prefixes have complete safe data but no certificate step-count word:
+both eager modes accept them, while certificate checking returns INVALID_CERT
+with no graph. The data-only fixture appends its own zero word in these cases.
 This is an owned comparison fixture, not a newly accepted certificate grammar.
 Finite public navigation checks support source correspondence for J; they do
 not replace R3--R6 or establish an arbitrary Java refinement.

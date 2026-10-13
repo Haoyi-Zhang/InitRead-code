@@ -1,0 +1,38 @@
+{
+  "command_receipts": "commands.json",
+  "costs_skipped": true,
+  "ended_utc": "2026-10-13T16:22:14.892260+00:00",
+  "historical_measurements": "../public-boundary/",
+  "historical_public_data_cases": 5230,
+  "historical_public_observations": 15690,
+  "historical_results_modified": false,
+  "inputs": "inputs.tsv.gz",
+  "mode_outcomes": {
+    "certificate": {
+      "ALLOW": 3432,
+      "DENY_UNSAFE": 1046,
+      "INVALID_CERT": 758
+    },
+    "eager_data_only": {
+      "ALLOW": 4190,
+      "DENY_UNSAFE": 1046
+    },
+    "eager_same_frame": {
+      "ALLOW": 4190,
+      "DENY_UNSAFE": 1046
+    }
+  },
+  "named_data_prefix_regressions": 6,
+  "named_regression_receipt": "data-prefix-regressions.json",
+  "observation_pair_equal_projection": true,
+  "observations": "observations.jsonl.gz",
+  "passive_mapped": 3,
+  "passive_unknown": 8,
+  "public_data_cases": 5236,
+  "public_mismatches": 0,
+  "public_observations": 15708,
+  "source_runtime_bindings": "environment.json",
+  "started_utc": "2026-10-13T16:22:10.187893+00:00",
+  "status": "PASS",
+  "unsafe_data_cases": 1046
+}

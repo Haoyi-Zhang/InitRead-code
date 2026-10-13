@@ -10,9 +10,68 @@ import reproduce_receiver
 import reproduce_specialization
 import reproduce_portable
 import runtime_resources
+from receiver.reference import decide
 
 
 class PortableTests(unittest.TestCase):
+    def test_owned_subprocesses_disable_bytecode_writes(self):
+        self.assertEqual(reproduce.RUN_ENV_OVERRIDES['PYTHONDONTWRITEBYTECODE'], '1')
+        self.assertEqual(reproduce_receiver.RUN_ENV_OVERRIDES['PYTHONDONTWRITEBYTECODE'], '1')
+        self.assertEqual(reproduce_specialization.RUN_ENV_OVERRIDES['PYTHONDONTWRITEBYTECODE'], '1')
+
+    def receiver_inputs(self, directory):
+        words = [1380139825, 1, 2, 1, 0, 1, 1, -1, 0]
+        old = {'id': 'cert-short-009', 'kind': 'certificate-control', 'words': words,
+               'reference': {'status': 'INVALID_DATA', 'reason': 'dimensions'}}
+        new = {**old, 'reference': decide(words)}
+        before, after = Path(directory)/'before.jsonl', Path(directory)/'after.jsonl'
+        reproduce_portable.write_rows(before, [old])
+        reproduce_portable.write_rows(after, [new])
+        return before, after, new
+
+    def test_named_reference_correction_keeps_input_words_exact(self):
+        with tempfile.TemporaryDirectory(prefix='prefix-label-') as temp:
+            before, after, _ = self.receiver_inputs(temp)
+            result = reproduce_receiver.compare_receiver_inputs(after, before)
+            self.assertFalse(result['byte_equal'])
+            self.assertTrue(result['match'])
+            self.assertTrue(result['data_words_equal'])
+            self.assertEqual(result['reference_corrections'], ['cert-short-009'])
+
+    def test_reference_correction_does_not_hide_other_changes(self):
+        with tempfile.TemporaryDirectory(prefix='prefix-label-guard-') as temp:
+            before, after, new = self.receiver_inputs(temp)
+            for changed in ({**new, 'words': new['words'][:-1] + [1]},
+                            {**new, 'words': new['words'][:4] + [False] + new['words'][5:]},
+                            {**new, 'id': 'other-case'},
+                            {**new, 'reference': {'status': 'ALLOW'}}):
+                reproduce_portable.write_rows(after, [changed])
+                self.assertFalse(reproduce_receiver.compare_receiver_inputs(after, before)['match'])
+
+    def test_named_correction_rejects_equal_bool_and_float_references(self):
+        with tempfile.TemporaryDirectory(prefix='prefix-reference-types-') as temp:
+            before, after, new = self.receiver_inputs(temp)
+            for field, value in (('values', False), ('reachable', 0.0),
+                                 ('links', 1.0), ('roots', False)):
+                with self.subTest(field=field, value=value):
+                    changed = json.loads(json.dumps(new))
+                    changed['reference'][field][0] = value
+                    reproduce_portable.write_rows(after, [changed])
+                    self.assertFalse(reproduce_receiver.compare_receiver_inputs(after, before)['match'])
+
+    def test_unchanged_reference_shortcut_keeps_exact_scalar_types(self):
+        with tempfile.TemporaryDirectory(prefix='unchanged-reference-types-') as temp:
+            before, after, new = self.receiver_inputs(temp)
+            reproduce_portable.write_rows(before, [new])
+            self.assertTrue(reproduce_receiver.compare_receiver_inputs(after, before)['match'])
+            for field, value in (('values', False), ('reachable', 0.0),
+                                 ('links', 1.0), ('roots', False)):
+                with self.subTest(field=field, value=value):
+                    changed = json.loads(json.dumps(new))
+                    changed['reference'][field][0] = value
+                    reproduce_portable.write_rows(after, [changed])
+                    self.assertFalse(reproduce_receiver.compare_receiver_inputs(after, before)['match'])
+
     def test_unavailable_resource_is_null(self):
         with patch.object(runtime_resources, '_resource', None):
             self.assertIsNone(runtime_resources.self_peak_rss_kib())

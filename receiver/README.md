@@ -24,7 +24,7 @@ From the artifact root, using Python3.9+ and a local JDK (recorded execution:JDK
 python3 reproduce_receiver.py --out receiver-output
 ```
 
-This executes thirteen unit test methods across `test_receiver.py`, `test_specialization.py` and `test_public_boundary.py` (the retained older campaign ran ten), creates and saves all benign serialized inputs, compiles the Java source, runs 4,563 Java cases and the same-byte observation pair, and measures 42 sequential size-specific Java forks. The output directory must be absent or empty. Running it now measures the current preallocated sources, not the original generic receiver. The newer public-navigation and sender-cost comparison is documented in `../README.md` and run separately by `reproduce_public_boundary.py`.
+This executes seventeen unit test methods across `test_receiver.py`, `test_specialization.py` and `test_public_boundary.py` (the retained older campaign ran ten), creates and saves all benign serialized inputs, compiles the Java source, runs 4,563 Java cases and the same-byte observation pair, and measures 42 sequential size-specific Java forks. The output directory must be absent or empty. Running it now measures the current preallocated sources, not the original generic receiver. The newer public-navigation and sender-cost comparison is documented in `../README.md` and run separately by `reproduce_public_boundary.py`.
 
 A deterministic replay without repeating variable timing measurements is:
 
@@ -33,7 +33,22 @@ python3 reproduce_receiver.py --out receiver-replay \
   --verify-against results/receiver-campaign --skip-benchmark
 ```
 
-Comparison includes five deterministic result/input files and the complete set of saved `.ser` inputs. Timing is not required to match. Failures save diagnostics before a nonzero exit. Original baseline results are never rewritten by comparison.
+Comparison includes five result/input files and the complete set of saved `.ser` inputs. Four files remain byte-exact; input words in inputs.jsonl remain exact while the named cert-short-009 data-oracle label correction is recorded separately. All other reference differences fail comparison. Timing is not required to match. Failures save diagnostics before a nonzero exit. Original baseline results are never rewritten by comparison.
+
+The data-only reference checks 4+2n+m words through the roots; it requires no
+certificate step-count word. Six named existing prefixes are defined in
+`../inputs/data-prefix-regressions.json`. Their safe data are accepted by both
+eager modes, while their missing proofs remain INVALID_CERT. The public harness
+creates its own ignored zero word for the eager data-only fixture. Current
+public navigation covers 5,236 complete-data packets and 15,708 observations,
+with no decision, alias, freezing or exposed-closure mismatches. This does not
+change the certificate grammar, receiver publication policy or retained frames.
+
+The current public inputs, raw observations, named regression receipts and
+source/runtime bindings are in `../results/public-navigation/`. Historical
+public cost measurements stay in `../results/public-boundary/`. Replay label
+comparison uses canonical JSON, keeping Boolean/float substitutions distinct
+from the required integer fields even when Python would compare them equal.
 
 To regenerate the manuscript tables from the recorded full run:
 

@@ -127,6 +127,8 @@ def main():
     try:
         bindings = SOURCES + ['reproduce_java_conformance.py', 'java-conformance-contract.json',
                               'receiver/reference.py', 'receiver/certificate_reference.py',
+                              'inputs/data-prefix-regressions.json',
+                              'receiver_tests/test_public_boundary.py',
                               'results/receiver-campaign/cases.tsv', 'results/receiver-campaign/java-results.jsonl',
                               'results/specialization-campaign/cases.tsv', 'results/specialization-campaign/comparison.jsonl']
         save(out / 'environment.json', {'python': sys.version, 'platform': sys.platform,
@@ -208,11 +210,29 @@ def main():
                 raise AssertionError('receiver publication/callback/freeze: ' + ident)
             if ident in receiver_inputs and observed['status'] != classify(receiver_inputs[ident][1]):
                 raise AssertionError('fresh receiver reference: ' + ident)
+        prefix_cases = json.loads((ROOT / 'inputs/data-prefix-regressions.json').read_text(encoding='utf-8'))['cases']
+        if len(prefix_cases) != 6 or len({case['id'] for case in prefix_cases}) != 6:
+            raise AssertionError('named data-prefix fixture count')
+        regressions = []
+        for case in prefix_cases:
+            ident = case['id']
+            if integer_inputs[ident][1] != case['words']:
+                raise AssertionError('named data-prefix fixture changed: ' + ident)
+            data, certificate = decide(case['words']), classify(case['words'])
+            if data['status'] != case['data'] or certificate != case['certificate']:
+                raise AssertionError('data-prefix/certificate policy separation: ' + ident)
+            observations = [full[(ident, mode)] for mode in range(6)]
+            if [row['status'] for row in observations] != [certificate, certificate] + [data['status']]*4:
+                raise AssertionError('named native data-prefix outcomes: ' + ident)
+            regressions.append({'id': ident, 'name': case['name'], 'data': data,
+                                'certificate': certificate, 'observations': observations})
+        save(out / 'data-prefix-regressions-results.json', regressions)
         summary.update(status='PASS', receiver_observations=len(actual), integer_cases=len(integers),
                        full_observations=len(full), serialized_byte_equalities=len(current_set),
                        fresh_certificate_reference_cases=len(integer_inputs),
                        fresh_receiver_reference_cases=len(receiver_inputs),
                        fresh_dense_data_reference_cases=dense_checked,
+                       named_data_prefix_regressions=len(regressions),
                        full_observations_canonical_sha256=h.hexdigest(),
                        limits='Finite included cases only; Python references do not model Java stream decoding; dense representation comparison only for reference-valid complete data; no performance or universal correctness claim')
     except Exception as error:
