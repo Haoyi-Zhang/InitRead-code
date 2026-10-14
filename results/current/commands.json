@@ -1,0 +1,91 @@
+[
+  {
+    "argv": [
+      "/opt/hostedtoolcache/Python/3.12.14/x64/bin/python",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "portability_tests",
+      "-v"
+    ],
+    "name": "portability-tests",
+    "outcome": "EXIT",
+    "returncode": 0,
+    "started_utc": "2026-10-06T04:06:14.939439+00:00",
+    "stderr": "logs/portability-tests.stderr",
+    "stdout": "logs/portability-tests.stdout",
+    "wall_seconds": 0.8661608559999934
+  },
+  {
+    "argv": [
+      "/opt/hostedtoolcache/Python/3.12.14/x64/bin/python",
+      "-B",
+      "reproduce.py",
+      "--out",
+      "/home/runner/work/_temp/p002-37412087235-1/finite",
+      "--verify-against",
+      "results/campaign"
+    ],
+    "name": "finite",
+    "outcome": "EXIT",
+    "returncode": 0,
+    "started_utc": "2026-10-06T04:06:15.805946+00:00",
+    "stderr": "logs/finite.stderr",
+    "stdout": "logs/finite.stdout",
+    "wall_seconds": 63.201305026
+  },
+  {
+    "argv": [
+      "/opt/hostedtoolcache/Python/3.12.14/x64/bin/python",
+      "-B",
+      "reproduce_trace_bridge.py",
+      "--out",
+      "/home/runner/work/_temp/p002-37412087235-1/passive"
+    ],
+    "name": "passive",
+    "outcome": "EXIT",
+    "returncode": 0,
+    "started_utc": "2026-10-06T04:07:19.007744+00:00",
+    "stderr": "logs/passive.stderr",
+    "stdout": "logs/passive.stdout",
+    "wall_seconds": 3.6895961559999932
+  },
+  {
+    "argv": [
+      "/opt/hostedtoolcache/Python/3.12.14/x64/bin/python",
+      "-B",
+      "reproduce_receiver.py",
+      "--out",
+      "/home/runner/work/_temp/p002-37412087235-1/receiver",
+      "--verify-against",
+      "results/receiver-campaign"
+    ],
+    "name": "receiver",
+    "outcome": "EXIT",
+    "returncode": 0,
+    "started_utc": "2026-10-06T04:07:22.697843+00:00",
+    "stderr": "logs/receiver.stderr",
+    "stdout": "logs/receiver.stdout",
+    "wall_seconds": 30.59901357800001
+  },
+  {
+    "argv": [
+      "/opt/hostedtoolcache/Python/3.12.14/x64/bin/python",
+      "-B",
+      "reproduce_specialization.py",
+      "--out",
+      "/home/runner/work/_temp/p002-37412087235-1/specialization",
+      "--verify-against",
+      "results/specialization-campaign"
+    ],
+    "name": "specialization",
+    "outcome": "EXIT",
+    "returncode": 0,
+    "started_utc": "2026-10-06T04:07:53.297460+00:00",
+    "stderr": "logs/specialization.stderr",
+    "stdout": "logs/specialization.stdout",
+    "wall_seconds": 86.08598470500004
+  }
+]

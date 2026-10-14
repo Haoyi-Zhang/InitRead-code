@@ -1,0 +1,7 @@
+{
+  "log": "bridge-unit-tests.txt",
+  "result": "PASS",
+  "returncode": 0,
+  "schema": "java-trace-bridge-unit-summary-v1",
+  "tests_run": 5
+}

@@ -1,0 +1,15 @@
+test_data_source_bound_and_domain (test_receiver.RootTests.test_data_source_bound_and_domain) ... ok
+test_exact_type_before_deduplication (test_receiver.RootTests.test_exact_type_before_deduplication) ... ok
+test_fixed_semantics (test_receiver.RootTests.test_fixed_semantics) ... ok
+test_reference_import_separation (test_receiver.RootTests.test_reference_import_separation) ... ok
+test_reference_no_equal_type_erasure (test_receiver.RootTests.test_reference_no_equal_type_erasure) ... ok
+test_denial_is_a_prefix_not_a_tail_certificate (test_specialization.SpecializationReferenceTests.test_denial_is_a_prefix_not_a_tail_certificate) ... ok
+test_every_certificate_cell_matters (test_specialization.SpecializationReferenceTests.test_every_certificate_cell_matters) ... ok
+test_independent_reference_domains_and_denial (test_specialization.SpecializationReferenceTests.test_independent_reference_domains_and_denial) ... ok
+test_no_production_imports (test_specialization.SpecializationReferenceTests.test_no_production_imports) ... ok
+test_sharp_bound_attained_by_cycles (test_specialization.SpecializationReferenceTests.test_sharp_bound_attained_by_cycles) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.667s
+
+OK

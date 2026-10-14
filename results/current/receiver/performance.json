@@ -1,0 +1,179 @@
+{
+  "measurement": "traced implementation; seven independent size-specific JVM forks; 500 warmups, 200 timed calls/mode, order rotated by fork",
+  "rows": [
+    {
+      "certificate_over_eager": 1.7137914030055073,
+      "modes": {
+        "certificate": {
+          "forks": 7,
+          "max_us": 114.59402499999999,
+          "median_us": 74.5114,
+          "min_us": 30.70421
+        },
+        "eager": {
+          "forks": 7,
+          "max_us": 72.886205,
+          "median_us": 43.47752,
+          "min_us": 25.760125
+        },
+        "shape": {
+          "forks": 7,
+          "max_us": 68.674745,
+          "median_us": 58.178635,
+          "min_us": 14.332125
+        }
+      },
+      "n": 1,
+      "paired_ratio": {
+        "max": 4.448504228919696,
+        "median": 1.0585172987106788,
+        "min": 0.7062088637990391
+      }
+    },
+    {
+      "certificate_over_eager": 1.3336250459260095,
+      "modes": {
+        "certificate": {
+          "forks": 7,
+          "max_us": 106.23085499999999,
+          "median_us": 47.187655,
+          "min_us": 20.71014
+        },
+        "eager": {
+          "forks": 7,
+          "max_us": 75.633345,
+          "median_us": 35.383,
+          "min_us": 22.47093
+        },
+        "shape": {
+          "forks": 7,
+          "max_us": 121.662375,
+          "median_us": 72.44994500000001,
+          "min_us": 12.584155
+        }
+      },
+      "n": 4,
+      "paired_ratio": {
+        "max": 4.7274792365069,
+        "median": 1.0916788606553869,
+        "min": 0.5914171698866463
+      }
+    },
+    {
+      "certificate_over_eager": 1.1864473463409002,
+      "modes": {
+        "certificate": {
+          "forks": 7,
+          "max_us": 185.718995,
+          "median_us": 62.076515,
+          "min_us": 35.66778
+        },
+        "eager": {
+          "forks": 7,
+          "max_us": 163.21135,
+          "median_us": 52.32134,
+          "min_us": 39.398955
+        },
+        "shape": {
+          "forks": 7,
+          "max_us": 99.59214999999999,
+          "median_us": 56.454815,
+          "min_us": 17.22994
+        }
+      },
+      "n": 16,
+      "paired_ratio": {
+        "max": 4.496031090857504,
+        "median": 0.9127216699021585,
+        "min": 0.46656498047715417
+      }
+    },
+    {
+      "certificate_over_eager": 0.7878362302060885,
+      "modes": {
+        "certificate": {
+          "forks": 7,
+          "max_us": 175.44089499999998,
+          "median_us": 70.74746499999999,
+          "min_us": 65.54735000000001
+        },
+        "eager": {
+          "forks": 7,
+          "max_us": 103.78744,
+          "median_us": 89.79971,
+          "min_us": 25.60353
+        },
+        "shape": {
+          "forks": 7,
+          "max_us": 133.56772,
+          "median_us": 84.755735,
+          "min_us": 24.031444999999998
+        }
+      },
+      "n": 32,
+      "paired_ratio": {
+        "max": 2.9421321705845718,
+        "median": 1.9536911088020215,
+        "min": 0.6566981435329675
+      }
+    },
+    {
+      "certificate_over_eager": 1.9494775226208132,
+      "modes": {
+        "certificate": {
+          "forks": 7,
+          "max_us": 322.10358,
+          "median_us": 105.94516499999999,
+          "min_us": 100.20814999999999
+        },
+        "eager": {
+          "forks": 7,
+          "max_us": 139.74611,
+          "median_us": 54.345415,
+          "min_us": 38.026185
+        },
+        "shape": {
+          "forks": 7,
+          "max_us": 141.62292000000002,
+          "median_us": 120.332795,
+          "min_us": 34.30238
+        }
+      },
+      "n": 64,
+      "paired_ratio": {
+        "max": 6.063455616176064,
+        "median": 2.696233994051327,
+        "min": 0.758126040145232
+      }
+    },
+    {
+      "certificate_over_eager": 2.477102683765311,
+      "modes": {
+        "certificate": {
+          "forks": 7,
+          "max_us": 579.678625,
+          "median_us": 227.36004,
+          "min_us": 198.96233999999998
+        },
+        "eager": {
+          "forks": 7,
+          "max_us": 122.740595,
+          "median_us": 91.78466499999999,
+          "min_us": 63.77469
+        },
+        "shape": {
+          "forks": 7,
+          "max_us": 143.896065,
+          "median_us": 77.449285,
+          "min_us": 53.671165
+        }
+      },
+      "n": 128,
+      "paired_ratio": {
+        "max": 6.315636985764453,
+        "median": 3.2178026267160216,
+        "min": 1.62099865981585
+      }
+    }
+  ]
+}

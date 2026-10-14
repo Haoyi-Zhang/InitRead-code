@@ -1,0 +1,109 @@
+{
+  "schema": "bounded-replay-environment-v1",
+  "record_scope": "this replay only; not a reconstruction of the archived campaign environment",
+  "captured_utc": "2026-10-06T04:06:16.162377+00:00",
+  "platform": {
+    "system": "Linux",
+    "release": "6.17.0-1022-azure",
+    "machine": "x86_64",
+    "pointer_bits": 64,
+    "sys_platform": "linux",
+    "os_release": {
+      "NAME": "Ubuntu",
+      "VERSION_ID": "24.04",
+      "VERSION": "24.04.5 LTS (Noble Numbat)",
+      "ID": "ubuntu"
+    }
+  },
+  "python": {
+    "implementation": "CPython",
+    "version": "3.12.14",
+    "version_string": "3.12.14 (main, Aug 13 2026, 02:47:42) [GCC 13.3.0]",
+    "cache_tag": "cpython-312",
+    "minimum_required": "3.9"
+  },
+  "java": {
+    "version_probe": {
+      "available": true,
+      "returncode": 0,
+      "version_output": "openjdk version \"21.0.12.1\" 2026-08-18 LTS\nOpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)\nOpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode, sharing)"
+    },
+    "selected_properties": {
+      "java.runtime.version": "21.0.12.1+1-LTS",
+      "java.specification.version": "21",
+      "java.vendor": "Eclipse Adoptium",
+      "java.version": "21.0.12.1",
+      "java.vm.name": "OpenJDK 64-Bit Server VM",
+      "java.vm.vendor": "Eclipse Adoptium",
+      "java.vm.version": "21.0.12.1+1-LTS",
+      "os.arch": "amd64"
+    },
+    "javac_probe": {
+      "available": true,
+      "returncode": 0,
+      "version_output": "javac 21.0.12.1"
+    }
+  },
+  "execution": {
+    "workers": 1,
+    "jvm_options": [
+      "-XX:ActiveProcessorCount=1",
+      "-XX:+UseSerialGC",
+      "-Xmx256m"
+    ],
+    "javac_options": [
+      "-proc:none"
+    ],
+    "environment_overrides": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "JAVA_TOOL_OPTIONS": ""
+    },
+    "java_children_sequential": true
+  },
+  "code_input_summary": {
+    "code": {
+      "sha256": "a3f386d80d0197ae7e8a458267b8363a50130b0f78ce6f8171cc7b6671cbec06",
+      "file_count": 26,
+      "bytes": 171507,
+      "files": [
+        "check_receiver_evidence.py",
+        "export_paper_data.py",
+        "export_receiver_data.py",
+        "export_specialization_data.py",
+        "java/BenignGraphs.java",
+        "java/CertifiedReceiver.java",
+        "java/DeserializationTraceHarness.java",
+        "java/ObservationPair.java",
+        "java/ReceiverHarness.java",
+        "java/SpecializationHarness.java",
+        "reproduce.py",
+        "reproduce_portable.py",
+        "reproduce_receiver.py",
+        "reproduce_specialization.py",
+        "reproduce_trace_bridge.py",
+        "src/checker.py",
+        "src/exhaustive.py",
+        "src/java_trace_bridge.py",
+        "src/model.py",
+        "src/oracle.py",
+        "src/producer.py",
+        "src/redundant_control.py",
+        "src/runtime_resources.py",
+        "src/witness.py",
+        "tests/test_certificates.py",
+        "tests/test_witness.py"
+      ]
+    },
+    "inputs": {
+      "sha256": "284b8a7acca862bdf24548644933096fb22853a9347ca3e645f2a8cc2dd9476b",
+      "file_count": 2,
+      "bytes": 4182,
+      "files": [
+        "inputs/domain.json",
+        "inputs/witness-programs.json"
+      ]
+    }
+  }
+}

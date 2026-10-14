@@ -1,0 +1,3 @@
+{"id":"cycle-one","fork":3,"mode":0,"warmups":1000,"iterations":500,"ns_total":281547906,"bytes":13887}
+{"id":"cycle-one","fork":3,"mode":1,"warmups":1000,"iterations":500,"ns_total":41702927,"bytes":13887}
+{"id":"cycle-one","fork":3,"mode":2,"warmups":1000,"iterations":500,"ns_total":35256345,"bytes":13887}

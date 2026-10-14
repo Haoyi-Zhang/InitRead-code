@@ -1,0 +1,7 @@
+{
+  "objects": 128,
+  "decision": "DENY_UNSAFE",
+  "utf8_bytes_with_newline": 613,
+  "obligations": 2,
+  "checker_steps": 265
+}

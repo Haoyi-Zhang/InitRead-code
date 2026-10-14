@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "schema": "java-trace-bridge-summary-v1",
+  "route": "negative-result technical report",
+  "cases": 11,
+  "mapped": 3,
+  "unknown": 8,
+  "mapped_safe": 2,
+  "mapped_unsafe": 1,
+  "constructor_calls_during_read": 0,
+  "negative_controls": {
+    "shared-alias": true,
+    "cycle-callback-order": true,
+    "early-external-escape": true,
+    "read-resolve-external-alias": true,
+    "type-shape-mismatch": true,
+    "resolve-object-field-write-gap": true,
+    "failure-closed": true,
+    "failure-after-external-escape": true,
+    "missing-field": true
+  },
+  "all_expected_statuses_matched": true,
+  "interpretation": "MAPPED is a partial data translation for owned final snapshots. UNKNOWN marks traces for which passive ObjectInputStream observations do not establish the complete root/write premise. No JVM enforcement or constructor attestation is claimed."
+}

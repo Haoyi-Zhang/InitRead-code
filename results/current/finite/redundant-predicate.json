@@ -1,0 +1,53 @@
+{
+  "n": 2,
+  "counts": {
+    "states": 576,
+    "transitions": 4968,
+    "safe_preconditions": 4968,
+    "frontier_mismatches": 0,
+    "stale_false_accepts": 392,
+    "full_evaluations": 5400,
+    "incremental_evaluations": 4530
+  },
+  "examples": {
+    "stale_cache": {
+      "before": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "roots": [
+        1
+      ],
+      "write": [
+        1,
+        0,
+        0
+      ],
+      "add": -1,
+      "after": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          1,
+          -1
+        ]
+      ],
+      "truth": false
+    }
+  },
+  "cpu_seconds": 0.03799248800000002,
+  "wall_seconds": 0.03801627499998972,
+  "peak_rss_kib": 71832
+}

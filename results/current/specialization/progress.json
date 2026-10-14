@@ -1,0 +1,5 @@
+{
+  "aggregate_cpu_seconds": 141.08870700000003,
+  "completed_subcommands": 31,
+  "last_completed_command": "benchmark-cycle-repeat-6.jsonl"
+}

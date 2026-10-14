@@ -1,0 +1,10 @@
+test_exception_is_unknown (test_java_trace_bridge.JavaTraceBridgeTests.test_exception_is_unknown) ... ok
+test_malformed_records_are_unknown (test_java_trace_bridge.JavaTraceBridgeTests.test_malformed_records_are_unknown) ... ok
+test_maps_narrow_owned_snapshot (test_java_trace_bridge.JavaTraceBridgeTests.test_maps_narrow_owned_snapshot) ... ok
+test_root_types_checked_before_deduplication (test_java_trace_bridge.JavaTraceBridgeTests.test_root_types_checked_before_deduplication) ... ok
+test_special_callbacks_and_observation_gaps_are_unknown (test_java_trace_bridge.JavaTraceBridgeTests.test_special_callbacks_and_observation_gaps_are_unknown) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+OK

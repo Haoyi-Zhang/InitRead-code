@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "totals": {
+    "states": 33344,
+    "safe_states": 10438,
+    "transitions": 615984,
+    "frontier_mismatches": 0,
+    "direct_false_accepts": 4296,
+    "stale_false_accepts": 52652,
+    "root_false_accepts": 45612,
+    "phase_false_accepts": 34756,
+    "annotation_false_accepts": 271864,
+    "full_obligations": 1068056,
+    "frontier_obligations": 681696,
+    "checker_replays": 615984,
+    "checker_mismatches": 0,
+    "checker_steps": 4458364
+  },
+  "java": {
+    "cases": 24,
+    "valid_final_snapshots": 18,
+    "invalid_final_snapshots": 6,
+    "callbacks": 66,
+    "callbacks_with_nonready_reachable_objects": 18,
+    "cases_with_nonready_callback_observation": 9,
+    "max_objects": 6,
+    "snapshot_mismatches": 0,
+    "callback_snapshots": 66,
+    "invalid_callback_snapshots": 28,
+    "constructors_during_read": 0,
+    "round_trip_validity_changes": 0,
+    "interpretation": "passive owned round trips; no JVM monitor or constructor-history refinement"
+  },
+  "measured_cpu_seconds": 63.023849772000005
+}

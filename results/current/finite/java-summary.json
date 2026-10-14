@@ -1,0 +1,15 @@
+{
+  "cases": 24,
+  "valid_final_snapshots": 18,
+  "invalid_final_snapshots": 6,
+  "callbacks": 66,
+  "callbacks_with_nonready_reachable_objects": 18,
+  "cases_with_nonready_callback_observation": 9,
+  "max_objects": 6,
+  "snapshot_mismatches": 0,
+  "callback_snapshots": 66,
+  "invalid_callback_snapshots": 28,
+  "constructors_during_read": 0,
+  "round_trip_validity_changes": 0,
+  "interpretation": "passive owned round trips; no JVM monitor or constructor-history refinement"
+}

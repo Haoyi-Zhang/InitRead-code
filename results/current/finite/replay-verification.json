@@ -1,0 +1,90 @@
+{
+  "status": "MATCH",
+  "scientific_json": [
+    {
+      "file": "exhaustive-2.json",
+      "comparison": "semantic JSON excluding measurement fields",
+      "status": "MATCH"
+    },
+    {
+      "file": "exhaustive-3.json",
+      "comparison": "semantic JSON excluding measurement fields",
+      "status": "MATCH"
+    },
+    {
+      "file": "witnesses.json",
+      "comparison": "semantic JSON excluding measurement fields",
+      "status": "MATCH"
+    },
+    {
+      "file": "java-summary.json",
+      "comparison": "semantic JSON excluding measurement fields",
+      "status": "MATCH"
+    },
+    {
+      "file": "capacity.json",
+      "comparison": "semantic JSON excluding measurement fields",
+      "status": "MATCH"
+    },
+    {
+      "file": "redundant-predicate.json",
+      "comparison": "semantic JSON excluding measurement fields",
+      "status": "MATCH"
+    },
+    {
+      "file": "unit-summary.json",
+      "comparison": "semantic JSON excluding measurement fields",
+      "status": "MATCH"
+    }
+  ],
+  "deterministic_data": [
+    {
+      "file": "exhaustive-2-states.csv",
+      "comparison": "exact bytes",
+      "expected_bytes": 10731,
+      "actual_bytes": 10731,
+      "status": "MATCH"
+    },
+    {
+      "file": "exhaustive-3-states.csv",
+      "comparison": "exact bytes",
+      "expected_bytes": 402950,
+      "actual_bytes": 402950,
+      "status": "MATCH"
+    },
+    {
+      "file": "java-observations.jsonl",
+      "comparison": "exact bytes",
+      "expected_bytes": 9811,
+      "actual_bytes": 9811,
+      "status": "MATCH"
+    },
+    {
+      "file": "certificate-128.json",
+      "comparison": "exact bytes",
+      "expected_bytes": 613,
+      "actual_bytes": 613,
+      "status": "MATCH"
+    },
+    {
+      "file": "summary.csv",
+      "comparison": "exact bytes",
+      "expected_bytes": 355,
+      "actual_bytes": 355,
+      "status": "MATCH"
+    }
+  ],
+  "scientific_matches": 7,
+  "scientific_total": 7,
+  "deterministic_matches": 5,
+  "deterministic_total": 5,
+  "excluded_fields": [
+    "aggregate_rss_upper_kib",
+    "child_peak_rss_kib",
+    "cpu_seconds",
+    "parent_peak_rss_kib",
+    "peak_rss_kib",
+    "wall_seconds"
+  ],
+  "independent_review": false
+}
