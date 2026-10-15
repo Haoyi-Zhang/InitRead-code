@@ -1,322 +1,124 @@
-# Read certificates: bounded checking and a callback-free receiver
+# InitRead
 
-This standalone repository contains three related, explicitly different paths:
+InitRead studies invariant checking during incremental object initialization.
+The artifact contains a finite graph checker, a passive Java observation bridge,
+and a callback-free receiver for a fixed primitive-array protocol. These are
+three distinct execution paths: a final snapshot does not establish the event
+history required by the finite checker.
 
-1. the inherited fixed object-graph checker, certificate producer, independent dense oracle, and bounded witness tests;
-2. the passive Java deserialization observation study, still yielding three MAPPED final snapshots and eight UNKNOWN cases; and
-3. a new data-only Java receiver, independent raw-data reference, private read-only graph representation, an exact schedule specialization and a conditional publication argument.
+## Requirements and quick checks
 
-The new receiver changes the wire/API contract: it deserializes only a canonical primitive int[] and constructs application nodes only after validation. It is not an instrumentation layer or transparent replacement for arbitrary Serializable objects. Readiness is private checker metadata, not constructor-history evidence. The direct eager baseline implements the same final data policy without certificates and was faster in the measured batches.
+Use Python 3.9 or later. Python checks use the standard library. Native receiver
+checks additionally require a locally installed JDK 17 or later; nothing is
+downloaded by the runners. Full resource-accounted campaigns require POSIX.
 
-## Requirements
-
-Python 3.9 or newer and a local JDK providing java and javac are required; all Python dependencies are in the standard library. The original full campaigns used Debian GNU/Linux 13 x86-64, CPython 3.13.5 and Debian OpenJDK/javac 21.0.11. The paired measurements used in the manuscript's specialization tables were recorded separately on Ubuntu 24.04.5 x86-64, CPython 3.12.14 and Temurin 21.0.12.1+1, before matched canonical-buffer preallocation. The Windows x64 replay used CPython 3.12.14 and Temurin 17.0.20.1+1 and supplies correctness comparisons, not timings. These records are kept separate; no additional JDK/vendor combination has been evaluated. Runtime-evaluated built-in generic aliases require Python 3.9.
-
-All output directories below must be absent or empty. All Java children are sequential; one active processor, SerialGC, a 256 MiB heap cap, and javac -proc:none are recorded by the runners. Each command records actual environment and code/input bindings. Original historical versions and architecture that were never recorded remain unknown.
-
-### Portable Python-only execution
-
-The bounded Python computation and integer references can also run without a
-JDK or POSIX `resource`. This is an explicitly partial execution, not a new Java
-stream-decoding, receiver-differential, or performance experiment:
+From this directory:
 
 ```sh
-python -B -m unittest discover -s portability_tests -v
-python -B reproduce_portable.py --out /absolute/fresh/python-scope
+python3 -B -m unittest discover -s portability_tests -v
+python3 -B -m unittest discover -s receiver_tests -v
+python3 -B -m unittest discover -s bridge_tests -v
 ```
 
-This runs the complete two-/three-object enumeration, witness/capacity controls,
-all 39 current Python tests, receiver packet generation, the independent
-5,248-packet certificate reference, and reinterpretation of the 11 archived
-passive observations. It compares six inherited semantic JSON and four byte
-files, plus both campaigns' generated input files. Receiver input words remain
-exact; its comparison separately records the corrected data-oracle label for
-the named cert-short-009 prefix rather than rewriting the historical input file.
-It never supplies synthetic
-Java observations or serialized sizes. Wall time and Python CPU are measured;
-unsupported peak RSS is JSON `null`, not zero or a Linux-equivalent estimate.
+Runners require a fresh output directory. Put it outside the project so retained
+inputs and results remain unchanged. Set `PYTHONDONTWRITEBYTECODE=1` for child
+Python processes when invoking individual tools outside the campaign drivers.
 
-In the standalone InitRead code repository, the contents of this `artifact/`
-directory are the repository root. Its `.github/workflows/scientific-checks.yml`
-runs all four full campaigns and the portability regressions on Ubuntu,
-Python 3.12, and Temurin 21. The retained pre-preallocation run passed all five commands:
-615,984 finite transitions, 4,563 real Java receiver cases, 5,248 specialization
-cases, 42 receiver timing forks, 28 paired specialization forks, and 30 exact
-size-bound equalities. Raw observations and command logs are in `results/current/`.
-They use their own measured Linux/OpenJDK 21 environment and original sources,
-before the capacity pre-sizing below; they are not new timings of current code.
-The workflow definition is not a receipt of a fresh CI execution.
-The saved receiver streams from this retained Linux run reproduce the unchanged
-`results/receiver-campaign/` streams byte-for-byte, so that run's input set is
-retained once. The separate 2026-10-12 native replay below includes its own fresh
-stream outputs.
+## Reproduce correctness
 
-### Current-only portable Java correctness
-
-With Python 3.9+ and a local JDK 17+ (no automatic download), run:
+The portable route regenerates the finite Python campaign and integer inputs,
+checks independent certificate/data references, and reinterprets the retained
+passive observations. It does not execute a JVM or measure Java performance:
 
 ```sh
-python -B reproduce_java_conformance.py --java-home /absolute/local/jdk \
-  --out /absolute/fresh/java-correctness-output
+python3 -B reproduce_portable.py --out /absolute/fresh/python-scope
 ```
 
-From this artifact directory, the equivalent single-line PowerShell command is
-`python -B reproduce_java_conformance.py --java-home "D:/your/local/jdk" --out "D:/your/fresh/java-correctness-output"`.
-Replace both example paths with your chosen local JDK and absent output directory.
-
-The input tables and retained observations are supplied under
-`results/receiver-campaign/` and `results/specialization-campaign/`. The command
-reads those canonical records directly; it does not require a separate
-`results/current/` copy.
-
-`--java-home` may be omitted when `JAVA_HOME`, or both `java` and `javac` on
-`PATH`, select the intended JDK. The output directory must not exist and must
-be outside this artifact. All classes, newly serialized inputs, raw observations,
-fresh Python-reference results and command/version receipts stay there. The
-driver has no timing option and invokes no benchmark branch. It uses no before
-copy, private validation path, network service or third-party serialized input.
-
-This compiles the two current receivers and three reviewed harnesses with
-`--release 17 -proc:none`, runs the current seventeen receiver test methods (ten
-in the retained earlier replay), and replays the
-included 4,563 receiver observations and 5,248 integer cases. It compares full
-receiver outputs against `results/receiver-campaign/java-results.jsonl` and
-integer outputs against `results/specialization-campaign/comparison.jsonl`, the complete serialized
-input set byte-for-byte against `results/receiver-campaign/streams`, and 31,488
-six-mode observations against a compact retained original-output fingerprint.
-The added `CapacityObservationHarness` has no benchmark path. The fingerprint
-and its exact canonicalization/provenance are in `java-conformance-contract.json`;
-the fresh 2026-10-12 observations and serialized outputs are included separately
-in `results/native-replay/`.
-
-Both independent Python references execute anew. Certificate classifications
-are checked for every integer packet; the final-data reference independently
-checks eager policy and published representation wherever it has complete valid
-data. Six-mode matched comparisons retain reasons, traces, steps/read counters,
-heap/ordered roots and alias-freeze observations, including negative controls.
-References do not model Java serialization. This is bounded replay evidence,
-not a universal proof or performance measurement. A mismatch, timeout or child
-failure exits nonzero and preserves diagnostics; historical campaigns and
-timings are never rewritten. Current portable execution metadata, when available,
-is separate in `results/current/java-portable-conformance.json`.
-
-## Commands
-
-Preserved finite model, including 17 test methods and 7 scientific JSON / 5 deterministic file comparisons:
+For current native correctness, supply a local JDK directory, or omit
+`--java-home` when `JAVA_HOME` or `PATH` already identifies it:
 
 ```sh
-python3 reproduce.py --out legacy-output --verify-against results/campaign
+python3 -B reproduce_java_conformance.py \
+  --java-home /absolute/local/jdk --out /absolute/fresh/java-correctness
 ```
 
-Passive ordinary-object Java observations and five bridge test methods:
+This route compiles the owned receivers/harnesses with `--release 17 -proc:none`,
+runs 4,563 serialized receiver cases, 5,248 integer packets and 31,488 six-mode
+observations, and checks 5,236 complete data prefixes through public navigation.
+The seventeen current receiver tests include the six named complete-prefix
+regressions in `inputs/data-prefix-regressions.json`. Outputs include generated
+inputs, observations, comparisons, environment information and source bindings.
+
+Individual POSIX campaigns remain available when their specific outputs are
+needed. These commands skip optional timing forks:
 
 ```sh
-python3 reproduce_trace_bridge.py --out bridge-output
-```
-
-Receiver replay with seventeen current receiver test methods, 4,563 actual Java cases and the paired observation (the initial retained run had ten test methods). Omitting --skip-benchmark reruns the older six-size timing protocol on the current code, not the historical generic implementation:
-
-```sh
-python3 reproduce_receiver.py --out receiver-output --skip-benchmark
-```
-
-Deterministic receiver replay without requiring nondeterministic timings to match:
-
-```sh
-python3 reproduce_receiver.py --out receiver-replay \
+python3 -B reproduce.py --out /absolute/fresh/finite --verify-against results/campaign
+python3 -B reproduce_trace_bridge.py --out /absolute/fresh/passive-java
+python3 -B reproduce_receiver.py --out /absolute/fresh/receiver \
   --verify-against results/receiver-campaign --skip-benchmark
-```
-
-The comparison checks five result/input files and all saved serialized inputs as a complete set. Four receiver files remain byte-exact; inputs.jsonl retains exact input words and records the one named corrected data-oracle label separately. Other reference differences fail the comparison. The original finite replay excludes only documented timing/RSS fields from its seven scientific JSON comparisons. No runner overwrites the baseline to produce a match. Nonzero results produce diagnostics rather than a fabricated successful report.
-
-Table generation has no dependency on a paper directory:
-
-```sh
-python3 export_paper_data.py --results results/campaign --out legacy-tables
-python3 export_receiver_data.py --results results/receiver-campaign --out receiver-tables
-```
-
-Reference comparisons use exact canonical JSON, both for unchanged labels and
-for the permitted named correction. Integer zero, Boolean false and floating
-zero remain distinct in values, links, roots and reachable identities; equality
-in Python alone is not a replay-schema check.
-
-## Exact specialization and three-way comparison
-
-The production State represents the fixed schedule without cloning the whole heap at every step. The historical generic verifier was retained in `baselines/GenericReceiver.java` with a class/constructor rename. The current copy additionally pre-sizes the canonical transport buffer using `27 + Integer.BYTES * words.length`, exactly as the current specialized receiver does. Its generic shadow-state algorithm, parser and data policy remain unchanged. Frozen Linux/OpenJDK 21 measurements describe the original sources before this matched capacity change, not current preallocation performance. `receiver/certificate_reference.py` independently parses complete integer certificates and recomputes whole states; it imports no production component. Its scope is not Java stream decoding.
-
-```sh
-python3 reproduce_specialization.py --out specialization-output
-python3 reproduce_specialization.py --out specialization-replay \
+python3 -B reproduce_specialization.py --out /absolute/fresh/specialization \
   --verify-against results/specialization-campaign --skip-benchmark
-python3 export_specialization_data.py --results results/specialization-campaign \
-  --out specialization-tables
+python3 -B reproduce_public_boundary.py --java-home /absolute/local/jdk \
+  --out /absolute/fresh/public-navigation --skip-costs
 ```
 
-The full command adds28 sequential JVM timing forks. The replay checks five deterministic input/result files and does not require timing equality. Plans and inclusion rules are in `receiver/specialization-contract.md`; complete proof arguments are in `proofs/specialization.md`. Safe packets require complete exact proof parsing. `DENY_UNSAFE` identifies a checked unsafe prefix and does not authenticate a later unconsumed tail. Both reject outcomes return a null graph.
+Replay compares deterministic scientific outputs and the complete saved input
+set. Timing and resource telemetry use their documented comparison exclusions.
+The receiver comparison preserves exact input words while recording the named
+`cert-short-009` data-oracle label correction; other differences fail. Canonical
+JSON comparisons distinguish integer, Boolean and floating-point values.
+Failures exit nonzero and leave diagnostics in the fresh output directory.
 
-An earlier attempt hit an outer execution timeout after completing its core comparison and some timing forks. Its unknown overall exit and partial files remain in `results/specialization-interrupted/`. The successful complete run is separate and its timings are not pooled with the partial attempt.
+## Results and interpretation
 
-## Retained evidence
-
-| Study | Result | Scope |
+| Evidence | Retained result | Location |
 |---|---|---|
-| Original finite campaign |615,984 transitions ; 0 checker/oracle disagreements ; 4,296 misses by written-object-only control|All two-/three-object cases in the fixed domain, not arbitrary Java|
-| Passive Java bridge |11 cases; 3 MAPPED, 8 UNKNOWN|Original callback/alias/evolution boundary remains unresolved for that path|
-| Receiver valid-data cases |4,443; 3,397 ALLOW, 1,046 DENY_UNSAFE|Includes 4,248 exact small inputs, 96 larger, 96 renamed, 3 capacity|
-| Receiver controls |97 certificate, 12 data, 10 wire, 1 construction failure|All fail without returning a graph|
-| Receiver total |4,563; 0 oracle/representation/alias/decision errors|Only the accepted primitive-data contract|
-| Observation pair |same bytes and selected public projection; unfinished-read outcome differs|Limit for this projection, not all Java observers|
-| Direct baseline |same data policy as an existent valid certificate|No extra semantic protection from certificates in this setting|
-| Retained generic timing at128 nodes |420.45 µs generic vs39.85 µs eager|Historical six-size protocol, not current specialized cost|
-| Exact specialization |5,248 integer packets; zero full-observation and independent-certificate-reference disagreement|4,552 retained inputs plus696 targeted/size cases, not new applications|
-| Sharp accepting packet bound |22,134 words /88,563 canonical serialized bytes|Attained at128 nodes and128 repeated roots|
-| Retained paired timing before preallocation |Median generic/specialized factors2.81–10.36; specialized/eager1.18–3.69|Original Linux/OpenJDK 21 sources; four controlled families, seven forks each; full ranges retained; no new capacity timing|
-| Retained Windows 17 finite conformance |4,563 receiver/serialized cases; 5,248 integer packets; 31,488 six-mode observations; ten receiver tests|Earlier Temurin 17.0.20.1+1 protocol; no benchmark or universal correctness claim|
-| Current data-prefix conformance |Same receiver observations/frames and integer certificate outcomes; 5,236 dense data checks; seventeen receiver tests|Six existing complete prefixes now checked as data, without changing certificate semantics|
+| Finite census | 615,984 transitions; zero checker/oracle disagreements | `results/campaign/` |
+| Passive Java bridge | 11 cases: 3 mapped final snapshots, 8 unknown histories | `results/bridge-campaign/` |
+| Native receiver | 4,563 cases; zero recorded decision/representation/alias discrepancies | `results/receiver-campaign/`, `results/native-replay/` |
+| Integer specialization | 5,248 packets; agreement with the independent certificate reference | `results/specialization-campaign/` |
+| Current public navigation | 5,236 complete-data packets; 15,708 observations | `results/public-navigation/` |
 
-## Evidence locations
+The receiver accepts a canonical serialized `int[]` encoding a fixed
+`(ready,value,next)` graph of at most 128 nodes. Readiness, checking order and
+publication are receiver-owned. Successful results expose a frozen graph.
+Complete valid certificates and direct eager checking admit the same final data;
+the measured certificate path was slower than eager checking. `DENY_UNSAFE`
+reports a checked unsafe prefix rather than authenticating an unconsumed tail.
 
-- `proofs/argument.md`: inherited handwritten finite-model proof.
-- `proofs/concrete-bridge.md`: retained partial snapshot-mapping conditions.
-- `proofs/receiver.md`: observation limit, shadow soundness, representation, publication, eager-equivalence, and packet bound.
-- `src/`: original model, producer, checker, oracle, witness and passive bridge.
-- `receiver/`, `receiver_tests/`: packet producer, independent data and complete-certificate references; root, oracle, exact-bound and denial-tail tests.
-- `java/CertifiedReceiver.java`, `ReceiverHarness.java`, `ObservationPair.java`: actual receiving path and benign experiments.
-- `java/DeserializationTraceHarness.java`, `java/evolution/`: unchanged ordinary-object study.
-- `results/campaign/`: immutable original scientific baseline.
-- `results/final-replay/`, `results/bridge-campaign/`: inherited verified runs, with their own recorded environments.
-- `results/receiver-campaign/`: unchanged generic receiving baseline and historical timing.
-- `results/specialized-replay/`: current specialized code replaying all 4,563 original receiving cases.
-- `results/specialization-campaign/`: independent certificate reference, generic/specialized differential results and paired timings.
-- `results/continuation-clean/`: successful clean-extraction commands, all legacy/bridge/receiver/specialization comparisons and exported tables.
-- `results/receiver-pilot/`, `results/receiver-framing-control/`: preserved measurement/framing repair evidence and affected source.
-- `results/clean-check/`: retained clean verification of the incoming generic receiver; the current verification is in `results/continuation-clean/`.
-- `results/native-replay/`: fresh 2026-10-12 native observations, serialized outputs, references, source/input bindings and relocatable command receipts for C33.
-- `results/public-boundary/`: fresh 2026-10-12 public-navigation inputs/outputs, cost batches/forks, run-source snapshots and relocatable receipts for C34/C35.
-- `results/public-navigation/`: current corrected semantic inputs, public observations, six named regression receipts, summary, source/runtime bindings and command receipts; no new performance measurements.
-- `claim_evidence_ledger.csv`, `reference-audit.csv`: evidence and interpretation records.
+Timing is opt-in: omit `--skip-benchmark` for the receiver or specialization
+campaign, or omit `--skip-costs` for the public-boundary campaign. The retained
+Linux generic/specialized measurements precede the current matched buffer
+preallocation and are not measurements of that later allocation change.
+Pilot, interrupted and framing-control runs retain their own records and are
+not pooled with complete campaigns. Windows Java replays are correctness checks.
+Actual environments are recorded per run; missing historical machine facts are
+not inferred from later runs.
 
-## Public-navigation regression and cost accounting
+## Code, proofs and tables
 
-`reproduce_public_boundary.py` adds a public-API comparison without reading a
-private graph snapshot. With an absent output directory outside `artifact/`
-(including a private directory outside the project), run:
+- `src/`: finite model, producer, checker, dense oracle and passive bridge.
+- `receiver/`: packet producer and separate integer-data/certificate references;
+  its README and specialization contract describe the wire and checking rules.
+- `java/`, `baselines/`: owned native receivers, observation harnesses and the
+  matched generic baseline.
+- `proofs/`: finite, bridge, receiver and specialization arguments.
+- `inputs/`: named data, root-type and complete-prefix controls.
+- `claim_evidence_ledger.csv`, `reference-audit.csv`: claim and source locations.
+
+Generate manuscript tables from the relevant retained campaign, without
+requiring the paper directory:
 
 ```sh
-python -B reproduce_public_boundary.py --java-home /absolute/local/jdk \
-  --out /absolute/private/public-boundary-output
+python3 -B export_paper_data.py --results results/campaign --out /absolute/fresh/finite-tables
+python3 -B export_receiver_data.py --results results/receiver-campaign --out /absolute/fresh/receiver-tables
+python3 -B export_specialization_data.py --results results/specialization-campaign --out /absolute/fresh/specialization-tables
 ```
 
-Add `--skip-costs` for correctness only. The runner re-executes the eleven owned
-passive cases and the indistinguishable pair, then selects all 5,236 packets
-with complete valid data from the retained 5,248-packet corpus. Repeated data
-under different certificates remain separate packet cases. Three modes use
-exactly the same values, links and ordered roots: certificate checking, eager
-checking on the same proof-carrying frame, and eager checking on a data-only
-frame. The latter retains the existing data layout and a zero ignored step
-word; it is not a certificate packet or a proposed public protocol extension.
-The complete data prefix has 4+2n+m words. A missing subsequent step-count word
-is a certificate error, not missing graph data. The six packets in
-`inputs/data-prefix-regressions.json` are selected unchanged from the retained
-corpus, not duplicated as new samples. `data-prefix-regressions-results.json`
-records their exact native observations in each new run.
-All transport/filter/canonicalization and immutable graph-construction checks
-are retained. After mutating caller-held input bytes and a root-array copy,
-the harness enumerates only public roots/successors and compares their scalar
-values, links, reachable identities and canonical aliases with the independent
-dense reference. It never calls `snapshot()` or exposes an unreachable node.
-
-Current semantic results are supplied in `results/public-navigation/`:
-`inputs.tsv.gz`, `observations.jsonl.gz`, `data-prefix-regressions.json`,
-`summary.json`, `environment.json` and `commands.json`. Gzip preserves the exact
-generated input/output bytes; environment bindings identify the source corpus,
-selected inputs, observations, receiver/checker sources and actual runtime.
-Command receipts use generated-output placeholders and executable basenames;
-classes, caches and local executables are not included. The earlier timings and
-their sources remain in `results/public-boundary/`, separate from this semantic
-result set.
-
-The current correctness run records 15,708 public observations with zero
-mismatches. Both eager modes reject 1,046 unsafe packets and accept 4,190 safe
-packets. The certificate path accepts 3,432, denies 1,046 and refuses 758 damaged
-or absent proofs on safe data. All six named complete-data prefixes are ALLOW
-for eager checking and INVALID_CERT with no graph for certificate checking.
-The current native replay preserves all 4,563 receiver observations/streams,
-5,248 integer classifications and 31,488 six-mode observations, with 5,236 fresh
-dense data checks. Seventeen receiver test methods pass. Correctness-only runs
-do not replace measurements or collect new timing samples.
-
-The retained 2026-10-12 Windows run records 15,690 public observations with zero
-mismatches. Both eager modes reject all 1,046 unsafe packets and accept the
-4,184 safe-data packets. Certificate checking accepts 3,432 and rejects 752
-damaged proofs on otherwise safe data. Its former 5+2n+m completeness condition
-excluded the six prefixes; the receipt is preserved, not relabeled as the new
-full-data selection. That is exact-proof checking, not extra
-data protection. The same run retains three MAPPED and eight UNKNOWN passive
-cases. Separately, `results/native-replay/` records a fresh exact match of all
-4,563 receiver observations/streams, 5,248 classifications and 31,488 six-mode
-observations. Neither fresh directory replaces an older campaign.
-
-Four inherited 128-node families receive seven JVM forks each, rotating the
-three mode orders, with 300 warm-ups and 200 calls per measured operation.
-Sender Java serialization, receiving, and serialization-plus-receiving are
-timed separately; the last is measured jointly, not a sum of component medians.
-Python domain validation and packet preparation are recorded separately in
-seven five-call batches after ten warm-ups. Certificate preparation uses the
-actual producer, including its returned shadow diagnostics; eager preparation
-uses the same domain validation and only the data words. The same-frame eager
-control reuses the certificate packet and hence its sender preparation cost.
-Actual serialized bytes account for transport volume. Data creation, network
-latency/bandwidth, cross-language transfer and caller use are not measured;
-process startup appears only in command wall-time receipts, and no RSS estimate
-is supplied. Separate Python/JVM batches cannot be added into a measured
-deployment latency. Fixed warm-up does not establish steady state.
-
-In the recorded run, certificate frames range from 12,847 to 88,563 bytes,
-versus 1,075 or 1,583 bytes for the corresponding data-only frame. Median Python
-certificate preparation takes 30.38--55.67 ms versus 14.44--22.68 microseconds
-for data assembly. Median jointly measured Java serialization-plus-receiving
-cost is larger for certification than either eager mode in all four families;
-all batch/fork minima and maxima are retained. These are costs of the current
-implementations, not optimal algorithmic bounds or a production speedup claim.
-The run uses Windows 11 AMD64, CPython 3.12.14 and Temurin 17.0.20.1+1 with the
-same bounded JVM options. Raw values and source bindings are in
-`results/public-boundary/`. Its original `cost-summary.json`
-uses `_ns` field names for already converted microseconds; the explicit
-`units` field and raw `java-costs.json` establish the scale. Future summaries
-use `_us` field names. Historical Linux tables and their source versions are
-unchanged.
-
-`results/public-boundary/cost-summary-us.json` is a derived interpretation view
-of that original receipt: its 36 Java summary metric keys use `_us`, with every
-numeric value unchanged and `derived_from` naming `cost-summary.json`. It is
-not a rerun or a modified Java-source receipt. Raw Java/Python `_ns` totals
-remain nanoseconds; only the already-microsecond summary keys are aliased.
-
-The public copies preserve the recorded inputs, measurements, source hashes,
-run timestamps and filesystem timestamps. Only private absolute path fields in
-the command/environment receipts (and the native summary's embedded commands)
-are made relocatable: working directory `.` and source/input paths are relative
-to this repository root, output paths use the corresponding `results/`
-directory, and executable paths become `java.exe`, `javac.exe` or `python`.
-Class-output directories mentioned in the commands are generated targets, not
-shipped binaries; a new reproduction still uses an absent output directory
-outside the artifact as required above. No classes or local runtime are included.
-`results/public-boundary/sources/` retains the exact measured source versions.
-Its driver predates the current runner's additional Python test orchestration and
-`_us` summary keys; its original `_ns` values and stated units are not rewritten.
-To reproduce that version, overlay those source snapshots onto a separate copy
-of the artifact, leaving its retained input/result files in place, then use the
-same driver command with a new sibling output directory. The snapshots alone
-are source bindings, not a second standalone runnable artifact.
-
-### Root validation
-
-The original checker checks each root with exact `type(r) is int` and range checks before set conversion. Tests cover both orders of [0,False] and [0,0.0], list/tuple containers, a single legal integer, duplicate integers, and 128/129-entry limits. Sets preconstructed by the caller may have already discarded equal differently typed elements; that absent history is unrecoverable. The new Python producer has the same strict-before-normalization discipline; its accepted wire is a primitive integer array.
-
-## Limits and scientific status
-
-The old abstract model still assumes complete writes and roots. The new receiver does not claim to recover them from callback observations: it controls initial publication of newly constructed private objects. Its guarantees require trusted JDK/configuration/code and no privileged mutation of private storage. Public navigation is read-only; untrusted same-package, reflective, native, Unsafe, agent, class-loader, and concurrent interference are not covered. The package-private snapshot, eager and failure hooks are owned tests.
-
-The bounded publication connection is implemented and argued by hand. It does not establish an original TIFS-wide security contribution, arbitrary-JVM initialization guarantees, machine-checked source correctness, production compatibility, or independent external validation. Code separation and the retained internal checks belong to one research execution.
+The receiver protocol is callback-free rather than a general replacement for
+Java object deserialization. Its proof conditions include trusted receiver/JDK
+configuration, protected checker state and the documented input/publication
+boundary. The passive bridge deliberately returns unknown when those event
+premises cannot be recovered. See the corresponding proof and experiment
+contracts for the exact conditions of each path.
