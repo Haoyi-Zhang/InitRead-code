@@ -1,4 +1,5 @@
 {
+  "record_scope": "Historical delivery record: the completed scope, manuscript counts, command outcomes, timings and source comparisons below describe the retained 11-page, 19-reference delivery, not the current manuscript or a new execution. For the current manuscript use paper/README.md in the full project; for artifact usage use the artifact README.md (the standalone repository root).",
   "scientific_status": "bounded constructive receiving and specialization study; general Java defense and new TIFS original-research lock not established",
   "completed_scope": [
     "fixed-schedule specialized verifier",
@@ -7,7 +8,7 @@
     "sharp attained packet bound",
     "paired generic-specialized-eager measurement",
     "clean deterministic reproduction",
-    "11-page current manuscript and 19-reference closure"
+    "historical 11-page manuscript and 19-reference closure"
   ],
   "clean_extraction_commands": [
     {
